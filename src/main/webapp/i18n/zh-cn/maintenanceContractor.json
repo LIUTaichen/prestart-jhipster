@@ -1,0 +1,22 @@
+
+{
+    "prestartApp": {
+        "maintenanceContractor" : {
+            "home": {
+                "title": "Maintenance Contractors",
+                "createLabel": "创建新 Maintenance Contractor",
+                "createOrEditLabel": "创建或编辑 Maintenance Contractor"
+            },
+            "created": "Maintenance Contractor {{ param }} 创建成功",
+            "updated": "Maintenance Contractor {{ param }} 更新成功",
+            "deleted": "Maintenance Contractor {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Maintenance Contractor {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Maintenance Contractor"
+            },
+            "name": "Name"
+        }
+    }
+}

@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="location">
+            <h2><span jhiTranslate="prestartApp.location.detail.title">Location</span> {{location.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="prestartApp.location.latitude">Latitude</span></dt>
+                <dd>
+                    <span>{{location.latitude}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.location.longitude">Longitude</span></dt>
+                <dd>
+                    <span>{{location.longitude}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.location.address">Address</span></dt>
+                <dd>
+                    <span>{{location.address}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.location.bearing">Bearing</span></dt>
+                <dd>
+                    <span>{{location.bearing}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.location.direction">Direction</span></dt>
+                <dd>
+                    <span>{{location.direction}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.location.speed">Speed</span></dt>
+                <dd>
+                    <span>{{location.speed}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.location.timestamp">Timestamp</span></dt>
+                <dd>
+                    <span>{{location.timestamp}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.location.provider">Provider</span></dt>
+                <dd>
+                    <span>{{location.provider}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.location.project">Project</span></dt>
+                <dd>
+                    <div *ngIf="location.project">
+                        <a [routerLink]="['/project', location.project?.id, 'view']">{{location.project?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/location', location.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

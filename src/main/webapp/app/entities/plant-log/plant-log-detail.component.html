@@ -1,0 +1,69 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="plantLog">
+            <h2><span jhiTranslate="prestartApp.plantLog.detail.title">Plant Log</span> {{plantLog.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="prestartApp.plantLog.meterReading">Meter Reading</span></dt>
+                <dd>
+                    <span>{{plantLog.meterReading}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantLog.hubboReading">Hubbo Reading</span></dt>
+                <dd>
+                    <span>{{plantLog.hubboReading}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantLog.serviceDueAt">Service Due At</span></dt>
+                <dd>
+                    <span>{{plantLog.serviceDueAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantLog.rucDueAt">Ruc Due At</span></dt>
+                <dd>
+                    <span>{{plantLog.rucDueAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantLog.wofDueDate">Wof Due Date</span></dt>
+                <dd>
+                    <span>{{plantLog.wofDueDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantLog.cofDueDate">Cof Due Date</span></dt>
+                <dd>
+                    <span>{{plantLog.cofDueDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantLog.serviceDueDate">Service Due Date</span></dt>
+                <dd>
+                    <span>{{plantLog.serviceDueDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantLog.plant">Plant</span></dt>
+                <dd>
+                    <div *ngIf="plantLog.plant">
+                        <a [routerLink]="['/plant', plantLog.plant?.id, 'view']">{{plantLog.plant?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantLog.operator">Operator</span></dt>
+                <dd>
+                    <div *ngIf="plantLog.operator">
+                        <a [routerLink]="['/people', plantLog.operator?.id, 'view']">{{plantLog.operator?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantLog.site">Site</span></dt>
+                <dd>
+                    <div *ngIf="plantLog.site">
+                        <a [routerLink]="['/project', plantLog.site?.id, 'view']">{{plantLog.site?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/plant-log', plantLog.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+{
+    "name": "PurchaseOrder",
+    "fields": [
+        {
+            "fieldName": "orderNumber",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180715234435",
+    "entityTableName": "purchase_order",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

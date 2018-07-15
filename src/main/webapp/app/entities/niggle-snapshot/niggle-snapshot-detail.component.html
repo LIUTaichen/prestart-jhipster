@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="niggleSnapshot">
+            <h2><span jhiTranslate="prestartApp.niggleSnapshot.detail.title">Niggle Snapshot</span> {{niggleSnapshot.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="prestartApp.niggleSnapshot.date">Date</span></dt>
+                <dd>
+                    <span>{{niggleSnapshot.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.niggleSnapshot.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'prestartApp.Status.' + niggleSnapshot.status}}">{{niggleSnapshot.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.niggleSnapshot.priority">Priority</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'prestartApp.Priority.' + niggleSnapshot.priority}}">{{niggleSnapshot.priority}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.niggleSnapshot.count">Count</span></dt>
+                <dd>
+                    <span>{{niggleSnapshot.count}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.niggleSnapshot.ageOfOldest">Age Of Oldest</span></dt>
+                <dd>
+                    <span>{{niggleSnapshot.ageOfOldest}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/niggle-snapshot', niggleSnapshot.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

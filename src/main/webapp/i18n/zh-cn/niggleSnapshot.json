@@ -1,0 +1,26 @@
+
+{
+    "prestartApp": {
+        "niggleSnapshot" : {
+            "home": {
+                "title": "Niggle Snapshots",
+                "createLabel": "创建新 Niggle Snapshot",
+                "createOrEditLabel": "创建或编辑 Niggle Snapshot"
+            },
+            "created": "Niggle Snapshot {{ param }} 创建成功",
+            "updated": "Niggle Snapshot {{ param }} 更新成功",
+            "deleted": "Niggle Snapshot {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Niggle Snapshot {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Niggle Snapshot"
+            },
+            "date": "Date",
+            "status": "Status",
+            "priority": "Priority",
+            "count": "Count",
+            "ageOfOldest": "Age Of Oldest"
+        }
+    }
+}

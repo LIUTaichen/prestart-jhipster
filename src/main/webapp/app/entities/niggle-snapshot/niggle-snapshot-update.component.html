@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-niggle-snapshot-heading" jhiTranslate="prestartApp.niggleSnapshot.home.createOrEditLabel">Create or edit a Niggle Snapshot</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!niggleSnapshot.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="niggleSnapshot.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.niggleSnapshot.date" for="field_date">Date</label>
+                    <div class="input-group">
+                        <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" [(ngModel)]="niggleSnapshot.date"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.niggleSnapshot.status" for="field_status">Status</label>
+                    <select class="form-control" name="status" [(ngModel)]="niggleSnapshot.status" id="field_status" >
+                        <option value="SUBMITTED">{{'prestartApp.Status.SUBMITTED' | translate}}</option>
+                        <option value="OPEN">{{'prestartApp.Status.OPEN' | translate}}</option>
+                        <option value="WINTER_WORK">{{'prestartApp.Status.WINTER_WORK' | translate}}</option>
+                        <option value="IN_PROGRESS">{{'prestartApp.Status.IN_PROGRESS' | translate}}</option>
+                        <option value="ON_HOLD">{{'prestartApp.Status.ON_HOLD' | translate}}</option>
+                        <option value="COMPLETED">{{'prestartApp.Status.COMPLETED' | translate}}</option>
+                        <option value="CLOSED">{{'prestartApp.Status.CLOSED' | translate}}</option>
+                        <option value="TBR">{{'prestartApp.Status.TBR' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.niggleSnapshot.priority" for="field_priority">Priority</label>
+                    <select class="form-control" name="priority" [(ngModel)]="niggleSnapshot.priority" id="field_priority" >
+                        <option value="LOW">{{'prestartApp.Priority.LOW' | translate}}</option>
+                        <option value="MEDIUM">{{'prestartApp.Priority.MEDIUM' | translate}}</option>
+                        <option value="HIGH">{{'prestartApp.Priority.HIGH' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.niggleSnapshot.count" for="field_count">Count</label>
+                    <input type="number" class="form-control" name="count" id="field_count"
+                        [(ngModel)]="niggleSnapshot.count" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.niggleSnapshot.ageOfOldest" for="field_ageOfOldest">Age Of Oldest</label>
+                    <input type="number" class="form-control" name="ageOfOldest" id="field_ageOfOldest"
+                        [(ngModel)]="niggleSnapshot.ageOfOldest" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

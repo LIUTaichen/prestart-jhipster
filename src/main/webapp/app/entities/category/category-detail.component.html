@@ -1,0 +1,75 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="category">
+            <h2><span jhiTranslate="prestartApp.category.detail.title">Category</span> {{category.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="prestartApp.category.category">Category</span></dt>
+                <dd>
+                    <span>{{category.category}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.category.description">Description</span></dt>
+                <dd>
+                    <span>{{category.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.category.type">Type</span></dt>
+                <dd>
+                    <span>{{category.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.category.trackUsage">Track Usage</span></dt>
+                <dd>
+                    <span>{{category.trackUsage}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.category.dailyRate">Daily Rate</span></dt>
+                <dd>
+                    <span>{{category.dailyRate}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.category.loadCapacity">Load Capacity</span></dt>
+                <dd>
+                    <span>{{category.loadCapacity}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.category.hourlyRate">Hourly Rate</span></dt>
+                <dd>
+                    <span>{{category.hourlyRate}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.category.isEarchMovingPlant">Is Earch Moving Plant</span></dt>
+                <dd>
+                    <span>{{category.isEarchMovingPlant}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.category.isTrackedForInternalBilling">Is Tracked For Internal Billing</span></dt>
+                <dd>
+                    <span>{{category.isTrackedForInternalBilling}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.category.maintenanceGroup">Maintenance Group</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'prestartApp.MaintenanceGroup.' + category.maintenanceGroup}}">{{category.maintenanceGroup}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.category.competency">Competency</span></dt>
+                <dd>
+                    <div *ngIf="category.competency">
+                        <a [routerLink]="['/competency', category.competency?.id, 'view']">{{category.competency?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.category.prestartCheckConfig">Prestart Check Config</span></dt>
+                <dd>
+                    <div *ngIf="category.prestartCheckConfig">
+                        <a [routerLink]="['/prestart-check-config', category.prestartCheckConfig?.id, 'view']">{{category.prestartCheckConfig?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/category', category.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

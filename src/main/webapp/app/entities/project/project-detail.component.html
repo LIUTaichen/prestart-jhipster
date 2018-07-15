@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="project">
+            <h2><span jhiTranslate="prestartApp.project.detail.title">Project</span> {{project.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="prestartApp.project.jobNo">Job No</span></dt>
+                <dd>
+                    <span>{{project.jobNo}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.project.name">Name</span></dt>
+                <dd>
+                    <span>{{project.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.project.location">Location</span></dt>
+                <dd>
+                    <span>{{project.location}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.project.notes">Notes</span></dt>
+                <dd>
+                    <span>{{project.notes}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.project.startDate">Start Date</span></dt>
+                <dd>
+                    <span>{{project.startDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.project.endDate">End Date</span></dt>
+                <dd>
+                    <span>{{project.endDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.project.isActive">Is Active</span></dt>
+                <dd>
+                    <span>{{project.isActive}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.project.isOnHold">Is On Hold</span></dt>
+                <dd>
+                    <span>{{project.isOnHold}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.project.details">Details</span></dt>
+                <dd>
+                    <span>{{project.details}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/project', project.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

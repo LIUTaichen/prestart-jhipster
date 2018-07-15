@@ -1,0 +1,24 @@
+
+{
+    "prestartApp": {
+        "competency" : {
+            "home": {
+                "title": "Competencies",
+                "createLabel": "创建新 Competency",
+                "createOrEditLabel": "创建或编辑 Competency"
+            },
+            "created": "Competency {{ param }} 创建成功",
+            "updated": "Competency {{ param }} 更新成功",
+            "deleted": "Competency {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Competency {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Competency"
+            },
+            "competency": "Competency",
+            "grouping": "Grouping",
+            "sortOrder": "Sort Order"
+        }
+    }
+}

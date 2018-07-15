@@ -1,0 +1,11 @@
+{
+    "prestartApp": {
+        "HireStatus" : {
+            "null": "",
+            "ONHIRE": "ONHIRE",
+            "OFFHIRE": "OFFHIRE",
+            "OFFBREAK": "OFFBREAK",
+            "OFFSEASO": "OFFSEASO"
+        }
+    }
+}

@@ -1,0 +1,59 @@
+{
+    "name": "PrestartCheck",
+    "fields": [
+        {
+            "fieldName": "signature",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "plantLog",
+            "otherEntityName": "plantLog",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "prestartCheck"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "responses",
+            "otherEntityName": "prestartCheckResponse",
+            "otherEntityRelationshipName": "prestartCheck"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "project",
+            "otherEntityName": "project",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "plant",
+            "otherEntityName": "plant",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "location",
+            "otherEntityName": "location",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "operator",
+            "otherEntityName": "people",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180715234438",
+    "entityTableName": "prestart_check",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

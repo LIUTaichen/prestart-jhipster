@@ -1,0 +1,35 @@
+
+{
+    "prestartApp": {
+        "niggle" : {
+            "home": {
+                "title": "Niggles",
+                "createLabel": "创建新 Niggle",
+                "createOrEditLabel": "创建或编辑 Niggle"
+            },
+            "created": "Niggle {{ param }} 创建成功",
+            "updated": "Niggle {{ param }} 更新成功",
+            "deleted": "Niggle {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Niggle {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Niggle"
+            },
+            "description": "Description",
+            "status": "Status",
+            "note": "Note",
+            "priority": "Priority",
+            "quattraReference": "Quattra Reference",
+            "quattraComments": "Quattra Comments",
+            "invoiceNo": "Invoice No",
+            "dateOpened": "Date Opened",
+            "dateClosed": "Date Closed",
+            "dateCompleted": "Date Completed",
+            "eta": "Eta",
+            "purchaseOrder": "Purchase Order",
+            "plant": "Plant",
+            "assignedContractor": "Assigned Contractor"
+        }
+    }
+}

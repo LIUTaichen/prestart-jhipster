@@ -1,0 +1,135 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="prestartApp.plant.home.title">Plants</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-plant" [routerLink]="['/plant/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="prestartApp.plant.home.createLabel">
+            Create new Plant
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="plants">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="prestartApp.plant.fleetId">Fleet Id</span></th>
+            <th><span jhiTranslate="prestartApp.plant.name">Name</span></th>
+            <th><span jhiTranslate="prestartApp.plant.notes">Notes</span></th>
+            <th><span jhiTranslate="prestartApp.plant.purchaseDate">Purchase Date</span></th>
+            <th><span jhiTranslate="prestartApp.plant.isActive">Is Active</span></th>
+            <th><span jhiTranslate="prestartApp.plant.description">Description</span></th>
+            <th><span jhiTranslate="prestartApp.plant.vin">Vin</span></th>
+            <th><span jhiTranslate="prestartApp.plant.rego">Rego</span></th>
+            <th><span jhiTranslate="prestartApp.plant.dateOfManufacture">Date Of Manufacture</span></th>
+            <th><span jhiTranslate="prestartApp.plant.image">Image</span></th>
+            <th><span jhiTranslate="prestartApp.plant.tankSize">Tank Size</span></th>
+            <th><span jhiTranslate="prestartApp.plant.meterReading">Meter Reading</span></th>
+            <th><span jhiTranslate="prestartApp.plant.maintenanceDueAt">Maintenance Due At</span></th>
+            <th><span jhiTranslate="prestartApp.plant.meterUnit">Meter Unit</span></th>
+            <th><span jhiTranslate="prestartApp.plant.certificateDueDate">Certificate Due Date</span></th>
+            <th><span jhiTranslate="prestartApp.plant.rucDueAtKm">Ruc Due At Km</span></th>
+            <th><span jhiTranslate="prestartApp.plant.hubboReading">Hubbo Reading</span></th>
+            <th><span jhiTranslate="prestartApp.plant.loadCapacity">Load Capacity</span></th>
+            <th><span jhiTranslate="prestartApp.plant.hourlyRate">Hourly Rate</span></th>
+            <th><span jhiTranslate="prestartApp.plant.registrationDueDate">Registration Due Date</span></th>
+            <th><span jhiTranslate="prestartApp.plant.hireStatus">Hire Status</span></th>
+            <th><span jhiTranslate="prestartApp.plant.gpsDeviceSerial">Gps Device Serial</span></th>
+            <th><span jhiTranslate="prestartApp.plant.location">Location</span></th>
+            <th><span jhiTranslate="prestartApp.plant.lastLog">Last Log</span></th>
+            <th><span jhiTranslate="prestartApp.plant.category">Category</span></th>
+            <th><span jhiTranslate="prestartApp.plant.owner">Owner</span></th>
+            <th><span jhiTranslate="prestartApp.plant.assignedContractor">Assigned Contractor</span></th>
+            <th><span jhiTranslate="prestartApp.plant.project">Project</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let plant of plants ;trackBy: trackId">
+                <td><a [routerLink]="['/plant', plant.id, 'view' ]">{{plant.id}}</a></td>
+                <td>{{plant.fleetId}}</td>
+                <td>{{plant.name}}</td>
+                <td>{{plant.notes}}</td>
+                <td>{{plant.purchaseDate | date:'medium'}}</td>
+                <td>{{plant.isActive}}</td>
+                <td>{{plant.description}}</td>
+                <td>{{plant.vin}}</td>
+                <td>{{plant.rego}}</td>
+                <td>{{plant.dateOfManufacture | date:'medium'}}</td>
+                <td>
+                    <a *ngIf="plant.image" (click)="openFile(plant.imageContentType, plant.image)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="plant.image">{{plant.imageContentType}}, {{byteSize(plant.image)}}</span>
+                </td>
+                <td>{{plant.tankSize}}</td>
+                <td>{{plant.meterReading}}</td>
+                <td>{{plant.maintenanceDueAt}}</td>
+                <td jhiTranslate="{{'prestartApp.MeterUnit.' + plant.meterUnit}}">{{plant.meterUnit}}</td>
+                <td>{{plant.certificateDueDate | date:'medium'}}</td>
+                <td>{{plant.rucDueAtKm}}</td>
+                <td>{{plant.hubboReading}}</td>
+                <td>{{plant.loadCapacity}}</td>
+                <td>{{plant.hourlyRate}}</td>
+                <td>{{plant.registrationDueDate | date:'medium'}}</td>
+                <td jhiTranslate="{{'prestartApp.HireStatus.' + plant.hireStatus}}">{{plant.hireStatus}}</td>
+                <td>{{plant.gpsDeviceSerial}}</td>
+                <td>
+                    <div *ngIf="plant.location">
+                        <a [routerLink]="['../location', plant.location?.id, 'view' ]" >{{plant.location?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="plant.lastLog">
+                        <a [routerLink]="['../plant-log', plant.lastLog?.id, 'view' ]" >{{plant.lastLog?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="plant.category">
+                        <a [routerLink]="['../category', plant.category?.id, 'view' ]" >{{plant.category?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="plant.owner">
+                        <a [routerLink]="['../company', plant.owner?.id, 'view' ]" >{{plant.owner?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="plant.assignedContractor">
+                        <a [routerLink]="['../maintenance-contractor', plant.assignedContractor?.id, 'view' ]" >{{plant.assignedContractor?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="plant.project">
+                        <a [routerLink]="['../project', plant.project?.id, 'view' ]" >{{plant.project?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/plant', plant.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/plant', plant.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'plant/'+ plant.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

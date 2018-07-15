@@ -1,0 +1,14 @@
+{
+    "name": "OffHireRequest",
+    "fields": [],
+    "relationships": [],
+    "changelogDate": "20180715234426",
+    "entityTableName": "off_hire_request",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

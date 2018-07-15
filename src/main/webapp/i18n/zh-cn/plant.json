@@ -1,0 +1,49 @@
+
+{
+    "prestartApp": {
+        "plant" : {
+            "home": {
+                "title": "Plants",
+                "createLabel": "创建新 Plant",
+                "createOrEditLabel": "创建或编辑 Plant"
+            },
+            "created": "Plant {{ param }} 创建成功",
+            "updated": "Plant {{ param }} 更新成功",
+            "deleted": "Plant {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Plant {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Plant"
+            },
+            "fleetId": "Fleet Id",
+            "name": "Name",
+            "notes": "Notes",
+            "purchaseDate": "Purchase Date",
+            "isActive": "Is Active",
+            "description": "Description",
+            "vin": "Vin",
+            "rego": "Rego",
+            "dateOfManufacture": "Date Of Manufacture",
+            "image": "Image",
+            "tankSize": "Tank Size",
+            "meterReading": "Meter Reading",
+            "maintenanceDueAt": "Maintenance Due At",
+            "meterUnit": "Meter Unit",
+            "certificateDueDate": "Certificate Due Date",
+            "rucDueAtKm": "Ruc Due At Km",
+            "hubboReading": "Hubbo Reading",
+            "loadCapacity": "Load Capacity",
+            "hourlyRate": "Hourly Rate",
+            "registrationDueDate": "Registration Due Date",
+            "hireStatus": "Hire Status",
+            "gpsDeviceSerial": "Gps Device Serial",
+            "location": "Location",
+            "lastLog": "Last Log",
+            "category": "Category",
+            "owner": "Owner",
+            "assignedContractor": "Assigned Contractor",
+            "project": "Project"
+        }
+    }
+}

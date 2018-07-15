@@ -1,0 +1,85 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="niggle">
+            <h2><span jhiTranslate="prestartApp.niggle.detail.title">Niggle</span> {{niggle.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="prestartApp.niggle.description">Description</span></dt>
+                <dd>
+                    <span>{{niggle.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.niggle.status">Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'prestartApp.Status.' + niggle.status}}">{{niggle.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.niggle.note">Note</span></dt>
+                <dd>
+                    <span>{{niggle.note}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.niggle.priority">Priority</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'prestartApp.Priority.' + niggle.priority}}">{{niggle.priority}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.niggle.quattraReference">Quattra Reference</span></dt>
+                <dd>
+                    <span>{{niggle.quattraReference}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.niggle.quattraComments">Quattra Comments</span></dt>
+                <dd>
+                    <span>{{niggle.quattraComments}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.niggle.invoiceNo">Invoice No</span></dt>
+                <dd>
+                    <span>{{niggle.invoiceNo}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.niggle.dateOpened">Date Opened</span></dt>
+                <dd>
+                    <span>{{niggle.dateOpened}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.niggle.dateClosed">Date Closed</span></dt>
+                <dd>
+                    <span>{{niggle.dateClosed}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.niggle.dateCompleted">Date Completed</span></dt>
+                <dd>
+                    <span>{{niggle.dateCompleted}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.niggle.eta">Eta</span></dt>
+                <dd>
+                    <span>{{niggle.eta}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.niggle.purchaseOrder">Purchase Order</span></dt>
+                <dd>
+                    <div *ngIf="niggle.purchaseOrder">
+                        <a [routerLink]="['/purchase-order', niggle.purchaseOrder?.id, 'view']">{{niggle.purchaseOrder?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.niggle.plant">Plant</span></dt>
+                <dd>
+                    <div *ngIf="niggle.plant">
+                        <a [routerLink]="['/plant', niggle.plant?.id, 'view']">{{niggle.plant?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.niggle.assignedContractor">Assigned Contractor</span></dt>
+                <dd>
+                    <div *ngIf="niggle.assignedContractor">
+                        <a [routerLink]="['/maintenance-contractor', niggle.assignedContractor?.id, 'view']">{{niggle.assignedContractor?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/niggle', niggle.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

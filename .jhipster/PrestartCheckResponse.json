@@ -1,0 +1,33 @@
+{
+    "name": "PrestartCheckResponse",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipName": "prestartCheck",
+            "otherEntityName": "prestartCheck",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "question",
+            "otherEntityName": "prestartQuestion",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "response",
+            "otherEntityName": "prestartQuestionOption",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180715234439",
+    "entityTableName": "prestart_check_response",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

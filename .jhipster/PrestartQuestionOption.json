@@ -1,0 +1,34 @@
+{
+    "name": "PrestartQuestionOption",
+    "fields": [
+        {
+            "fieldName": "body",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isNormal",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "isActive",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "question",
+            "otherEntityName": "prestartQuestion",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180715234442",
+    "entityTableName": "prestart_question_option",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

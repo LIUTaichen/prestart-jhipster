@@ -1,0 +1,32 @@
+{
+    "name": "PrestartCheckQuestionListItem",
+    "fields": [
+        {
+            "fieldName": "order",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "prestartCheckConfig",
+            "otherEntityName": "prestartCheckConfig",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "question",
+            "otherEntityName": "prestartQuestion",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180715234443",
+    "entityTableName": "prestart_check_question_list_item",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

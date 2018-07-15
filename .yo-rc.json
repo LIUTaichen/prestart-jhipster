@@ -11,9 +11,9 @@
     "clientPackageManager": "yarn",
     "authenticationType": "jwt",
     "cacheProvider": "no",
-    "databaseType": "none",
-    "devDatabaseType": "none",
-    "prodDatabaseType": "none",
+    "databaseType": "sql",
+    "devDatabaseType": "sql",
+    "prodDatabaseType": "sql",
     "testFrameworks": [
       "protractor"
     ],

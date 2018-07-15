@@ -1,0 +1,29 @@
+{
+    "name": "EmailSubscription",
+    "fields": [
+        {
+            "fieldName": "event",
+            "fieldType": "Event",
+            "fieldValues": "ON_HOLD,HIGH_PRIORITY"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "recipientType",
+            "fieldType": "RecipientType",
+            "fieldValues": "TO,CC,BCC"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180715234437",
+    "entityTableName": "email_subscription",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

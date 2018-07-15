@@ -1,0 +1,24 @@
+
+{
+    "prestartApp": {
+        "prestartCheckResponse" : {
+            "home": {
+                "title": "Prestart Check Responses",
+                "createLabel": "创建新 Prestart Check Response",
+                "createOrEditLabel": "创建或编辑 Prestart Check Response"
+            },
+            "created": "Prestart Check Response {{ param }} 创建成功",
+            "updated": "Prestart Check Response {{ param }} 更新成功",
+            "deleted": "Prestart Check Response {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Prestart Check Response {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Prestart Check Response"
+            },
+            "prestartCheck": "Prestart Check",
+            "question": "Question",
+            "response": "Response"
+        }
+    }
+}

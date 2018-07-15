@@ -1,0 +1,23 @@
+
+{
+    "prestartApp": {
+        "prestartQuestion" : {
+            "home": {
+                "title": "Prestart Questions",
+                "createLabel": "创建新 Prestart Question",
+                "createOrEditLabel": "创建或编辑 Prestart Question"
+            },
+            "created": "Prestart Question {{ param }} 创建成功",
+            "updated": "Prestart Question {{ param }} 更新成功",
+            "deleted": "Prestart Question {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Prestart Question {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Prestart Question"
+            },
+            "body": "Body",
+            "isLockOutRequired": "Is Lock Out Required"
+        }
+    }
+}

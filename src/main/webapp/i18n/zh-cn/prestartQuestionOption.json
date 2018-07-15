@@ -1,0 +1,25 @@
+
+{
+    "prestartApp": {
+        "prestartQuestionOption" : {
+            "home": {
+                "title": "Prestart Question Options",
+                "createLabel": "创建新 Prestart Question Option",
+                "createOrEditLabel": "创建或编辑 Prestart Question Option"
+            },
+            "created": "Prestart Question Option {{ param }} 创建成功",
+            "updated": "Prestart Question Option {{ param }} 更新成功",
+            "deleted": "Prestart Question Option {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Prestart Question Option {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Prestart Question Option"
+            },
+            "body": "Body",
+            "isNormal": "Is Normal",
+            "isActive": "Is Active",
+            "question": "Question"
+        }
+    }
+}

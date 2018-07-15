@@ -1,0 +1,69 @@
+{
+    "name": "Category",
+    "fields": [
+        {
+            "fieldName": "category",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "trackUsage",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "dailyRate",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "loadCapacity",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "hourlyRate",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "isEarchMovingPlant",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "isTrackedForInternalBilling",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "maintenanceGroup",
+            "fieldType": "MaintenanceGroup",
+            "fieldValues": "YELLOW_FLEET,WHITE_FLEET"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "competency",
+            "otherEntityName": "competency",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "prestartCheckConfig",
+            "otherEntityName": "prestartCheckConfig",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180715234427",
+    "entityTableName": "category",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

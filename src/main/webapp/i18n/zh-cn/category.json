@@ -1,0 +1,33 @@
+
+{
+    "prestartApp": {
+        "category" : {
+            "home": {
+                "title": "Categories",
+                "createLabel": "创建新 Category",
+                "createOrEditLabel": "创建或编辑 Category"
+            },
+            "created": "Category {{ param }} 创建成功",
+            "updated": "Category {{ param }} 更新成功",
+            "deleted": "Category {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Category {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Category"
+            },
+            "category": "Category",
+            "description": "Description",
+            "type": "Type",
+            "trackUsage": "Track Usage",
+            "dailyRate": "Daily Rate",
+            "loadCapacity": "Load Capacity",
+            "hourlyRate": "Hourly Rate",
+            "isEarchMovingPlant": "Is Earch Moving Plant",
+            "isTrackedForInternalBilling": "Is Tracked For Internal Billing",
+            "maintenanceGroup": "Maintenance Group",
+            "competency": "Competency",
+            "prestartCheckConfig": "Prestart Check Config"
+        }
+    }
+}

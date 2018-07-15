@@ -1,0 +1,31 @@
+
+{
+    "prestartApp": {
+        "plantLog" : {
+            "home": {
+                "title": "Plant Logs",
+                "createLabel": "创建新 Plant Log",
+                "createOrEditLabel": "创建或编辑 Plant Log"
+            },
+            "created": "Plant Log {{ param }} 创建成功",
+            "updated": "Plant Log {{ param }} 更新成功",
+            "deleted": "Plant Log {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Plant Log {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Plant Log"
+            },
+            "meterReading": "Meter Reading",
+            "hubboReading": "Hubbo Reading",
+            "serviceDueAt": "Service Due At",
+            "rucDueAt": "Ruc Due At",
+            "wofDueDate": "Wof Due Date",
+            "cofDueDate": "Cof Due Date",
+            "serviceDueDate": "Service Due Date",
+            "plant": "Plant",
+            "operator": "Operator",
+            "site": "Site"
+        }
+    }
+}

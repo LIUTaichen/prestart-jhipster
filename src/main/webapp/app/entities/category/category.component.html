@@ -1,0 +1,84 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="prestartApp.category.home.title">Categories</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-category" [routerLink]="['/category/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="prestartApp.category.home.createLabel">
+            Create new Category
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="categories">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="prestartApp.category.category">Category</span></th>
+            <th><span jhiTranslate="prestartApp.category.description">Description</span></th>
+            <th><span jhiTranslate="prestartApp.category.type">Type</span></th>
+            <th><span jhiTranslate="prestartApp.category.trackUsage">Track Usage</span></th>
+            <th><span jhiTranslate="prestartApp.category.dailyRate">Daily Rate</span></th>
+            <th><span jhiTranslate="prestartApp.category.loadCapacity">Load Capacity</span></th>
+            <th><span jhiTranslate="prestartApp.category.hourlyRate">Hourly Rate</span></th>
+            <th><span jhiTranslate="prestartApp.category.isEarchMovingPlant">Is Earch Moving Plant</span></th>
+            <th><span jhiTranslate="prestartApp.category.isTrackedForInternalBilling">Is Tracked For Internal Billing</span></th>
+            <th><span jhiTranslate="prestartApp.category.maintenanceGroup">Maintenance Group</span></th>
+            <th><span jhiTranslate="prestartApp.category.competency">Competency</span></th>
+            <th><span jhiTranslate="prestartApp.category.prestartCheckConfig">Prestart Check Config</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let category of categories ;trackBy: trackId">
+                <td><a [routerLink]="['/category', category.id, 'view' ]">{{category.id}}</a></td>
+                <td>{{category.category}}</td>
+                <td>{{category.description}}</td>
+                <td>{{category.type}}</td>
+                <td>{{category.trackUsage}}</td>
+                <td>{{category.dailyRate}}</td>
+                <td>{{category.loadCapacity}}</td>
+                <td>{{category.hourlyRate}}</td>
+                <td>{{category.isEarchMovingPlant}}</td>
+                <td>{{category.isTrackedForInternalBilling}}</td>
+                <td jhiTranslate="{{'prestartApp.MaintenanceGroup.' + category.maintenanceGroup}}">{{category.maintenanceGroup}}</td>
+                <td>
+                    <div *ngIf="category.competency">
+                        <a [routerLink]="['../competency', category.competency?.id, 'view' ]" >{{category.competency?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="category.prestartCheckConfig">
+                        <a [routerLink]="['../prestart-check-config', category.prestartCheckConfig?.id, 'view' ]" >{{category.prestartCheckConfig?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/category', category.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/category', category.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'category/'+ category.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="prestartCheck">
+            <h2><span jhiTranslate="prestartApp.prestartCheck.detail.title">Prestart Check</span> {{prestartCheck.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="prestartApp.prestartCheck.signature">Signature</span></dt>
+                <dd>
+                    <div *ngIf="prestartCheck.signature">
+                        <a (click)="openFile(prestartCheck.signatureContentType, prestartCheck.signature)" jhiTranslate="entity.action.open">open</a>
+                        {{prestartCheck.signatureContentType}}, {{byteSize(prestartCheck.signature)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.prestartCheck.plantLog">Plant Log</span></dt>
+                <dd>
+                    <div *ngIf="prestartCheck.plantLog">
+                        <a [routerLink]="['/plant-log', prestartCheck.plantLog?.id, 'view']">{{prestartCheck.plantLog?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.prestartCheck.project">Project</span></dt>
+                <dd>
+                    <div *ngIf="prestartCheck.project">
+                        <a [routerLink]="['/project', prestartCheck.project?.id, 'view']">{{prestartCheck.project?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.prestartCheck.plant">Plant</span></dt>
+                <dd>
+                    <div *ngIf="prestartCheck.plant">
+                        <a [routerLink]="['/plant', prestartCheck.plant?.id, 'view']">{{prestartCheck.plant?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.prestartCheck.location">Location</span></dt>
+                <dd>
+                    <div *ngIf="prestartCheck.location">
+                        <a [routerLink]="['/location', prestartCheck.location?.id, 'view']">{{prestartCheck.location?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.prestartCheck.operator">Operator</span></dt>
+                <dd>
+                    <div *ngIf="prestartCheck.operator">
+                        <a [routerLink]="['/people', prestartCheck.operator?.id, 'view']">{{prestartCheck.operator?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/prestart-check', prestartCheck.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

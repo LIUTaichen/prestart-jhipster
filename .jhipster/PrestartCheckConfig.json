@@ -1,0 +1,26 @@
+{
+    "name": "PrestartCheckConfig",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "questionlist",
+            "otherEntityName": "prestartCheckQuestionListItem",
+            "otherEntityRelationshipName": "prestartCheckConfig"
+        }
+    ],
+    "changelogDate": "20180715234440",
+    "entityTableName": "prestart_check_config",
+    "dto": "no",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,21 @@
+
+{
+    "prestartApp": {
+        "offHireRequest" : {
+            "home": {
+                "title": "Off Hire Requests",
+                "createLabel": "创建新 Off Hire Request",
+                "createOrEditLabel": "创建或编辑 Off Hire Request"
+            },
+            "created": "Off Hire Request {{ param }} 创建成功",
+            "updated": "Off Hire Request {{ param }} 更新成功",
+            "deleted": "Off Hire Request {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Off Hire Request {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Off Hire Request"
+            }
+        }
+    }
+}

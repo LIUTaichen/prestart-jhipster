@@ -1,0 +1,66 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="prestartApp.prestartCheckQuestionListItem.home.title">Prestart Check Question List Items</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-prestart-check-question-list-item" [routerLink]="['/prestart-check-question-list-item/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="prestartApp.prestartCheckQuestionListItem.home.createLabel">
+            Create new Prestart Check Question List Item
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="prestartCheckQuestionListItems">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="prestartApp.prestartCheckQuestionListItem.order">Order</span></th>
+            <th><span jhiTranslate="prestartApp.prestartCheckQuestionListItem.prestartCheckConfig">Prestart Check Config</span></th>
+            <th><span jhiTranslate="prestartApp.prestartCheckQuestionListItem.question">Question</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let prestartCheckQuestionListItem of prestartCheckQuestionListItems ;trackBy: trackId">
+                <td><a [routerLink]="['/prestart-check-question-list-item', prestartCheckQuestionListItem.id, 'view' ]">{{prestartCheckQuestionListItem.id}}</a></td>
+                <td>{{prestartCheckQuestionListItem.order}}</td>
+                <td>
+                    <div *ngIf="prestartCheckQuestionListItem.prestartCheckConfig">
+                        <a [routerLink]="['../prestart-check-config', prestartCheckQuestionListItem.prestartCheckConfig?.id, 'view' ]" >{{prestartCheckQuestionListItem.prestartCheckConfig?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="prestartCheckQuestionListItem.question">
+                        <a [routerLink]="['../prestart-question', prestartCheckQuestionListItem.question?.id, 'view' ]" >{{prestartCheckQuestionListItem.question?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/prestart-check-question-list-item', prestartCheckQuestionListItem.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/prestart-check-question-list-item', prestartCheckQuestionListItem.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'prestart-check-question-list-item/'+ prestartCheckQuestionListItem.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

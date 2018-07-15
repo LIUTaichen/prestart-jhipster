@@ -1,0 +1,24 @@
+
+{
+    "prestartApp": {
+        "emailSubscription" : {
+            "home": {
+                "title": "Email Subscriptions",
+                "createLabel": "创建新 Email Subscription",
+                "createOrEditLabel": "创建或编辑 Email Subscription"
+            },
+            "created": "Email Subscription {{ param }} 创建成功",
+            "updated": "Email Subscription {{ param }} 更新成功",
+            "deleted": "Email Subscription {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Email Subscription {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Email Subscription"
+            },
+            "event": "Event",
+            "email": "Email",
+            "recipientType": "Recipient Type"
+        }
+    }
+}

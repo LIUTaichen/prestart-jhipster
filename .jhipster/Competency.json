@@ -1,0 +1,27 @@
+{
+    "name": "Competency",
+    "fields": [
+        {
+            "fieldName": "competency",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "grouping",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sortOrder",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20180715234431",
+    "entityTableName": "competency",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

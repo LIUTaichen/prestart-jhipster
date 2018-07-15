@@ -1,0 +1,150 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="plant">
+            <h2><span jhiTranslate="prestartApp.plant.detail.title">Plant</span> {{plant.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="prestartApp.plant.fleetId">Fleet Id</span></dt>
+                <dd>
+                    <span>{{plant.fleetId}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.name">Name</span></dt>
+                <dd>
+                    <span>{{plant.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.notes">Notes</span></dt>
+                <dd>
+                    <span>{{plant.notes}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.purchaseDate">Purchase Date</span></dt>
+                <dd>
+                    <span>{{plant.purchaseDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.isActive">Is Active</span></dt>
+                <dd>
+                    <span>{{plant.isActive}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.description">Description</span></dt>
+                <dd>
+                    <span>{{plant.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.vin">Vin</span></dt>
+                <dd>
+                    <span>{{plant.vin}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.rego">Rego</span></dt>
+                <dd>
+                    <span>{{plant.rego}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.dateOfManufacture">Date Of Manufacture</span></dt>
+                <dd>
+                    <span>{{plant.dateOfManufacture}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.image">Image</span></dt>
+                <dd>
+                    <div *ngIf="plant.image">
+                        <a (click)="openFile(plant.imageContentType, plant.image)" jhiTranslate="entity.action.open">open</a>
+                        {{plant.imageContentType}}, {{byteSize(plant.image)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.tankSize">Tank Size</span></dt>
+                <dd>
+                    <span>{{plant.tankSize}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.meterReading">Meter Reading</span></dt>
+                <dd>
+                    <span>{{plant.meterReading}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.maintenanceDueAt">Maintenance Due At</span></dt>
+                <dd>
+                    <span>{{plant.maintenanceDueAt}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.meterUnit">Meter Unit</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'prestartApp.MeterUnit.' + plant.meterUnit}}">{{plant.meterUnit}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.certificateDueDate">Certificate Due Date</span></dt>
+                <dd>
+                    <span>{{plant.certificateDueDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.rucDueAtKm">Ruc Due At Km</span></dt>
+                <dd>
+                    <span>{{plant.rucDueAtKm}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.hubboReading">Hubbo Reading</span></dt>
+                <dd>
+                    <span>{{plant.hubboReading}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.loadCapacity">Load Capacity</span></dt>
+                <dd>
+                    <span>{{plant.loadCapacity}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.hourlyRate">Hourly Rate</span></dt>
+                <dd>
+                    <span>{{plant.hourlyRate}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.registrationDueDate">Registration Due Date</span></dt>
+                <dd>
+                    <span>{{plant.registrationDueDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.hireStatus">Hire Status</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'prestartApp.HireStatus.' + plant.hireStatus}}">{{plant.hireStatus}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.gpsDeviceSerial">Gps Device Serial</span></dt>
+                <dd>
+                    <span>{{plant.gpsDeviceSerial}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.location">Location</span></dt>
+                <dd>
+                    <div *ngIf="plant.location">
+                        <a [routerLink]="['/location', plant.location?.id, 'view']">{{plant.location?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.lastLog">Last Log</span></dt>
+                <dd>
+                    <div *ngIf="plant.lastLog">
+                        <a [routerLink]="['/plant-log', plant.lastLog?.id, 'view']">{{plant.lastLog?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.category">Category</span></dt>
+                <dd>
+                    <div *ngIf="plant.category">
+                        <a [routerLink]="['/category', plant.category?.id, 'view']">{{plant.category?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.owner">Owner</span></dt>
+                <dd>
+                    <div *ngIf="plant.owner">
+                        <a [routerLink]="['/company', plant.owner?.id, 'view']">{{plant.owner?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.assignedContractor">Assigned Contractor</span></dt>
+                <dd>
+                    <div *ngIf="plant.assignedContractor">
+                        <a [routerLink]="['/maintenance-contractor', plant.assignedContractor?.id, 'view']">{{plant.assignedContractor?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plant.project">Project</span></dt>
+                <dd>
+                    <div *ngIf="plant.project">
+                        <a [routerLink]="['/project', plant.project?.id, 'view']">{{plant.project?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/plant', plant.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

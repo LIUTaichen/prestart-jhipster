@@ -1,0 +1,10 @@
+{
+    "prestartApp": {
+        "RecipientType" : {
+            "null": "",
+            "TO": "TO",
+            "CC": "CC",
+            "BCC": "BCC"
+        }
+    }
+}

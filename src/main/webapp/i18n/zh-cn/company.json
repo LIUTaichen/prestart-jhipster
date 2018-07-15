@@ -1,0 +1,29 @@
+
+{
+    "prestartApp": {
+        "company" : {
+            "home": {
+                "title": "Companies",
+                "createLabel": "创建新 Company",
+                "createOrEditLabel": "创建或编辑 Company"
+            },
+            "created": "Company {{ param }} 创建成功",
+            "updated": "Company {{ param }} 更新成功",
+            "deleted": "Company {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Company {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Company"
+            },
+            "company": "Company",
+            "phone": "Phone",
+            "address": "Address",
+            "location": "Location",
+            "webPage": "Web Page",
+            "notes": "Notes",
+            "isActive": "Is Active",
+            "abbreviation": "Abbreviation"
+        }
+    }
+}
