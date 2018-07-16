@@ -12,6 +12,13 @@ h4 {
     font-weight: 300;
 }
 
+body {
+    background: #e4e5e6;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
 a {
     color: #533f03;
     font-weight: bold;
@@ -50,8 +57,15 @@ Generic styles
 
 .jh-card {
     padding: 1.5%;
-    margin-top: 20px;
+    //margin-top: 20px;
     border: none;
+}
+.card.jhi-card {
+    border: none;
+}
+
+.container-fluid {
+    background-color: white;
 }
 
 .error {
@@ -229,3 +243,25 @@ ui bootstrap tweaks
 }
 
 /* jhipster-needle-scss-add-main JHipster will add new css style */
+
+/*having full screen background */
+jhi-main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+html {
+    height: 100%;
+}
+
+.card.jh-card {
+    flex-grow: 1;
+    margin-top: 0px;
+    border: none;
+}
+
+.container-fluid {
+    height: 100%;
+}
