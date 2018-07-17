@@ -18,7 +18,7 @@ import { PrestartAccountModule } from './account/account.module';
 import { PrestartEntityModule } from './entities/entity.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
-import { CustomModule } from '../custom/custom.module';
+import { CustomModule } from 'app/custom/custom.module';
 
 @NgModule({
     imports: [

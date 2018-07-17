@@ -22,7 +22,14 @@
             "project": "Project",
             "plant": "Plant",
             "location": "Location",
-            "operator": "Operator"
+            "operator": "Operator",
+            "select-plant": {
+                "title": "Select Plant"
+            },
+            "plant-confirmation": {
+                "title": "Confirm Plant"
+            }
+
         }
     }
 }

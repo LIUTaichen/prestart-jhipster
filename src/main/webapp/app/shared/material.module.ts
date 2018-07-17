@@ -19,7 +19,9 @@ import {
     MatSnackBarModule,
     MatDividerModule,
     MatProgressSpinnerModule,
-    MAT_DATE_LOCALE
+    MAT_DATE_LOCALE,
+    MatListModule,
+    MatProgressBarModule
 } from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
@@ -43,7 +45,9 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
         MatSnackBarModule,
         MatDividerModule,
         MatProgressSpinnerModule,
-        MatMomentDateModule
+        MatMomentDateModule,
+        MatListModule,
+        MatProgressBarModule
     ],
     exports: [
         MatButtonModule,
@@ -64,7 +68,9 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
         MatSnackBarModule,
         MatDividerModule,
         MatProgressSpinnerModule,
-        MatMomentDateModule
+        MatMomentDateModule,
+        MatListModule,
+        MatProgressBarModule
     ],
     providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-NZ' }]
 })
