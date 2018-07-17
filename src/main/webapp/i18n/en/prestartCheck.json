@@ -28,7 +28,11 @@
             },
             "plant-confirmation": {
                 "title": "Confirm Plant"
+            },
+            "questions": {
+                "title": "Fault Checking"
             }
+
 
         }
     }
