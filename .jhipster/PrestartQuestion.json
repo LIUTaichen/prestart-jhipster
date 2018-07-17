@@ -10,7 +10,14 @@
             "fieldType": "Boolean"
         }
     ],
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "options",
+            "otherEntityName": "prestartQuestionOption",
+            "otherEntityRelationshipName": "prestartQuestion"
+        }
+    ],
     "changelogDate": "20180715234441",
     "entityTableName": "prestart_question",
     "dto": "no",

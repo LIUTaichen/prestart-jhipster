@@ -5,7 +5,7 @@ export interface IPrestartQuestionOption {
     body?: string;
     isNormal?: boolean;
     isActive?: boolean;
-    question?: IPrestartQuestion;
+    prestartQuestion?: IPrestartQuestion;
 }
 
 export class PrestartQuestionOption implements IPrestartQuestionOption {
@@ -14,7 +14,7 @@ export class PrestartQuestionOption implements IPrestartQuestionOption {
         public body?: string,
         public isNormal?: boolean,
         public isActive?: boolean,
-        public question?: IPrestartQuestion
+        public prestartQuestion?: IPrestartQuestion
     ) {
         this.isNormal = false;
         this.isActive = false;
