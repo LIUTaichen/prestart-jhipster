@@ -18,7 +18,7 @@
             <th><span jhiTranslate="prestartApp.prestartQuestionOption.body">Body</span></th>
             <th><span jhiTranslate="prestartApp.prestartQuestionOption.isNormal">Is Normal</span></th>
             <th><span jhiTranslate="prestartApp.prestartQuestionOption.isActive">Is Active</span></th>
-            <th><span jhiTranslate="prestartApp.prestartQuestionOption.question">Question</span></th>
+            <th><span jhiTranslate="prestartApp.prestartQuestionOption.prestartQuestion">Prestart Question</span></th>
             <th></th>
             </tr>
             </thead>
@@ -29,8 +29,8 @@
                 <td>{{prestartQuestionOption.isNormal}}</td>
                 <td>{{prestartQuestionOption.isActive}}</td>
                 <td>
-                    <div *ngIf="prestartQuestionOption.question">
-                        <a [routerLink]="['../prestart-question', prestartQuestionOption.question?.id, 'view' ]" >{{prestartQuestionOption.question?.id}}</a>
+                    <div *ngIf="prestartQuestionOption.prestartQuestion">
+                        <a [routerLink]="['../prestart-question', prestartQuestionOption.prestartQuestion?.id, 'view' ]" >{{prestartQuestionOption.prestartQuestion?.id}}</a>
                     </div>
                 </td>
                 <td class="text-right">

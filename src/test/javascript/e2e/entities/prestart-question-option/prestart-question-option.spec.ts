@@ -56,7 +56,7 @@ describe('PrestartQuestionOption e2e test', () => {
                     expect(prestartQuestionOptionUpdatePage.getIsActiveInput().isSelected()).toBeTruthy();
                 }
             });
-        prestartQuestionOptionUpdatePage.questionSelectLastOption();
+        prestartQuestionOptionUpdatePage.prestartQuestionSelectLastOption();
         prestartQuestionOptionUpdatePage.save();
         expect(prestartQuestionOptionUpdatePage.getSaveButton().isPresent()).toBeFalsy();
     });

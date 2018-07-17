@@ -20,7 +20,7 @@ export class PrestartQuestionOptionUpdatePage {
     bodyInput = element(by.id('field_body'));
     isNormalInput = element(by.id('field_isNormal'));
     isActiveInput = element(by.id('field_isActive'));
-    questionSelect = element(by.id('field_question'));
+    prestartQuestionSelect = element(by.id('field_prestartQuestion'));
 
     getPageTitle() {
         return this.pageTitle.getAttribute('jhiTranslate');
@@ -40,23 +40,23 @@ export class PrestartQuestionOptionUpdatePage {
     getIsActiveInput() {
         return this.isActiveInput;
     }
-    questionSelectLastOption(): promise.Promise<void> {
-        return this.questionSelect
+    prestartQuestionSelectLastOption(): promise.Promise<void> {
+        return this.prestartQuestionSelect
             .all(by.tagName('option'))
             .last()
             .click();
     }
 
-    questionSelectOption(option): promise.Promise<void> {
-        return this.questionSelect.sendKeys(option);
+    prestartQuestionSelectOption(option): promise.Promise<void> {
+        return this.prestartQuestionSelect.sendKeys(option);
     }
 
-    getQuestionSelect(): ElementFinder {
-        return this.questionSelect;
+    getPrestartQuestionSelect(): ElementFinder {
+        return this.prestartQuestionSelect;
     }
 
-    getQuestionSelectedOption() {
-        return this.questionSelect.element(by.css('option:checked')).getText();
+    getPrestartQuestionSelectedOption() {
+        return this.prestartQuestionSelect.element(by.css('option:checked')).getText();
     }
 
     save(): promise.Promise<void> {

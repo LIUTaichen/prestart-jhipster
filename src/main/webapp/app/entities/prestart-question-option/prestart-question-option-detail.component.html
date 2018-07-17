@@ -17,10 +17,10 @@
                 <dd>
                     <span>{{prestartQuestionOption.isActive}}</span>
                 </dd>
-                <dt><span jhiTranslate="prestartApp.prestartQuestionOption.question">Question</span></dt>
+                <dt><span jhiTranslate="prestartApp.prestartQuestionOption.prestartQuestion">Prestart Question</span></dt>
                 <dd>
-                    <div *ngIf="prestartQuestionOption.question">
-                        <a [routerLink]="['/prestart-question', prestartQuestionOption.question?.id, 'view']">{{prestartQuestionOption.question?.id}}</a>
+                    <div *ngIf="prestartQuestionOption.prestartQuestion">
+                        <a [routerLink]="['/prestart-question', prestartQuestionOption.prestartQuestion?.id, 'view']">{{prestartQuestionOption.prestartQuestion?.id}}</a>
                     </div>
                 </dd>
             </dl>
