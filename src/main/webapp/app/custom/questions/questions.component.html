@@ -1,17 +1,19 @@
 <mat-vertical-stepper [linear]="true" #stepper *ngIf="selectedOptions" class="stepper">
-    <mat-step  *ngFor="let item of questionItems; index as i" [completed]="selectedOptions[i]">
-        <ng-template matStepLabel class="label"><p class='header'>{{item.question.body}}</p></ng-template>
+    <mat-step *ngFor="let item of questionItems; index as i" [completed]="selectedOptions[i]">
+        <ng-template matStepLabel class="label">
+            <div class='header'>{{item.question.body}}</div>
+        </ng-template>
         <mat-radio-group class="options-radio-group" [(ngModel)]="selectedOptions[i]" required>
             <mat-radio-button class="options-radio-button" *ngFor="let option of item.question.options" [value]="option">
-              {{option.body}}
+                {{option.body}}
             </mat-radio-button>
-          </mat-radio-group>
-          <div class="selected-value" *ngIf="selectedOptions[i]">Your response is: {{selectedOptions[i].body}}</div>
+        </mat-radio-group>
+        <div class="selected-value" *ngIf="selectedOptions[i]">Your response is: {{selectedOptions[i].body}}</div>
         <div>
             <button mat-button matStepperPrevious *ngIf="i != 0">Back</button>
-            <button mat-button *ngIf="i == 0" routerLink="/confirm-plant" >Back</button>
+            <button mat-button *ngIf="i == 0" routerLink="/confirm-plant">Back</button>
             <button mat-button matStepperNext *ngIf="selectedOptions[i]">Next</button>
-          </div>
+        </div>
     </mat-step>
 
 </mat-vertical-stepper>

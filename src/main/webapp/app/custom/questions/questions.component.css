@@ -29,5 +29,10 @@
 }
 
 .header {
-    height: 100px;
+    height: auto;
+    width: auto;
+    align-content: center;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: pre-wrap;
 }
