@@ -2,8 +2,19 @@
     display: flex;
     flex-direction: column;
     justify-items: center;
+    padding-top: 20px;
 }
 
 .progress-spinner {
     margin: auto;
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    /* height: 100%; */
+    flex-grow: 1;
+    overflow: scroll;
+    margin-bottom: 20px;
 }

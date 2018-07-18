@@ -1,0 +1,33 @@
+.options-radio-group {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.options-radio-button {
+    margin: 5px;
+}
+
+.selected-value {
+    margin: 15px 0;
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    /* height: 100%; */
+    flex-grow: 1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    overflow: scroll;
+}
+
+.label {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: pre;
+}
+
+.header {
+    height: 100px;
+}

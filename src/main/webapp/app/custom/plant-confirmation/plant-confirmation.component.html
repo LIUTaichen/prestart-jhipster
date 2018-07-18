@@ -2,13 +2,15 @@
   Confirm plant
 </h1>
 <p class='mat-body-1'>Is this the plant you are doing prestart on?</p>
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>{{plant.fleetId}}</mat-card-title>
-    <mat-card-subtitle>{{plant.category.category}}</mat-card-subtitle>
-    <mat-card-subtitle>{{plant.description}}</mat-card-subtitle>
-  </mat-card-header>
-</mat-card>
+<h4 matLine class="mat-subheading-1">
+  <span matLine> {{ plant.fleetId }}</span>
+</h4>
+<p matLine>
+  <span class="mat-caption"> {{plant.category.category}} </span>
+</p>
+<p matLine>
+  <span class="mat-caption"> {{plant.description}}</span>
+</p>
 <div class='buttons'>
   <button mat-button routerLink="/select-plant">Choose another plant</button>
   <button mat-raised-button color="primary" routerLink="/questions">Proceed</button>
