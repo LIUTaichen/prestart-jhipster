@@ -11,8 +11,9 @@
         <div class="selected-value" *ngIf="selectedOptions[i]">Your response is: {{selectedOptions[i].body}}</div>
         <div>
             <button mat-button matStepperPrevious *ngIf="i != 0">Back</button>
-            <button mat-button *ngIf="i == 0" routerLink="/confirm-plant">Back</button>
-            <button mat-button matStepperNext *ngIf="selectedOptions[i]">Next</button>
+            <button mat-button *ngIf="i == 0" routerLink="/plant-confirmation">Back</button>
+            <button mat-button matStepperNext *ngIf="selectedOptions[i] && i < questionItems.length - 1">Next</button>
+            <button mat-button routerLink="/meter-reading" *ngIf="selectedOptions[i] && i == questionItems.length - 1">Next</button>
         </div>
     </mat-step>
 

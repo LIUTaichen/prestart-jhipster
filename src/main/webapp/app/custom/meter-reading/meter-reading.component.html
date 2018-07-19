@@ -1,3 +1,15 @@
-<p>
-  meter-reading works!
-</p>
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Meter Reading</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-form-field>
+            <input matInput placeholder="Last reading" [ngModel]="plant.meterReading" disabled >
+            <span matSuffix> {{plant.meterUnit}}</span>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" placeholder="New reading" [(ngModel)]="meterReading" required >
+            <span matSuffix> {{plant.meterUnit}}</span>
+        </mat-form-field>
+    </mat-card-content>
+</mat-card>

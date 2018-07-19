@@ -50,7 +50,7 @@ export class SelectPlantComponent implements OnInit, OnDestroy {
     }
 
     onPlantClicked(plant: IPlant) {
-        this.prestartDataService.plant = plant;
+        this.prestartDataService.setPlant(plant);
     }
 
     ngOnDestroy() {

@@ -31,9 +31,19 @@
             },
             "questions": {
                 "title": "Fault Checking"
+            },
+            "meter-reading": {
+                "title": "Read Meters"
+            },
+            "review": {
+                "title": "Review"
+            },
+            "submission": {
+                "title": "Submission"
+            },
+            "result": {
+                "title": "Submission Result"
             }
-
-
         }
     }
 }
