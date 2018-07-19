@@ -1,15 +1,33 @@
-<mat-card>
-    <mat-card-header>
-        <mat-card-title>Meter Reading</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <mat-form-field>
-            <input matInput placeholder="Last reading" [ngModel]="plant.meterReading" disabled >
-            <span matSuffix> {{plant.meterUnit}}</span>
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput type="number" placeholder="New reading" [(ngModel)]="meterReading" required >
-            <span matSuffix> {{plant.meterUnit}}</span>
-        </mat-form-field>
-    </mat-card-content>
-</mat-card>
+<form [formGroup]="meterForm" (ngSubmit)="onSubmit()">
+  <div class="section">
+    <div class="mat-subheading-2">Meter Reading</div>
+    <mat-form-field>
+      <input matInput placeholder="Last reading" value="{{plant.meterReading}}" readonly disabled>
+      <span matSuffix> {{plant.meterUnit}}</span>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" placeholder="New reading" formControlName="meterReading" required>
+      <span matSuffix> {{plant.meterUnit}}</span>
+      <mat-error *ngIf="!meterForm.get('meterReading').valid">
+          Meter reading is required. {{meterForm.get('meterReading').errors | json}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="section">
+    <div class="mat-subheading-2">Hubbo Reading</div>
+    <mat-form-field>
+      <input matInput placeholder="Last reading" value="{{plant.hubboReading}}" readonly disabled>
+      <span matSuffix> KM</span>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" placeholder="New reading" formControlName="hubboReading" required>
+      <span matSuffix> KM</span>
+      <mat-error *ngIf="!meterForm.get('hubboReading').valid">
+          Hubbo reading is required. {{meterForm.get('hubboReading').errors | json}}
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <button mat-raised-button routerLink="/review" color="primary" type="submit" [disabled]="!meterForm.valid"
+  class="float-right">Next</button>
+</form>

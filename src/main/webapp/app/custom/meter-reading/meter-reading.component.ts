@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PrestartDataService } from 'app/custom/prestart-data/prestart-data.service';
 import { IPlant } from 'app/shared/model/plant.model';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
     selector: 'jhi-meter-reading',
@@ -9,11 +10,19 @@ import { IPlant } from 'app/shared/model/plant.model';
 })
 export class MeterReadingComponent implements OnInit {
     plant: IPlant;
-    meterReading: Number;
-    constructor(private prestartDataService: PrestartDataService) {}
-
+    meterForm: FormGroup;
+    constructor(private fb: FormBuilder, private prestartDataService: PrestartDataService) {}
     ngOnInit() {
         this.plant = this.prestartDataService.plant;
-        this.meterReading = this.plant.meterReading;
+        this.createForm();
     }
+
+    createForm() {
+        this.meterForm = this.fb.group({
+            meterReading: [this.plant.meterReading, Validators.required],
+            hubboReading: [this.plant.hubboReading, Validators.required]
+        });
+    }
+
+    onSubmit() {}
 }

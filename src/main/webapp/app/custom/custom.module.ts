@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectPlantComponent } from './select-plant/select-plant.component';
 
 import { CustomRoutingModule } from './custom-routing.module';
@@ -13,7 +14,7 @@ import { SubmissionComponent } from './submission/submission.component';
 import { ResultComponent } from './result/result.component';
 
 @NgModule({
-    imports: [CommonModule, CustomRoutingModule, PrestartSharedModule, MaterialModule],
+    imports: [CommonModule, FormsModule, ReactiveFormsModule, CustomRoutingModule, PrestartSharedModule, MaterialModule],
     declarations: [
         SelectPlantComponent,
         PlantConfirmationComponent,
