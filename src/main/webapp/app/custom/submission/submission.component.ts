@@ -7,21 +7,26 @@ import { SignaturePad } from 'angular2-signaturepad/signature-pad';
     styleUrls: ['./submission.component.css']
 })
 export class SubmissionComponent implements OnInit {
+    checked = true;
+    signed = false;
     @ViewChild(SignaturePad) signaturePad: SignaturePad;
 
-    private signaturePadOptions: Object = {
+    readonly signaturePadOptions: Object = {
         // passed through to szimek/signature_pad constructor
-        minWidth: 5,
-        canvasWidth: 500,
-        canvasHeight: 300
+        // minWidth: 5,
+        canvasWidth: 278,
+        canvasHeight: 278
     };
 
     constructor() {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.signaturePad.resizeCanvas();
+    }
 
     drawComplete() {
         // will be notified of szimek/signature_pad's onEnd event
+        this.signed = true;
         console.log(this.signaturePad.toDataURL());
     }
 
