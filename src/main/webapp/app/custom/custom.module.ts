@@ -12,9 +12,18 @@ import { MeterReadingComponent } from './meter-reading/meter-reading.component';
 import { ReviewComponent } from './review/review.component';
 import { SubmissionComponent } from './submission/submission.component';
 import { ResultComponent } from './result/result.component';
+import { SignaturePadModule } from 'angular2-signaturepad';
 
 @NgModule({
-    imports: [CommonModule, FormsModule, ReactiveFormsModule, CustomRoutingModule, PrestartSharedModule, MaterialModule],
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        CustomRoutingModule,
+        PrestartSharedModule,
+        MaterialModule,
+        SignaturePadModule
+    ],
     declarations: [
         SelectPlantComponent,
         PlantConfirmationComponent,

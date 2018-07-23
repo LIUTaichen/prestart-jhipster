@@ -16,7 +16,7 @@
       </mat-error>
     </mat-form-field>
   </div>
-  <mat-divider  *ngIf="plant.hubboReading"></mat-divider>
+  <mat-divider *ngIf="plant.hubboReading"></mat-divider>
   <div class="section" *ngIf="plant.hubboReading">
 
     <div class="mat-subheading-2">Hubbo Reading</div>
@@ -25,13 +25,19 @@
       <span matSuffix> KM</span>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="number" placeholder="New reading" formControlName="hubboReading" required>
+      <input matInput type="number" placeholder="New reading" formControlName="hubboReading" required (keyup)="onKeyup($event)">
       <span matSuffix> KM</span>
-      <mat-error>
+      <mat-error *ngIf="meterForm.get('hubboReading').getError('required')">
         Hubbo reading is required.
+      </mat-error>
+      <mat-error *ngIf="meterForm.get('hubboReading').getError('min')">
+        New reading must not be lower than the last reading.
       </mat-error>
     </mat-form-field>
   </div>
-  <button mat-raised-button routerLink="/review" color="primary" type="submit" [disabled]="!meterForm.valid" class="float-right"
-   >Next</button>
+
+  <div class='button-container'>
+    <button mat-button class="button-back" routerLink="/questions">Back</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!meterForm.valid" >Next</button>
+  </div>
 </form>

@@ -13,7 +13,7 @@
             <button mat-button matStepperPrevious *ngIf="i != 0">Back</button>
             <button mat-button *ngIf="i == 0" routerLink="/plant-confirmation">Back</button>
             <button mat-button matStepperNext *ngIf="selectedOptions[i] && i < questionItems.length - 1">Next</button>
-            <button mat-button routerLink="/meter-reading" *ngIf="selectedOptions[i] && i == questionItems.length - 1">Next</button>
+            <button mat-button *ngIf="selectedOptions[i] && i == questionItems.length - 1" (click)="saveResponse()">Next</button>
         </div>
     </mat-step>
 

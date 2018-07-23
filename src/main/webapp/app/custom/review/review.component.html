@@ -1,3 +1,32 @@
-<p>
-  review works!
-</p>
+<div class="mat-typography">
+  <h2>Review your input and make sure everything </h2>
+  <div>
+    <mat-list>
+      <mat-list-item *ngFor="let option of data.chosenOptions">
+        <div matLine class="label"> 
+          <span class="mat-body-2">{{option.prestartQuestion.body}} </span></div>
+        <div matLine class="label">
+          <span class="mat-body-1"> {{option.body}} </span>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <mat-divider class="divider"></mat-divider>
+  <div class="readings">
+    <mat-form-field>
+      <input matInput placeholder="Meter reading" value="{{data.meterReading}}" readonly>
+      <span matSuffix> {{data.plant.meterUnit}}</span>
+      <mat-hint align="start">Delta of {{(data.meterReading - data.plant.meterReading)}}</mat-hint>
+    </mat-form-field>
+    <mat-form-field *ngIf="data.hubboReading">
+      <input matInput placeholder="Hubbo reading" value="{{data.hubboReading}}" readonly>
+      <span matSuffix> KM</span>
+      <mat-hint align="start">Delta of {{(data.hubboReading - data.plant.hubboReading)}}</mat-hint>
+    </mat-form-field>
+  </div>
+  <mat-divider class="divider"></mat-divider>
+  <div class='button-container'>
+    <button mat-button routerLink="/meter-reading" class='button-back'>Back</button>
+    <button mat-raised-button color="primary" routerLink="/submission">Confirm</button>
+  </div>
+</div>

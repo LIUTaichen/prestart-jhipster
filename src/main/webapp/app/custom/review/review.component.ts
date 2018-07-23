@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { PrestartDataService } from 'app/custom/prestart-data/prestart-data.service';
+import { PrestartQuestionOption } from 'app/shared/model/prestart-question-option.model';
+import { IPlant } from 'app/shared/model/plant.model';
+import { Data } from '../prestart-data/prestart-data.service';
 
 @Component({
     selector: 'jhi-review',
@@ -6,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./review.component.css']
 })
 export class ReviewComponent implements OnInit {
-    constructor() {}
+    data: Data;
 
-    ngOnInit() {}
+    constructor(private prestartDataService: PrestartDataService) {}
+    ngOnInit() {
+        this.data = this.prestartDataService.data;
+    }
 }

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { IPlant } from '../../shared/model/plant.model';
 import { PrestartDataService } from '../prestart-data/prestart-data.service';
 import { distinctUntilChanged } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'jhi-select-plant',
@@ -13,10 +14,9 @@ import { distinctUntilChanged } from 'rxjs/operators';
 export class SelectPlantComponent implements OnInit, OnDestroy {
     plants: Array<IPlant>;
     watchID: number;
-    constructor(private plantService: PlantService, private prestartDataService: PrestartDataService) {}
+    constructor(private plantService: PlantService, private prestartDataService: PrestartDataService, private router: Router) {}
 
     ngOnInit() {
-        console.log(this.prestartDataService.info);
         console.log('creating observable for position updates');
         const positionUpdates: Observable<Position> = Observable.create(observer => {
             this.watchID = navigator.geolocation.watchPosition(
@@ -50,7 +50,10 @@ export class SelectPlantComponent implements OnInit, OnDestroy {
     }
 
     onPlantClicked(plant: IPlant) {
-        this.prestartDataService.setPlant(plant);
+        const data = this.prestartDataService.data;
+        data.plant = plant;
+        this.prestartDataService.setData(data);
+        this.router.navigate(['/plant-confirmation']);
     }
 
     ngOnDestroy() {

@@ -8,6 +8,7 @@ import { IPrestartQuestion } from 'app/shared/model/prestart-question.model';
 import { IPrestartCheckQuestionListItem } from 'app/shared/model/prestart-check-question-list-item.model';
 import { PrestartQuestionOptionService } from 'app/entities/prestart-question-option';
 import { PrestartQuestionOption } from 'app/shared/model/prestart-question-option.model';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'jhi-questions',
@@ -23,11 +24,12 @@ export class QuestionsComponent implements OnInit {
         private questionService: PrestartQuestionService,
         private prestartQuestionlistService: PrestartCheckQuestionListItemService,
         private prestartCheckConfigService: PrestartCheckConfigService,
-        private optionService: PrestartQuestionOptionService
+        private optionService: PrestartQuestionOptionService,
+        private router: Router
     ) {}
 
     ngOnInit() {
-        this.plant = this.prestartDataService.plant;
+        this.plant = this.prestartDataService.data.plant;
         this.prestartQuestionlistService
             .query({
                 'prestartCheckConfigId.equals': this.plant.category.prestartCheckConfig.id
@@ -48,17 +50,22 @@ export class QuestionsComponent implements OnInit {
                     const question = item.question;
                     question.options = options.filter(option => option.prestartQuestion.id === question.id);
                 });
-                this.selectedOptions = new Array<PrestartQuestionOption>(this.questionItems.length);
+                if (this.prestartDataService.data.chosenOptions) {
+                    this.selectedOptions = this.prestartDataService.data.chosenOptions;
+                } else {
+                    this.selectedOptions = new Array<PrestartQuestionOption>(this.questionItems.length);
+                }
             });
-        // .pipe(response => {
-        //     console.log('retrieving question list');
-        //     console.log(response.body);
-        //     this.questionItems = response.body;
-        // })
-        // .subscribe();
     }
 
     questionItemSort(a: IPrestartCheckQuestionListItem, b: IPrestartCheckQuestionListItem) {
         return a.order - b.order;
+    }
+
+    saveResponse() {
+        const data = this.prestartDataService.data;
+        data.chosenOptions = this.selectedOptions;
+        this.prestartDataService.setData(data);
+        this.router.navigate(['/meter-reading']);
     }
 }

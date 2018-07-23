@@ -1,30 +1,39 @@
 import { Injectable, OnInit, HostListener } from '@angular/core';
 import { IPlant } from '../../shared/model/plant.model';
+import { PrestartQuestionOption } from 'app/shared/model/prestart-question-option.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class PrestartDataService implements OnInit {
-    info = 'hello world';
-    plant: IPlant;
-    readonly selectedPlantLocalStorageKey = 'PrestartDataService.plant';
+    data: Data;
+    readonly dataLocalStorageKey = 'PrestartDataService.data';
     constructor() {
         this.ngOnInit();
     }
 
     ngOnInit() {
         console.log('PrestartDataService on init');
-        this.plant = JSON.parse(localStorage.getItem(this.selectedPlantLocalStorageKey), this.dateReviver);
+        this.data = JSON.parse(localStorage.getItem(this.dataLocalStorageKey), this.dateReviver);
+        if (!this.data) {
+            this.data = {
+                plant: null,
+                chosenOptions: null,
+                meterReading: null,
+                hubboReading: null
+            };
+        }
     }
     @HostListener('window:beforeunload', ['$event'])
     beforeunloadHandler(event) {
         console.log('unload');
-        localStorage.setItem(this.selectedPlantLocalStorageKey, JSON.stringify(this.plant));
+        localStorage.setItem(this.dataLocalStorageKey, JSON.stringify(this.data));
     }
 
-    setPlant(plant: IPlant) {
-        this.plant = plant;
-        localStorage.setItem(this.selectedPlantLocalStorageKey, JSON.stringify(this.plant));
+    setData(data: Data) {
+        this.data = data;
+        console.log(this.data);
+        localStorage.setItem(this.dataLocalStorageKey, JSON.stringify(this.data));
     }
 
     dateReviver(key, value) {
@@ -37,4 +46,11 @@ export class PrestartDataService implements OnInit {
         }
         return value;
     }
+}
+
+export interface Data {
+    plant: IPlant;
+    chosenOptions: Array<PrestartQuestionOption>;
+    meterReading: number;
+    hubboReading: number;
 }

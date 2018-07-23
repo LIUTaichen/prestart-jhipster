@@ -22,7 +22,8 @@ import {
     MAT_DATE_LOCALE,
     MatListModule,
     MatProgressBarModule,
-    MatStepperModule
+    MatStepperModule,
+    MatCheckboxModule
 } from '@angular/material';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
@@ -49,7 +50,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
         MatMomentDateModule,
         MatListModule,
         MatProgressBarModule,
-        MatStepperModule
+        MatStepperModule,
+        MatCheckboxModule
     ],
     exports: [
         MatButtonModule,
@@ -73,7 +75,8 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
         MatMomentDateModule,
         MatListModule,
         MatProgressBarModule,
-        MatStepperModule
+        MatStepperModule,
+        MatCheckboxModule
     ],
     providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-NZ' }]
 })

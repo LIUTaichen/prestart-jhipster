@@ -3,8 +3,8 @@
   <mat-progress-spinner mode="indeterminate" class="progress-spinner" diameter="50"></mat-progress-spinner>
 </div>
 <mat-nav-list *ngIf="plants">
-  <mat-list-item *ngFor="let plant of plants" (click)="onPlantClicked(plant)" routerLink="/plant-confirmation" routerLinkActive="active"
-    [routerLinkActiveOptions]="{ exact: true }">
+  <mat-list-item *ngFor="let plant of plants" (click)="onPlantClicked(plant)" 
+    >
       <h4 matLine class="mat-subheading-1">
         <span matLine> {{ plant.fleetId }}</span>
       </h4>

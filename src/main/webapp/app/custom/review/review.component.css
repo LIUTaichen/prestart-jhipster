@@ -1,0 +1,36 @@
+.button-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.button-back {
+    margin-left: auto;
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    /* height: 100%; */
+    flex-grow: 1;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    overflow: scroll;
+}
+
+.label.mat-line {
+    height: auto;
+    width: auto;
+    align-content: center;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.divider {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+.readings {
+    padding: 0 16px;
+}

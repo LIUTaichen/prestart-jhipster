@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PrestartDataService } from 'app/custom/prestart-data/prestart-data.service';
 import { IPlant } from 'app/shared/model/plant.model';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'jhi-meter-reading',
@@ -11,32 +12,35 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 export class MeterReadingComponent implements OnInit {
     plant: IPlant;
     meterForm: FormGroup;
-    constructor(private fb: FormBuilder, private prestartDataService: PrestartDataService) {}
+    constructor(private fb: FormBuilder, private prestartDataService: PrestartDataService, private router: Router) {}
+
     ngOnInit() {
-        this.plant = this.prestartDataService.plant;
+        this.plant = this.prestartDataService.data.plant;
         this.createForm();
     }
 
     createForm() {
         this.meterForm = this.fb.group({
-            meterReading: ['', [Validators.required, Validators.min(this.plant.meterReading)]]
+            meterReading: [this.prestartDataService.data.meterReading, [Validators.required, Validators.min(this.plant.meterReading)]]
             // hubboReading: ['', Validators.required]
         });
         if (this.plant.hubboReading) {
-            this.meterForm.addControl('hubboReading', new FormControl('', [Validators.required, Validators.min(0.0001)]));
+            this.meterForm.addControl(
+                'hubboReading',
+                new FormControl(this.prestartDataService.data.hubboReading, [Validators.required, Validators.min(this.plant.hubboReading)])
+            );
         }
-
-        this.meterForm.get('meterReading').valueChanges.subscribe(newVal => {
-            console.log('valueChange', newVal);
-            // //if (newVal) {
-            //     this.meterForm.patchValue({
-            //         meterReading: newVal.toFixed(2)
-            //     });
-            // }
-        });
     }
 
-    onSubmit() {}
+    onSubmit() {
+        const data = this.prestartDataService.data;
+        data.meterReading = this.meterForm.value.meterReading;
+        if (this.plant.hubboReading) {
+            data.hubboReading = this.meterForm.value.hubboReading;
+        }
+        this.prestartDataService.setData(data);
+        this.router.navigate(['/review']);
+    }
 
     isValid(value: string): Boolean {
         const validInputRegExp: RegExp = /^\d*(\.\d{0,2})?$/i;

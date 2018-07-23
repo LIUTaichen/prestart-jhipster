@@ -13,6 +13,6 @@ export class PlantConfirmationComponent implements OnInit {
     constructor(private prestartDataService: PrestartDataService) {}
 
     ngOnInit() {
-        this.plant = this.prestartDataService.plant;
+        this.plant = this.prestartDataService.data.plant;
     }
 }
