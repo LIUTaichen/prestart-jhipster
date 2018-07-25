@@ -1,28 +1,45 @@
 <div class="mat-typography">
-  <h2>Review your input and make sure everything </h2>
+  <h4>Review your input. </h4>
   <div>
-    <mat-list>
-      <mat-list-item *ngFor="let option of data.chosenOptions">
-        <div matLine class="label"> 
-          <span class="mat-body-2">{{option.prestartQuestion.body}} </span></div>
-        <div matLine class="label">
-          <span class="mat-body-1"> {{option.body}} </span>
+    <div>
+      <div *ngFor="let option of data.chosenOptions" class="valign">
+        <div>
+            <mat-icon *ngIf="option.isNormal" class="text-success large-icon">check_circle</mat-icon>
+            <mat-icon *ngIf="!option.isNormal && option.prestartQuestion.isLockOutRequired " class="text-danger large-icon">error</mat-icon>
+            <mat-icon *ngIf="!option.isNormal && !option.prestartQuestion.isLockOutRequired" class="text-warning large-icon">warning</mat-icon>
         </div>
-      </mat-list-item>
-    </mat-list>
+        <div class="ml-4">
+          <div class="label">
+            <span class="mat-body-2">{{option.prestartQuestion.body}} </span>
+          </div>
+          <div class="label">
+            <span class="mat-body-1"> {{option.body}} </span>
+          </div>
+          <div *ngIf="!option.isNormal" class="instruction">
+            <div *ngIf="option.prestartQuestion.isLockOutRequired" class="text-danger valign">
+              <span >You must tag/lock out the plant. Do Not Operate - Notify Site Manamgement immediately.</span>
+            </div>
+            <div *ngIf="!option.prestartQuestion.isLockOutRequired" class="text-warning valign">
+              <span >Notify Site Manamgement</span>
+            </div>
+          </div>
+          <mat-divider class="divider"></mat-divider>
+        </div>
+      </div>
+    </div>
   </div>
-  <mat-divider class="divider"></mat-divider>
   <div class="readings">
     <mat-form-field>
       <input matInput placeholder="Meter reading" value="{{data.meterReading}}" readonly>
       <span matSuffix> {{data.plant.meterUnit}}</span>
-      <mat-hint align="start">Delta of {{(data.meterReading - data.plant.meterReading)}}</mat-hint>
+
     </mat-form-field>
-    <mat-form-field *ngIf="data.hubboReading">
+    <div> Delta of {{(data.meterReading - data.plant.meterReading)}}</div>
+    <mat-form-field *ngIf="data.hubboReading" class="hubbo">
       <input matInput placeholder="Hubbo reading" value="{{data.hubboReading}}" readonly>
       <span matSuffix> KM</span>
-      <mat-hint align="start">Delta of {{(data.hubboReading - data.plant.hubboReading)}}</mat-hint>
     </mat-form-field>
+    <div> Delta of {{(data.hubboReading - data.plant.hubboReading)}}</div>
   </div>
   <mat-divider class="divider"></mat-divider>
   <div class='button-container'>

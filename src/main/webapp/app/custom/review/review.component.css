@@ -34,3 +34,27 @@
 .readings {
     padding: 0 16px;
 }
+
+.red {
+    color: red;
+}
+
+.instruction,
+.hubbo {
+    margin-top: 16px;
+}
+
+.valign {
+    display: inline-flex;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.warning span {
+    margin-left: 16px;
+}
+
+.large-icon {
+    font-size: 40px;
+    margin-right: 16px;
+}

@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
+import { PrestartDataService, Data } from '../prestart-data/prestart-data.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'jhi-submission',
@@ -18,7 +20,7 @@ export class SubmissionComponent implements OnInit {
         canvasHeight: 278
     };
 
-    constructor() {}
+    constructor(private prestartDataService: PrestartDataService, private router: Router) {}
 
     ngOnInit() {
         this.signaturePad.resizeCanvas();
@@ -33,5 +35,15 @@ export class SubmissionComponent implements OnInit {
     drawStart() {
         // will be notified of szimek/signature_pad's onBegin event
         console.log('begin drawing');
+    }
+
+    onSubmit() {
+        this.prestartDataService.setData({
+            plant: null,
+            chosenOptions: null,
+            meterReading: null,
+            hubboReading: null
+        });
+        this.router.navigate(['']);
     }
 }

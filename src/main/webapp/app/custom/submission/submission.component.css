@@ -42,3 +42,9 @@
     height: 280px;
     margin-bottom: 16px;
 }
+
+.signature-container {
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+}

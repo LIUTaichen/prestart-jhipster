@@ -1,15 +1,17 @@
 <div class="mat-typography component-container">
-  <h4>Sign and submit the prestart.</h4>
-  <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"
-  class="signature"></signature-pad>
-  <div>
-      <mat-checkbox  [(ngModel)]="checked" >
-       </mat-checkbox>
-       <span class="declaration-text">I declare that all information in this prestart check is truthfully reported.</span>
+    <h4>Sign and submit the prestart.</h4>
+    <div class="signature-container">
+        <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()" class="signature"></signature-pad>
+    </div>
+    <div>
+        <mat-checkbox [(ngModel)]="checked">
+        </mat-checkbox>
+        <span class="declaration-text">I declare that all information in this prestart check is truthfully reported.</span>
 
-  </div>
-  <div class="button-container">
-      <button mat-button class="button-back" routerLink="/review">Back</button>
-      <button mat-raised-button color="primary" type="submit" [disabled]="!checked || !signed" >Submit</button>
+    </div>
+    <div class="button-container">
+        <button mat-button class="button-back" routerLink="/review">Back</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!checked || !signed"
+        (click)="onSubmit()">Submit</button>
     </div>
 </div>

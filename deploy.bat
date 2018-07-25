@@ -1,0 +1,1 @@
+npm run build && aws s3 sync build/www s3://prestart-app && aws cloudfront create-invalidation --distribution-id=E35OIR8LMRQE7F --paths "/*"
