@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { SignaturePad } from 'angular2-signaturepad/signature-pad';
 import { PrestartDataService, Data } from '../prestart-data/prestart-data.service';
 import { Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
     templateUrl: './submission.component.html',
     styleUrls: ['./submission.component.css']
 })
-export class SubmissionComponent implements OnInit {
+export class SubmissionComponent implements OnInit, AfterViewInit {
     checked = true;
     signed = false;
     @ViewChild(SignaturePad) signaturePad: SignaturePad;
@@ -23,13 +23,17 @@ export class SubmissionComponent implements OnInit {
     constructor(private prestartDataService: PrestartDataService, private router: Router) {}
 
     ngOnInit() {
-        this.signaturePad.resizeCanvas();
+        // this.signaturePad.resizeCanvas();
+        //  this.signaturePad.ngAfterContentInit
+    }
+    ngAfterViewInit() {
+        // this.signaturePad.resizeCanvas();
     }
 
     drawComplete() {
         // will be notified of szimek/signature_pad's onEnd event
         this.signed = true;
-        console.log(this.signaturePad.toDataURL());
+        console.log('size of signature', this.signaturePad.toDataURL().length);
     }
 
     drawStart() {

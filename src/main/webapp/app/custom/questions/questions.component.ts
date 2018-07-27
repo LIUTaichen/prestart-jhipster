@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl, Validators, FormArray, AbstractControl } from '@angular/forms';
 import { PrestartDataService } from '../prestart-data/prestart-data.service';
 import { IPlant } from '../../shared/model/plant.model';
 import { PrestartQuestionService } from 'app/entities/prestart-question';
@@ -17,44 +18,58 @@ import { Router } from '@angular/router';
 })
 export class QuestionsComponent implements OnInit {
     plant: IPlant;
+    questionsFormGroup: FormGroup;
     questionItems: Array<IPrestartCheckQuestionListItem>;
-    selectedOptions: Array<PrestartQuestionOption>;
+    isSettingUp = true;
+    questions: AbstractControl;
     constructor(
         private prestartDataService: PrestartDataService,
         private questionService: PrestartQuestionService,
         private prestartQuestionlistService: PrestartCheckQuestionListItemService,
         private prestartCheckConfigService: PrestartCheckConfigService,
         private optionService: PrestartQuestionOptionService,
-        private router: Router
+        private router: Router,
+        private formBuilder: FormBuilder
     ) {}
 
     ngOnInit() {
+        this.questionsFormGroup = this.formBuilder.group({
+            questions: this.formBuilder.array([])
+        });
         this.plant = this.prestartDataService.data.plant;
         this.prestartQuestionlistService
             .query({
                 'prestartCheckConfigId.equals': this.plant.category.prestartCheckConfig.id
             })
             .flatMap(response => {
-                console.log('retrieving question list');
-                console.log(response.body);
                 this.questionItems = response.body.sort(this.questionItemSort);
                 return this.optionService.query({
                     'prestartQuestionId.in': this.questionItems.map(questionItem => questionItem.id)
                 });
             })
             .subscribe(optionsResponse => {
-                console.log('receiving opstions');
-                console.log(optionsResponse.body);
                 const options: PrestartQuestionOption[] = optionsResponse.body;
+                const questionsFormArray = this.questionsFormGroup.get('questions') as FormArray;
                 this.questionItems.map(item => {
                     const question = item.question;
                     question.options = options.filter(option => option.prestartQuestion.id === question.id);
+                    questionsFormArray.push(new FormControl('', [Validators.required]));
                 });
                 if (this.prestartDataService.data.chosenOptions) {
-                    this.selectedOptions = this.prestartDataService.data.chosenOptions;
-                } else {
-                    this.selectedOptions = new Array<PrestartQuestionOption>(this.questionItems.length);
+                    this.questionsFormGroup.get('questions').setValue(this.prestartDataService.data.chosenOptions);
+                    // questionsFormArray.controls.map(control => {
+                    //     if (control.value) {
+                    //         control.markAsTouched();
+                    //         control.markAsDirty();
+                    //     }
+                    // });
                 }
+                this.questions = questionsFormArray;
+                this.questionsFormGroup.valueChanges.subscribe(newVal => {
+                    console.log(newVal);
+                    this.saveResponse();
+                });
+                this.isSettingUp = false;
             });
     }
 
@@ -64,8 +79,13 @@ export class QuestionsComponent implements OnInit {
 
     saveResponse() {
         const data = this.prestartDataService.data;
-        data.chosenOptions = this.selectedOptions;
+        console.log('before save', data);
+        data.chosenOptions = this.questionsFormGroup.get('questions').value;
         this.prestartDataService.setData(data);
+        console.log('after save', data);
+    }
+
+    onSubmit() {
         this.router.navigate(['/meter-reading']);
     }
 }
