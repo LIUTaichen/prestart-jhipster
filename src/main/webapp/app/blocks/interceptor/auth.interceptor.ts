@@ -13,6 +13,8 @@ export class AuthInterceptor implements HttpInterceptor {
         }
 
         const token = this.localStorage.retrieve('authenticationToken') || this.sessionStorage.retrieve('authenticationToken');
+
+        console.log('token to be sent with request', token);
         if (!!token) {
             request = request.clone({
                 setHeaders: {

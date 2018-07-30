@@ -20,6 +20,8 @@ import { PrestartEntityModule } from './entities/entity.module';
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
 import { CustomModule } from 'app/custom/custom.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdalService, AdalGuard, AdalInterceptor } from 'adal-angular4';
+import { AzureCallbackGuard } from 'app/custom/azure-callback/azure-callback.guard';
 
 @NgModule({
     imports: [
@@ -60,7 +62,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
             useClass: NotificationInterceptor,
             multi: true,
             deps: [Injector]
-        }
+        },
+        AdalService,
+        AdalGuard,
+        AzureCallbackGuard
     ],
     bootstrap: [JhiMainComponent]
 })

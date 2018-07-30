@@ -7,13 +7,15 @@ import { MeterReadingComponent } from '../meter-reading/meter-reading.component'
 import { ReviewComponent } from '../review/review.component';
 import { SubmissionComponent } from '../submission/submission.component';
 import { ResultComponent } from '../result/result.component';
+import { AzureCallbackComponent } from '../azure-callback/azure-callback.component';
+import { AzureCallbackGuard } from '../azure-callback/azure-callback.guard';
 
 export const prestartRoute: Routes = [
     {
         path: 'select-plant',
         component: SelectPlantComponent,
         data: {
-            authorities: ['ROLE_DW', 'ROLE_DW_READ_ONLY'],
+            authorities: ['ROLE_DW', 'ROLE_DW_READ_ONLY', 'ROLE_REPORTER'],
             pageTitle: 'prestartApp.prestartCheck.select-plant.title'
         },
         canActivate: [UserRouteAccessService]
@@ -22,7 +24,7 @@ export const prestartRoute: Routes = [
         path: 'plant-confirmation',
         component: PlantConfirmationComponent,
         data: {
-            authorities: ['ROLE_DW', 'ROLE_DW_READ_ONLY'],
+            authorities: ['ROLE_DW', 'ROLE_DW_READ_ONLY', 'ROLE_REPORTER'],
             pageTitle: 'prestartApp.prestartCheck.plant-confirmation.title'
         },
         canActivate: [UserRouteAccessService]
@@ -31,7 +33,7 @@ export const prestartRoute: Routes = [
         path: 'questions',
         component: QuestionsComponent,
         data: {
-            authorities: ['ROLE_DW', 'ROLE_DW_READ_ONLY'],
+            authorities: ['ROLE_DW', 'ROLE_DW_READ_ONLY', 'ROLE_REPORTER'],
             pageTitle: 'prestartApp.prestartCheck.questions.title'
         },
         canActivate: [UserRouteAccessService]
@@ -40,7 +42,7 @@ export const prestartRoute: Routes = [
         path: 'meter-reading',
         component: MeterReadingComponent,
         data: {
-            authorities: ['ROLE_DW', 'ROLE_DW_READ_ONLY'],
+            authorities: ['ROLE_DW', 'ROLE_DW_READ_ONLY', 'ROLE_REPORTER'],
             pageTitle: 'prestartApp.prestartCheck.meter-reading.title'
         },
         canActivate: [UserRouteAccessService]
@@ -50,7 +52,7 @@ export const prestartRoute: Routes = [
         path: 'review',
         component: ReviewComponent,
         data: {
-            authorities: ['ROLE_DW', 'ROLE_DW_READ_ONLY'],
+            authorities: ['ROLE_DW', 'ROLE_DW_READ_ONLY', 'ROLE_REPORTER'],
             pageTitle: 'prestartApp.prestartCheck.review.title'
         },
         canActivate: [UserRouteAccessService]
@@ -60,7 +62,7 @@ export const prestartRoute: Routes = [
         path: 'submission',
         component: SubmissionComponent,
         data: {
-            authorities: ['ROLE_DW', 'ROLE_DW_READ_ONLY'],
+            authorities: ['ROLE_DW', 'ROLE_DW_READ_ONLY', 'ROLE_REPORTER'],
             pageTitle: 'prestartApp.prestartCheck.submission.title'
         },
         canActivate: [UserRouteAccessService]
@@ -70,9 +72,10 @@ export const prestartRoute: Routes = [
         path: 'result',
         component: ResultComponent,
         data: {
-            authorities: ['ROLE_DW', 'ROLE_DW_READ_ONLY'],
+            authorities: ['ROLE_DW', 'ROLE_DW_READ_ONLY', 'ROLE_REPORTER'],
             pageTitle: 'prestartApp.prestartCheck.result.title'
         },
         canActivate: [UserRouteAccessService]
-    }
+    },
+    { path: 'id_token', component: AzureCallbackComponent, canActivate: [AzureCallbackGuard] }
 ];

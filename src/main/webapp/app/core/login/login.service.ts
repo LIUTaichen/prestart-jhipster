@@ -42,6 +42,7 @@ export class LoginService {
     }
 
     logout() {
+        console.log('logout called');
         this.authServerProvider.logout().subscribe();
         this.principal.authenticate(null);
     }

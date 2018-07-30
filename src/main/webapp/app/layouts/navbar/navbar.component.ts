@@ -6,6 +6,7 @@ import { JhiLanguageService } from 'ng-jhipster';
 import { VERSION } from 'app/app.constants';
 import { JhiLanguageHelper, Principal, LoginModalService, LoginService } from 'app/core';
 import { ProfileService } from '../profiles/profile.service';
+import { AdalService } from 'adal-angular4';
 
 @Component({
     selector: 'jhi-navbar',
@@ -27,7 +28,8 @@ export class NavbarComponent implements OnInit {
         private principal: Principal,
         private loginModalService: LoginModalService,
         private profileService: ProfileService,
-        private router: Router
+        private router: Router,
+        private adalService: AdalService
     ) {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
@@ -42,6 +44,8 @@ export class NavbarComponent implements OnInit {
             this.inProduction = profileInfo.inProduction;
             this.swaggerEnabled = profileInfo.swaggerEnabled;
         });
+
+        console.log(this.adalService.userInfo);
     }
 
     changeLanguage(languageKey: string) {
@@ -57,13 +61,15 @@ export class NavbarComponent implements OnInit {
     }
 
     login() {
-        this.modalRef = this.loginModalService.open();
+        // this.modalRef = this.loginModalService.open();
+        this.adalService.login();
     }
 
     logout() {
         this.collapseNavbar();
-        this.loginService.logout();
+        // this.loginService.logout();
         this.router.navigate(['']);
+        this.adalService.logOut();
     }
 
     toggleNavbar() {

@@ -9,7 +9,7 @@
             <div *ngSwitchCase="true">
                 <div class="alert alert-success">
                     <span *ngIf="account" jhiTranslate="home.logged.message" translateValues="{username: '{{account.login}}'}"> You are logged in as user "{{account.login}}". </span>
-
+                    <a class="alert-link" (click)="logout()" jhiTranslate="global.menu.account.logout">Sign out</a>
                 </div>
                 <div layout="column">
                     <button mat-raised-button color="primary" class="prestartButton" routerLink="select-plant">New Prestart</button>
@@ -22,5 +22,6 @@
             </div>
 
         </div>
+        <a class="alert-link" (click)="logout()" jhiTranslate="global.menu.account.logout">Sign out</a>
     </div>
 </div>
