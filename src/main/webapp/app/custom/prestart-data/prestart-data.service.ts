@@ -1,6 +1,11 @@
 import { Injectable, OnInit, HostListener } from '@angular/core';
 import { IPlant } from '../../shared/model/plant.model';
 import { PrestartQuestionOption } from 'app/shared/model/prestart-question-option.model';
+import { PrestartCheck } from 'app/shared/model/prestart-check.model';
+import { ILocation, Location } from 'app/shared/model//location.model';
+import { PlantLog } from 'app/shared/model/plant-log.model';
+import { PrestartCheckResponse } from 'app/shared/model/prestart-check-response.model';
+import { PrestartCheckService } from 'app/entities/prestart-check';
 
 @Injectable({
     providedIn: 'root'
@@ -8,7 +13,7 @@ import { PrestartQuestionOption } from 'app/shared/model/prestart-question-optio
 export class PrestartDataService implements OnInit {
     data: Data;
     readonly dataLocalStorageKey = 'PrestartDataService.data';
-    constructor() {
+    constructor(private prestartCheckService: PrestartCheckService) {
         this.ngOnInit();
     }
 
@@ -45,6 +50,31 @@ export class PrestartDataService implements OnInit {
             }
         }
         return value;
+    }
+
+    save() {
+        const prestartCheck: PrestartCheck = new PrestartCheck();
+        prestartCheck.plant = this.data.plant;
+        // prestartCheck.location = new Location();
+        prestartCheck.plantLog = new PlantLog();
+        prestartCheck.plantLog.plant = this.data.plant;
+        prestartCheck.plantLog.meterReading = this.data.meterReading;
+        prestartCheck.plantLog.hubboReading = this.data.hubboReading;
+        prestartCheck.responses = new Array<PrestartCheckResponse>();
+        this.data.chosenOptions.map(option => {
+            const responseItem = new PrestartCheckResponse();
+            responseItem.question = option.prestartQuestion;
+            responseItem.question.options = null;
+            responseItem.response = option;
+            responseItem.response.prestartQuestion = null;
+            // responseItem.prestartCheck = prestartCheck;
+            // responseItem.prestartCheck.id = prestartCheck.id;
+            prestartCheck.responses.push(responseItem);
+        });
+        console.log(prestartCheck);
+        this.prestartCheckService.create(prestartCheck).subscribe(response => {
+            console.log(response);
+        });
     }
 }
 

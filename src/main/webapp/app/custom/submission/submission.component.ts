@@ -42,12 +42,13 @@ export class SubmissionComponent implements OnInit, AfterViewInit {
     }
 
     onSubmit() {
-        this.prestartDataService.setData({
-            plant: null,
-            chosenOptions: null,
-            meterReading: null,
-            hubboReading: null
-        });
-        this.router.navigate(['']);
+        this.prestartDataService.save();
+        // this.prestartDataService.setData({
+        //     plant: null,
+        //     chosenOptions: null,
+        //     meterReading: null,
+        //     hubboReading: null
+        // });
+        // this.router.navigate(['']);
     }
 }
