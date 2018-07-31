@@ -16,6 +16,7 @@
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="prestartApp.prestartCheckConfig.name">Name</span></th>
+            <th><span jhiTranslate="prestartApp.prestartCheckConfig.notes">Notes</span></th>
             <th></th>
             </tr>
             </thead>
@@ -23,6 +24,7 @@
             <tr *ngFor="let prestartCheckConfig of prestartCheckConfigs ;trackBy: trackId">
                 <td><a [routerLink]="['/prestart-check-config', prestartCheckConfig.id, 'view' ]">{{prestartCheckConfig.id}}</a></td>
                 <td>{{prestartCheckConfig.name}}</td>
+                <td>{{prestartCheckConfig.notes}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

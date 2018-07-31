@@ -51,25 +51,24 @@ export class PlantLogService {
 
     private convertDateFromClient(plantLog: IPlantLog): IPlantLog {
         const copy: IPlantLog = Object.assign({}, plantLog, {
-            wofDueDate: plantLog.wofDueDate != null && plantLog.wofDueDate.isValid() ? plantLog.wofDueDate.toJSON() : null,
-            cofDueDate: plantLog.cofDueDate != null && plantLog.cofDueDate.isValid() ? plantLog.cofDueDate.toJSON() : null,
-            serviceDueDate: plantLog.serviceDueDate != null && plantLog.serviceDueDate.isValid() ? plantLog.serviceDueDate.toJSON() : null
+            certificateDueDate:
+                plantLog.certificateDueDate != null && plantLog.certificateDueDate.isValid() ? plantLog.certificateDueDate.toJSON() : null,
+            maintenanceDueDate:
+                plantLog.maintenanceDueDate != null && plantLog.maintenanceDueDate.isValid() ? plantLog.maintenanceDueDate.toJSON() : null
         });
         return copy;
     }
 
     private convertDateFromServer(res: EntityResponseType): EntityResponseType {
-        res.body.wofDueDate = res.body.wofDueDate != null ? moment(res.body.wofDueDate) : null;
-        res.body.cofDueDate = res.body.cofDueDate != null ? moment(res.body.cofDueDate) : null;
-        res.body.serviceDueDate = res.body.serviceDueDate != null ? moment(res.body.serviceDueDate) : null;
+        res.body.certificateDueDate = res.body.certificateDueDate != null ? moment(res.body.certificateDueDate) : null;
+        res.body.maintenanceDueDate = res.body.maintenanceDueDate != null ? moment(res.body.maintenanceDueDate) : null;
         return res;
     }
 
     private convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
         res.body.forEach((plantLog: IPlantLog) => {
-            plantLog.wofDueDate = plantLog.wofDueDate != null ? moment(plantLog.wofDueDate) : null;
-            plantLog.cofDueDate = plantLog.cofDueDate != null ? moment(plantLog.cofDueDate) : null;
-            plantLog.serviceDueDate = plantLog.serviceDueDate != null ? moment(plantLog.serviceDueDate) : null;
+            plantLog.certificateDueDate = plantLog.certificateDueDate != null ? moment(plantLog.certificateDueDate) : null;
+            plantLog.maintenanceDueDate = plantLog.maintenanceDueDate != null ? moment(plantLog.maintenanceDueDate) : null;
         });
         return res;
     }

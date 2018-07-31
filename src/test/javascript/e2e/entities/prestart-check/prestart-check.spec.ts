@@ -34,11 +34,9 @@ describe('PrestartCheck e2e test', () => {
     it('should create and save PrestartChecks', () => {
         prestartCheckComponentsPage.clickOnCreateButton();
         prestartCheckUpdatePage.setSignatureInput(absolutePath);
+        prestartCheckUpdatePage.setNotesInput('notes');
+        expect(prestartCheckUpdatePage.getNotesInput()).toMatch('notes');
         prestartCheckUpdatePage.plantLogSelectLastOption();
-        prestartCheckUpdatePage.projectSelectLastOption();
-        prestartCheckUpdatePage.plantSelectLastOption();
-        prestartCheckUpdatePage.locationSelectLastOption();
-        prestartCheckUpdatePage.operatorSelectLastOption();
         prestartCheckUpdatePage.save();
         expect(prestartCheckUpdatePage.getSaveButton().isPresent()).toBeFalsy();
     });

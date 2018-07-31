@@ -16,15 +16,15 @@
             "detail": {
                 "title": "Plant Log"
             },
+            "notes": "Notes",
             "meterReading": "Meter Reading",
             "hubboReading": "Hubbo Reading",
-            "serviceDueAt": "Service Due At",
+            "maintenanceDueAt": "Maintenance Due At",
             "rucDueAt": "Ruc Due At",
-            "wofDueDate": "Wof Due Date",
-            "cofDueDate": "Cof Due Date",
-            "serviceDueDate": "Service Due Date",
+            "certificateDueDate": "Certificate Due Date",
+            "maintenanceDueDate": "Maintenance Due Date",
+            "operatorName": "Operator Name",
             "plant": "Plant",
-            "operator": "Operator",
             "site": "Site"
         }
     }

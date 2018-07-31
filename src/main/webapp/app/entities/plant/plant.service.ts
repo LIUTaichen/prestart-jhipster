@@ -54,6 +54,8 @@ export class PlantService {
             purchaseDate: plant.purchaseDate != null && plant.purchaseDate.isValid() ? plant.purchaseDate.toJSON() : null,
             dateOfManufacture:
                 plant.dateOfManufacture != null && plant.dateOfManufacture.isValid() ? plant.dateOfManufacture.toJSON() : null,
+            maintenanceDueDate:
+                plant.maintenanceDueDate != null && plant.maintenanceDueDate.isValid() ? plant.maintenanceDueDate.toJSON() : null,
             certificateDueDate:
                 plant.certificateDueDate != null && plant.certificateDueDate.isValid() ? plant.certificateDueDate.toJSON() : null,
             registrationDueDate:
@@ -65,6 +67,7 @@ export class PlantService {
     private convertDateFromServer(res: EntityResponseType): EntityResponseType {
         res.body.purchaseDate = res.body.purchaseDate != null ? moment(res.body.purchaseDate) : null;
         res.body.dateOfManufacture = res.body.dateOfManufacture != null ? moment(res.body.dateOfManufacture) : null;
+        res.body.maintenanceDueDate = res.body.maintenanceDueDate != null ? moment(res.body.maintenanceDueDate) : null;
         res.body.certificateDueDate = res.body.certificateDueDate != null ? moment(res.body.certificateDueDate) : null;
         res.body.registrationDueDate = res.body.registrationDueDate != null ? moment(res.body.registrationDueDate) : null;
         return res;
@@ -74,6 +77,7 @@ export class PlantService {
         res.body.forEach((plant: IPlant) => {
             plant.purchaseDate = plant.purchaseDate != null ? moment(plant.purchaseDate) : null;
             plant.dateOfManufacture = plant.dateOfManufacture != null ? moment(plant.dateOfManufacture) : null;
+            plant.maintenanceDueDate = plant.maintenanceDueDate != null ? moment(plant.maintenanceDueDate) : null;
             plant.certificateDueDate = plant.certificateDueDate != null ? moment(plant.certificateDueDate) : null;
             plant.registrationDueDate = plant.registrationDueDate != null ? moment(plant.registrationDueDate) : null;
         });

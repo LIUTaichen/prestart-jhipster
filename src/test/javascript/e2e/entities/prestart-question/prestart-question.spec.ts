@@ -44,6 +44,9 @@ describe('PrestartQuestion e2e test', () => {
                     expect(prestartQuestionUpdatePage.getIsLockOutRequiredInput().isSelected()).toBeTruthy();
                 }
             });
+        prestartQuestionUpdatePage.setOrderInput('5');
+        expect(prestartQuestionUpdatePage.getOrderInput()).toMatch('5');
+        prestartQuestionUpdatePage.prestartCheckConfigSelectLastOption();
         prestartQuestionUpdatePage.save();
         expect(prestartQuestionUpdatePage.getSaveButton().isPresent()).toBeFalsy();
     });

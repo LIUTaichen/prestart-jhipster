@@ -1,34 +1,33 @@
 import { Moment } from 'moment';
 import { IPlant } from 'app/shared/model//plant.model';
-import { IPeople } from 'app/shared/model//people.model';
 import { IProject } from 'app/shared/model//project.model';
 
 export interface IPlantLog {
     id?: number;
+    notes?: string;
     meterReading?: number;
     hubboReading?: number;
-    serviceDueAt?: number;
+    maintenanceDueAt?: number;
     rucDueAt?: number;
-    wofDueDate?: Moment;
-    cofDueDate?: Moment;
-    serviceDueDate?: Moment;
+    certificateDueDate?: Moment;
+    maintenanceDueDate?: Moment;
+    operatorName?: string;
     plant?: IPlant;
-    operator?: IPeople;
     site?: IProject;
 }
 
 export class PlantLog implements IPlantLog {
     constructor(
         public id?: number,
+        public notes?: string,
         public meterReading?: number,
         public hubboReading?: number,
-        public serviceDueAt?: number,
+        public maintenanceDueAt?: number,
         public rucDueAt?: number,
-        public wofDueDate?: Moment,
-        public cofDueDate?: Moment,
-        public serviceDueDate?: Moment,
+        public certificateDueDate?: Moment,
+        public maintenanceDueDate?: Moment,
+        public operatorName?: string,
         public plant?: IPlant,
-        public operator?: IPeople,
         public site?: IProject
     ) {}
 }

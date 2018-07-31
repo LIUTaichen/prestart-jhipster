@@ -4,13 +4,17 @@
         {
             "fieldName": "name",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "notes",
+            "fieldType": "String"
         }
     ],
     "relationships": [
         {
             "relationshipType": "one-to-many",
             "relationshipName": "questionlist",
-            "otherEntityName": "prestartCheckQuestionListItem",
+            "otherEntityName": "prestartQuestion",
             "otherEntityRelationshipName": "prestartCheckConfig"
         }
     ],

@@ -1,0 +1,10 @@
+{
+    "prestartApp": {
+        "IncidentType" : {
+            "null": "",
+            "NONE": "NONE",
+            "DAMAGE": "DAMAGE",
+            "WEAR_AND_TEAR": "WEAR_AND_TEAR"
+        }
+    }
+}

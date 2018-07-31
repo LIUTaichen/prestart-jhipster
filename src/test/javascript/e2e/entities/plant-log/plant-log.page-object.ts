@@ -17,19 +17,27 @@ export class PlantLogUpdatePage {
     pageTitle = element(by.id('jhi-plant-log-heading'));
     saveButton = element(by.id('save-entity'));
     cancelButton = element(by.id('cancel-save'));
+    notesInput = element(by.id('field_notes'));
     meterReadingInput = element(by.id('field_meterReading'));
     hubboReadingInput = element(by.id('field_hubboReading'));
-    serviceDueAtInput = element(by.id('field_serviceDueAt'));
+    maintenanceDueAtInput = element(by.id('field_maintenanceDueAt'));
     rucDueAtInput = element(by.id('field_rucDueAt'));
-    wofDueDateInput = element(by.id('field_wofDueDate'));
-    cofDueDateInput = element(by.id('field_cofDueDate'));
-    serviceDueDateInput = element(by.id('field_serviceDueDate'));
+    certificateDueDateInput = element(by.id('field_certificateDueDate'));
+    maintenanceDueDateInput = element(by.id('field_maintenanceDueDate'));
+    operatorNameInput = element(by.id('field_operatorName'));
     plantSelect = element(by.id('field_plant'));
-    operatorSelect = element(by.id('field_operator'));
     siteSelect = element(by.id('field_site'));
 
     getPageTitle() {
         return this.pageTitle.getAttribute('jhiTranslate');
+    }
+
+    setNotesInput(notes): promise.Promise<void> {
+        return this.notesInput.sendKeys(notes);
+    }
+
+    getNotesInput() {
+        return this.notesInput.getAttribute('value');
     }
 
     setMeterReadingInput(meterReading): promise.Promise<void> {
@@ -48,12 +56,12 @@ export class PlantLogUpdatePage {
         return this.hubboReadingInput.getAttribute('value');
     }
 
-    setServiceDueAtInput(serviceDueAt): promise.Promise<void> {
-        return this.serviceDueAtInput.sendKeys(serviceDueAt);
+    setMaintenanceDueAtInput(maintenanceDueAt): promise.Promise<void> {
+        return this.maintenanceDueAtInput.sendKeys(maintenanceDueAt);
     }
 
-    getServiceDueAtInput() {
-        return this.serviceDueAtInput.getAttribute('value');
+    getMaintenanceDueAtInput() {
+        return this.maintenanceDueAtInput.getAttribute('value');
     }
 
     setRucDueAtInput(rucDueAt): promise.Promise<void> {
@@ -64,28 +72,28 @@ export class PlantLogUpdatePage {
         return this.rucDueAtInput.getAttribute('value');
     }
 
-    setWofDueDateInput(wofDueDate): promise.Promise<void> {
-        return this.wofDueDateInput.sendKeys(wofDueDate);
+    setCertificateDueDateInput(certificateDueDate): promise.Promise<void> {
+        return this.certificateDueDateInput.sendKeys(certificateDueDate);
     }
 
-    getWofDueDateInput() {
-        return this.wofDueDateInput.getAttribute('value');
+    getCertificateDueDateInput() {
+        return this.certificateDueDateInput.getAttribute('value');
     }
 
-    setCofDueDateInput(cofDueDate): promise.Promise<void> {
-        return this.cofDueDateInput.sendKeys(cofDueDate);
+    setMaintenanceDueDateInput(maintenanceDueDate): promise.Promise<void> {
+        return this.maintenanceDueDateInput.sendKeys(maintenanceDueDate);
     }
 
-    getCofDueDateInput() {
-        return this.cofDueDateInput.getAttribute('value');
+    getMaintenanceDueDateInput() {
+        return this.maintenanceDueDateInput.getAttribute('value');
     }
 
-    setServiceDueDateInput(serviceDueDate): promise.Promise<void> {
-        return this.serviceDueDateInput.sendKeys(serviceDueDate);
+    setOperatorNameInput(operatorName): promise.Promise<void> {
+        return this.operatorNameInput.sendKeys(operatorName);
     }
 
-    getServiceDueDateInput() {
-        return this.serviceDueDateInput.getAttribute('value');
+    getOperatorNameInput() {
+        return this.operatorNameInput.getAttribute('value');
     }
 
     plantSelectLastOption(): promise.Promise<void> {
@@ -105,25 +113,6 @@ export class PlantLogUpdatePage {
 
     getPlantSelectedOption() {
         return this.plantSelect.element(by.css('option:checked')).getText();
-    }
-
-    operatorSelectLastOption(): promise.Promise<void> {
-        return this.operatorSelect
-            .all(by.tagName('option'))
-            .last()
-            .click();
-    }
-
-    operatorSelectOption(option): promise.Promise<void> {
-        return this.operatorSelect.sendKeys(option);
-    }
-
-    getOperatorSelect(): ElementFinder {
-        return this.operatorSelect;
-    }
-
-    getOperatorSelectedOption() {
-        return this.operatorSelect.element(by.css('option:checked')).getText();
     }
 
     siteSelectLastOption(): promise.Promise<void> {

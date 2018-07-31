@@ -17,6 +17,7 @@
                 "title": "Prestart Check Config"
             },
             "name": "Name",
+            "notes": "Notes",
             "questionlist": "Questionlist"
         }
     }

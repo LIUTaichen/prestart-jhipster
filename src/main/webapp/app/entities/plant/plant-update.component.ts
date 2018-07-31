@@ -10,8 +10,6 @@ import { IPlant } from 'app/shared/model/plant.model';
 import { PlantService } from './plant.service';
 import { ILocation } from 'app/shared/model/location.model';
 import { LocationService } from 'app/entities/location';
-import { IPlantLog } from 'app/shared/model/plant-log.model';
-import { PlantLogService } from 'app/entities/plant-log';
 import { ICategory } from 'app/shared/model/category.model';
 import { CategoryService } from 'app/entities/category';
 import { ICompany } from 'app/shared/model/company.model';
@@ -31,8 +29,6 @@ export class PlantUpdateComponent implements OnInit {
 
     locations: ILocation[];
 
-    lastlogs: IPlantLog[];
-
     categories: ICategory[];
 
     companies: ICompany[];
@@ -42,6 +38,7 @@ export class PlantUpdateComponent implements OnInit {
     projects: IProject[];
     purchaseDate: string;
     dateOfManufacture: string;
+    maintenanceDueDate: string;
     certificateDueDate: string;
     registrationDueDate: string;
 
@@ -50,7 +47,6 @@ export class PlantUpdateComponent implements OnInit {
         private jhiAlertService: JhiAlertService,
         private plantService: PlantService,
         private locationService: LocationService,
-        private plantLogService: PlantLogService,
         private categoryService: CategoryService,
         private companyService: CompanyService,
         private maintenanceContractorService: MaintenanceContractorService,
@@ -71,21 +67,6 @@ export class PlantUpdateComponent implements OnInit {
                     this.locationService.find(this.plant.location.id).subscribe(
                         (subRes: HttpResponse<ILocation>) => {
                             this.locations = [subRes.body].concat(res.body);
-                        },
-                        (subRes: HttpErrorResponse) => this.onError(subRes.message)
-                    );
-                }
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
-        this.plantLogService.query({ filter: 'plant-is-null' }).subscribe(
-            (res: HttpResponse<IPlantLog[]>) => {
-                if (!this.plant.lastLog || !this.plant.lastLog.id) {
-                    this.lastlogs = res.body;
-                } else {
-                    this.plantLogService.find(this.plant.lastLog.id).subscribe(
-                        (subRes: HttpResponse<IPlantLog>) => {
-                            this.lastlogs = [subRes.body].concat(res.body);
                         },
                         (subRes: HttpErrorResponse) => this.onError(subRes.message)
                     );
@@ -139,6 +120,7 @@ export class PlantUpdateComponent implements OnInit {
         this.isSaving = true;
         this.plant.purchaseDate = moment(this.purchaseDate, DATE_TIME_FORMAT);
         this.plant.dateOfManufacture = moment(this.dateOfManufacture, DATE_TIME_FORMAT);
+        this.plant.maintenanceDueDate = moment(this.maintenanceDueDate, DATE_TIME_FORMAT);
         this.plant.certificateDueDate = moment(this.certificateDueDate, DATE_TIME_FORMAT);
         this.plant.registrationDueDate = moment(this.registrationDueDate, DATE_TIME_FORMAT);
         if (this.plant.id !== undefined) {
@@ -169,10 +151,6 @@ export class PlantUpdateComponent implements OnInit {
         return item.id;
     }
 
-    trackPlantLogById(index: number, item: IPlantLog) {
-        return item.id;
-    }
-
     trackCategoryById(index: number, item: ICategory) {
         return item.id;
     }
@@ -196,6 +174,7 @@ export class PlantUpdateComponent implements OnInit {
         this._plant = plant;
         this.purchaseDate = moment(plant.purchaseDate).format(DATE_TIME_FORMAT);
         this.dateOfManufacture = moment(plant.dateOfManufacture).format(DATE_TIME_FORMAT);
+        this.maintenanceDueDate = moment(plant.maintenanceDueDate).format(DATE_TIME_FORMAT);
         this.certificateDueDate = moment(plant.certificateDueDate).format(DATE_TIME_FORMAT);
         this.registrationDueDate = moment(plant.registrationDueDate).format(DATE_TIME_FORMAT);
     }

@@ -1,6 +1,5 @@
 import { Moment } from 'moment';
 import { ILocation } from 'app/shared/model//location.model';
-import { IPlantLog } from 'app/shared/model//plant-log.model';
 import { ICategory } from 'app/shared/model//category.model';
 import { ICompany } from 'app/shared/model//company.model';
 import { IMaintenanceContractor } from 'app/shared/model//maintenance-contractor.model';
@@ -16,6 +15,11 @@ export const enum HireStatus {
     OFFHIRE = 'OFFHIRE',
     OFFBREAK = 'OFFBREAK',
     OFFSEASO = 'OFFSEASO'
+}
+
+export const enum MaintenanceType {
+    METER_BASED = 'METER_BASED',
+    TIME_BASED = 'TIME_BASED'
 }
 
 export interface IPlant {
@@ -34,6 +38,7 @@ export interface IPlant {
     tankSize?: number;
     meterReading?: number;
     maintenanceDueAt?: number;
+    maintenanceDueDate?: Moment;
     meterUnit?: MeterUnit;
     certificateDueDate?: Moment;
     rucDueAtKm?: number;
@@ -43,8 +48,8 @@ export interface IPlant {
     registrationDueDate?: Moment;
     hireStatus?: HireStatus;
     gpsDeviceSerial?: string;
+    maintenanceType?: MaintenanceType;
     location?: ILocation;
-    lastLog?: IPlantLog;
     category?: ICategory;
     owner?: ICompany;
     assignedContractor?: IMaintenanceContractor;
@@ -68,6 +73,7 @@ export class Plant implements IPlant {
         public tankSize?: number,
         public meterReading?: number,
         public maintenanceDueAt?: number,
+        public maintenanceDueDate?: Moment,
         public meterUnit?: MeterUnit,
         public certificateDueDate?: Moment,
         public rucDueAtKm?: number,
@@ -77,8 +83,8 @@ export class Plant implements IPlant {
         public registrationDueDate?: Moment,
         public hireStatus?: HireStatus,
         public gpsDeviceSerial?: string,
+        public maintenanceType?: MaintenanceType,
         public location?: ILocation,
-        public lastLog?: IPlantLog,
         public category?: ICategory,
         public owner?: ICompany,
         public assignedContractor?: IMaintenanceContractor,

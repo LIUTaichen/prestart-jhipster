@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -8,14 +8,6 @@ import { IPrestartCheck } from 'app/shared/model/prestart-check.model';
 import { PrestartCheckService } from './prestart-check.service';
 import { IPlantLog } from 'app/shared/model/plant-log.model';
 import { PlantLogService } from 'app/entities/plant-log';
-import { IProject } from 'app/shared/model/project.model';
-import { ProjectService } from 'app/entities/project';
-import { IPlant } from 'app/shared/model/plant.model';
-import { PlantService } from 'app/entities/plant';
-import { ILocation } from 'app/shared/model/location.model';
-import { LocationService } from 'app/entities/location';
-import { IPeople } from 'app/shared/model/people.model';
-import { PeopleService } from 'app/entities/people';
 
 @Component({
     selector: 'jhi-prestart-check-update',
@@ -27,23 +19,12 @@ export class PrestartCheckUpdateComponent implements OnInit {
 
     plantlogs: IPlantLog[];
 
-    projects: IProject[];
-
-    plants: IPlant[];
-
-    locations: ILocation[];
-
-    people: IPeople[];
-
     constructor(
         private dataUtils: JhiDataUtils,
         private jhiAlertService: JhiAlertService,
         private prestartCheckService: PrestartCheckService,
         private plantLogService: PlantLogService,
-        private projectService: ProjectService,
-        private plantService: PlantService,
-        private locationService: LocationService,
-        private peopleService: PeopleService,
+        private elementRef: ElementRef,
         private activatedRoute: ActivatedRoute
     ) {}
 
@@ -67,30 +48,6 @@ export class PrestartCheckUpdateComponent implements OnInit {
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
-        this.projectService.query().subscribe(
-            (res: HttpResponse<IProject[]>) => {
-                this.projects = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
-        this.plantService.query().subscribe(
-            (res: HttpResponse<IPlant[]>) => {
-                this.plants = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
-        this.locationService.query().subscribe(
-            (res: HttpResponse<ILocation[]>) => {
-                this.locations = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
-        this.peopleService.query().subscribe(
-            (res: HttpResponse<IPeople[]>) => {
-                this.people = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
     }
 
     byteSize(field) {
@@ -103,6 +60,10 @@ export class PrestartCheckUpdateComponent implements OnInit {
 
     setFileData(event, entity, field, isImage) {
         this.dataUtils.setFileData(event, entity, field, isImage);
+    }
+
+    clearInputImage(field: string, fieldContentType: string, idInput: string) {
+        this.dataUtils.clearInputImage(this.prestartCheck, this.elementRef, field, fieldContentType, idInput);
     }
 
     previousState() {
@@ -136,22 +97,6 @@ export class PrestartCheckUpdateComponent implements OnInit {
     }
 
     trackPlantLogById(index: number, item: IPlantLog) {
-        return item.id;
-    }
-
-    trackProjectById(index: number, item: IProject) {
-        return item.id;
-    }
-
-    trackPlantById(index: number, item: IPlant) {
-        return item.id;
-    }
-
-    trackLocationById(index: number, item: ILocation) {
-        return item.id;
-    }
-
-    trackPeopleById(index: number, item: IPeople) {
         return item.id;
     }
     get prestartCheck() {

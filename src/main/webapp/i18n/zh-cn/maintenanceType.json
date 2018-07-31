@@ -1,0 +1,9 @@
+{
+    "prestartApp": {
+        "MaintenanceType" : {
+            "null": "",
+            "METER_BASED": "METER_BASED",
+            "TIME_BASED": "TIME_BASED"
+        }
+    }
+}

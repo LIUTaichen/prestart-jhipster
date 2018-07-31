@@ -1,0 +1,52 @@
+
+{
+    "prestartApp": {
+        "plantAudit" : {
+            "home": {
+                "title": "Plant Audits",
+                "createLabel": "创建新 Plant Audit",
+                "createOrEditLabel": "创建或编辑 Plant Audit"
+            },
+            "created": "Plant Audit {{ param }} 创建成功",
+            "updated": "Plant Audit {{ param }} 更新成功",
+            "deleted": "Plant Audit {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Plant Audit {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Plant Audit"
+            },
+            "notes": "Notes",
+            "tyreOrTrackOrRollerFrontLeft": "Tyre Or Track Or Roller Front Left",
+            "tyreOrTrackOrRollerFrontRight": "Tyre Or Track Or Roller Front Right",
+            "controlLeft": "Control Left",
+            "controlRight": "Control Right",
+            "tyreOrTrackOrRollerRearLeft": "Tyre Or Track Or Roller Rear Left",
+            "tyreOrTrackOrRollerRearRight": "Tyre Or Track Or Roller Rear Right",
+            "drive": "Drive",
+            "steeringLeft": "Steering Left",
+            "steeringRight": "Steering Right",
+            "hoistLeft": "Hoist Left",
+            "hoistRight": "Hoist Right",
+            "ejector": "Ejector",
+            "oilLevel": "Oil Level",
+            "coolant": "Coolant",
+            "hydraulics": "Hydraulics",
+            "cab": "Cab",
+            "bonnet": "Bonnet",
+            "body": "Body",
+            "binFront": "Bin Front",
+            "binLeft": "Bin Left",
+            "binRight": "Bin Right",
+            "binInside": "Bin Inside",
+            "tailGate": "Tail Gate",
+            "leftGuard": "Left Guard",
+            "leftStairs": "Left Stairs",
+            "rightGuard": "Right Guard",
+            "rightStairs": "Right Stairs",
+            "incidenType": "Inciden Type",
+            "plantLog": "Plant Log",
+            "photos": "Photos"
+        }
+    }
+}
