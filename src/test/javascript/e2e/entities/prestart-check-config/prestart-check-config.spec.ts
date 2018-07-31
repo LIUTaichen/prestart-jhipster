@@ -32,6 +32,8 @@ describe('PrestartCheckConfig e2e test', () => {
         prestartCheckConfigComponentsPage.clickOnCreateButton();
         prestartCheckConfigUpdatePage.setNameInput('name');
         expect(prestartCheckConfigUpdatePage.getNameInput()).toMatch('name');
+        prestartCheckConfigUpdatePage.setNotesInput('notes');
+        expect(prestartCheckConfigUpdatePage.getNotesInput()).toMatch('notes');
         prestartCheckConfigUpdatePage.save();
         expect(prestartCheckConfigUpdatePage.getSaveButton().isPresent()).toBeFalsy();
     });

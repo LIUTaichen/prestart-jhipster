@@ -18,6 +18,7 @@ export class PrestartCheckConfigUpdatePage {
     saveButton = element(by.id('save-entity'));
     cancelButton = element(by.id('cancel-save'));
     nameInput = element(by.id('field_name'));
+    notesInput = element(by.id('field_notes'));
 
     getPageTitle() {
         return this.pageTitle.getAttribute('jhiTranslate');
@@ -29,6 +30,14 @@ export class PrestartCheckConfigUpdatePage {
 
     getNameInput() {
         return this.nameInput.getAttribute('value');
+    }
+
+    setNotesInput(notes): promise.Promise<void> {
+        return this.notesInput.sendKeys(notes);
+    }
+
+    getNotesInput() {
+        return this.notesInput.getAttribute('value');
     }
 
     save(): promise.Promise<void> {

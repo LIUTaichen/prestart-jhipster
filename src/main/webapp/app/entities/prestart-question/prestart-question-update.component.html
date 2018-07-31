@@ -19,7 +19,19 @@
                     <input type="checkbox" class="form-control" name="isLockOutRequired" id="field_isLockOutRequired"
                         [(ngModel)]="prestartQuestion.isLockOutRequired" />
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.prestartQuestion.order" for="field_order">Order</label>
+                    <input type="number" class="form-control" name="order" id="field_order"
+                        [(ngModel)]="prestartQuestion.order" />
+                </div>
 
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.prestartQuestion.prestartCheckConfig" for="field_prestartCheckConfig">Prestart Check Config</label>
+                    <select class="form-control" id="field_prestartCheckConfig" name="prestartCheckConfig" [(ngModel)]="prestartQuestion.prestartCheckConfig" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="prestartCheckConfigOption.id === prestartQuestion.prestartCheckConfig?.id ? prestartQuestion.prestartCheckConfig : prestartCheckConfigOption" *ngFor="let prestartCheckConfigOption of prestartcheckconfigs; trackBy: trackPrestartCheckConfigById">{{prestartCheckConfigOption.id}}</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

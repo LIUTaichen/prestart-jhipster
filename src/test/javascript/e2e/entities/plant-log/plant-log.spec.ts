@@ -30,22 +30,23 @@ describe('PlantLog e2e test', () => {
 
     it('should create and save PlantLogs', () => {
         plantLogComponentsPage.clickOnCreateButton();
+        plantLogUpdatePage.setNotesInput('notes');
+        expect(plantLogUpdatePage.getNotesInput()).toMatch('notes');
         plantLogUpdatePage.setMeterReadingInput('5');
         expect(plantLogUpdatePage.getMeterReadingInput()).toMatch('5');
         plantLogUpdatePage.setHubboReadingInput('5');
         expect(plantLogUpdatePage.getHubboReadingInput()).toMatch('5');
-        plantLogUpdatePage.setServiceDueAtInput('5');
-        expect(plantLogUpdatePage.getServiceDueAtInput()).toMatch('5');
+        plantLogUpdatePage.setMaintenanceDueAtInput('5');
+        expect(plantLogUpdatePage.getMaintenanceDueAtInput()).toMatch('5');
         plantLogUpdatePage.setRucDueAtInput('5');
         expect(plantLogUpdatePage.getRucDueAtInput()).toMatch('5');
-        plantLogUpdatePage.setWofDueDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
-        expect(plantLogUpdatePage.getWofDueDateInput()).toContain('2001-01-01T02:30');
-        plantLogUpdatePage.setCofDueDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
-        expect(plantLogUpdatePage.getCofDueDateInput()).toContain('2001-01-01T02:30');
-        plantLogUpdatePage.setServiceDueDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
-        expect(plantLogUpdatePage.getServiceDueDateInput()).toContain('2001-01-01T02:30');
+        plantLogUpdatePage.setCertificateDueDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
+        expect(plantLogUpdatePage.getCertificateDueDateInput()).toContain('2001-01-01T02:30');
+        plantLogUpdatePage.setMaintenanceDueDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
+        expect(plantLogUpdatePage.getMaintenanceDueDateInput()).toContain('2001-01-01T02:30');
+        plantLogUpdatePage.setOperatorNameInput('operatorName');
+        expect(plantLogUpdatePage.getOperatorNameInput()).toMatch('operatorName');
         plantLogUpdatePage.plantSelectLastOption();
-        plantLogUpdatePage.operatorSelectLastOption();
         plantLogUpdatePage.siteSelectLastOption();
         plantLogUpdatePage.save();
         expect(plantLogUpdatePage.getSaveButton().isPresent()).toBeFalsy();

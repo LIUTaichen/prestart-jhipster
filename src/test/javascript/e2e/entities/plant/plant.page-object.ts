@@ -30,6 +30,7 @@ export class PlantUpdatePage {
     tankSizeInput = element(by.id('field_tankSize'));
     meterReadingInput = element(by.id('field_meterReading'));
     maintenanceDueAtInput = element(by.id('field_maintenanceDueAt'));
+    maintenanceDueDateInput = element(by.id('field_maintenanceDueDate'));
     meterUnitSelect = element(by.id('field_meterUnit'));
     certificateDueDateInput = element(by.id('field_certificateDueDate'));
     rucDueAtKmInput = element(by.id('field_rucDueAtKm'));
@@ -39,8 +40,8 @@ export class PlantUpdatePage {
     registrationDueDateInput = element(by.id('field_registrationDueDate'));
     hireStatusSelect = element(by.id('field_hireStatus'));
     gpsDeviceSerialInput = element(by.id('field_gpsDeviceSerial'));
+    maintenanceTypeSelect = element(by.id('field_maintenanceType'));
     locationSelect = element(by.id('field_location'));
-    lastLogSelect = element(by.id('field_lastLog'));
     categorySelect = element(by.id('field_category'));
     ownerSelect = element(by.id('field_owner'));
     assignedContractorSelect = element(by.id('field_assignedContractor'));
@@ -149,6 +150,14 @@ export class PlantUpdatePage {
         return this.maintenanceDueAtInput.getAttribute('value');
     }
 
+    setMaintenanceDueDateInput(maintenanceDueDate): promise.Promise<void> {
+        return this.maintenanceDueDateInput.sendKeys(maintenanceDueDate);
+    }
+
+    getMaintenanceDueDateInput() {
+        return this.maintenanceDueDateInput.getAttribute('value');
+    }
+
     setMeterUnitSelect(meterUnit): promise.Promise<void> {
         return this.meterUnitSelect.sendKeys(meterUnit);
     }
@@ -233,6 +242,20 @@ export class PlantUpdatePage {
         return this.gpsDeviceSerialInput.getAttribute('value');
     }
 
+    setMaintenanceTypeSelect(maintenanceType): promise.Promise<void> {
+        return this.maintenanceTypeSelect.sendKeys(maintenanceType);
+    }
+
+    getMaintenanceTypeSelect() {
+        return this.maintenanceTypeSelect.element(by.css('option:checked')).getText();
+    }
+
+    maintenanceTypeSelectLastOption(): promise.Promise<void> {
+        return this.maintenanceTypeSelect
+            .all(by.tagName('option'))
+            .last()
+            .click();
+    }
     locationSelectLastOption(): promise.Promise<void> {
         return this.locationSelect
             .all(by.tagName('option'))
@@ -250,25 +273,6 @@ export class PlantUpdatePage {
 
     getLocationSelectedOption() {
         return this.locationSelect.element(by.css('option:checked')).getText();
-    }
-
-    lastLogSelectLastOption(): promise.Promise<void> {
-        return this.lastLogSelect
-            .all(by.tagName('option'))
-            .last()
-            .click();
-    }
-
-    lastLogSelectOption(option): promise.Promise<void> {
-        return this.lastLogSelect.sendKeys(option);
-    }
-
-    getLastLogSelect(): ElementFinder {
-        return this.lastLogSelect;
-    }
-
-    getLastLogSelectedOption() {
-        return this.lastLogSelect.element(by.css('option:checked')).getText();
     }
 
     categorySelectLastOption(): promise.Promise<void> {

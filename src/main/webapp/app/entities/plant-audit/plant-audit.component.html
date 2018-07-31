@@ -1,0 +1,116 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="prestartApp.plantAudit.home.title">Plant Audits</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-plant-audit" [routerLink]="['/plant-audit/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="prestartApp.plantAudit.home.createLabel">
+            Create new Plant Audit
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="plantAudits">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.notes">Notes</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.tyreOrTrackOrRollerFrontLeft">Tyre Or Track Or Roller Front Left</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.tyreOrTrackOrRollerFrontRight">Tyre Or Track Or Roller Front Right</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.controlLeft">Control Left</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.controlRight">Control Right</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.tyreOrTrackOrRollerRearLeft">Tyre Or Track Or Roller Rear Left</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.tyreOrTrackOrRollerRearRight">Tyre Or Track Or Roller Rear Right</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.drive">Drive</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.steeringLeft">Steering Left</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.steeringRight">Steering Right</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.hoistLeft">Hoist Left</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.hoistRight">Hoist Right</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.ejector">Ejector</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.oilLevel">Oil Level</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.coolant">Coolant</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.hydraulics">Hydraulics</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.cab">Cab</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.bonnet">Bonnet</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.body">Body</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.binFront">Bin Front</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.binLeft">Bin Left</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.binRight">Bin Right</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.binInside">Bin Inside</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.tailGate">Tail Gate</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.leftGuard">Left Guard</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.leftStairs">Left Stairs</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.rightGuard">Right Guard</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.rightStairs">Right Stairs</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.incidenType">Inciden Type</span></th>
+            <th><span jhiTranslate="prestartApp.plantAudit.plantLog">Plant Log</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let plantAudit of plantAudits ;trackBy: trackId">
+                <td><a [routerLink]="['/plant-audit', plantAudit.id, 'view' ]">{{plantAudit.id}}</a></td>
+                <td>{{plantAudit.notes}}</td>
+                <td>{{plantAudit.tyreOrTrackOrRollerFrontLeft}}</td>
+                <td>{{plantAudit.tyreOrTrackOrRollerFrontRight}}</td>
+                <td>{{plantAudit.controlLeft}}</td>
+                <td>{{plantAudit.controlRight}}</td>
+                <td>{{plantAudit.tyreOrTrackOrRollerRearLeft}}</td>
+                <td>{{plantAudit.tyreOrTrackOrRollerRearRight}}</td>
+                <td>{{plantAudit.drive}}</td>
+                <td>{{plantAudit.steeringLeft}}</td>
+                <td>{{plantAudit.steeringRight}}</td>
+                <td>{{plantAudit.hoistLeft}}</td>
+                <td>{{plantAudit.hoistRight}}</td>
+                <td>{{plantAudit.ejector}}</td>
+                <td>{{plantAudit.oilLevel}}</td>
+                <td>{{plantAudit.coolant}}</td>
+                <td>{{plantAudit.hydraulics}}</td>
+                <td>{{plantAudit.cab}}</td>
+                <td>{{plantAudit.bonnet}}</td>
+                <td>{{plantAudit.body}}</td>
+                <td>{{plantAudit.binFront}}</td>
+                <td>{{plantAudit.binLeft}}</td>
+                <td>{{plantAudit.binRight}}</td>
+                <td>{{plantAudit.binInside}}</td>
+                <td>{{plantAudit.tailGate}}</td>
+                <td>{{plantAudit.leftGuard}}</td>
+                <td>{{plantAudit.leftStairs}}</td>
+                <td>{{plantAudit.rightGuard}}</td>
+                <td>{{plantAudit.rightStairs}}</td>
+                <td jhiTranslate="{{'prestartApp.IncidentType.' + plantAudit.incidenType}}">{{plantAudit.incidenType}}</td>
+                <td>
+                    <div *ngIf="plantAudit.plantLog">
+                        <a [routerLink]="['../plant-log', plantAudit.plantLog?.id, 'view' ]" >{{plantAudit.plantLog?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/plant-audit', plantAudit.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/plant-audit', plantAudit.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'plant-audit/'+ plantAudit.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -27,6 +27,8 @@
                 "prestartQuestion": "Prestart Question",
                 "prestartQuestionOption": "Prestart Question Option",
                 "prestartCheckQuestionListItem": "Prestart Check Question List Item",
+                "plantAudit": "Plant Audit",
+                "image": "Image",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

@@ -28,6 +28,7 @@
             <th><span jhiTranslate="prestartApp.plant.tankSize">Tank Size</span></th>
             <th><span jhiTranslate="prestartApp.plant.meterReading">Meter Reading</span></th>
             <th><span jhiTranslate="prestartApp.plant.maintenanceDueAt">Maintenance Due At</span></th>
+            <th><span jhiTranslate="prestartApp.plant.maintenanceDueDate">Maintenance Due Date</span></th>
             <th><span jhiTranslate="prestartApp.plant.meterUnit">Meter Unit</span></th>
             <th><span jhiTranslate="prestartApp.plant.certificateDueDate">Certificate Due Date</span></th>
             <th><span jhiTranslate="prestartApp.plant.rucDueAtKm">Ruc Due At Km</span></th>
@@ -37,8 +38,8 @@
             <th><span jhiTranslate="prestartApp.plant.registrationDueDate">Registration Due Date</span></th>
             <th><span jhiTranslate="prestartApp.plant.hireStatus">Hire Status</span></th>
             <th><span jhiTranslate="prestartApp.plant.gpsDeviceSerial">Gps Device Serial</span></th>
+            <th><span jhiTranslate="prestartApp.plant.maintenanceType">Maintenance Type</span></th>
             <th><span jhiTranslate="prestartApp.plant.location">Location</span></th>
-            <th><span jhiTranslate="prestartApp.plant.lastLog">Last Log</span></th>
             <th><span jhiTranslate="prestartApp.plant.category">Category</span></th>
             <th><span jhiTranslate="prestartApp.plant.owner">Owner</span></th>
             <th><span jhiTranslate="prestartApp.plant.assignedContractor">Assigned Contractor</span></th>
@@ -65,6 +66,7 @@
                 <td>{{plant.tankSize}}</td>
                 <td>{{plant.meterReading}}</td>
                 <td>{{plant.maintenanceDueAt}}</td>
+                <td>{{plant.maintenanceDueDate | date:'medium'}}</td>
                 <td jhiTranslate="{{'prestartApp.MeterUnit.' + plant.meterUnit}}">{{plant.meterUnit}}</td>
                 <td>{{plant.certificateDueDate | date:'medium'}}</td>
                 <td>{{plant.rucDueAtKm}}</td>
@@ -74,14 +76,10 @@
                 <td>{{plant.registrationDueDate | date:'medium'}}</td>
                 <td jhiTranslate="{{'prestartApp.HireStatus.' + plant.hireStatus}}">{{plant.hireStatus}}</td>
                 <td>{{plant.gpsDeviceSerial}}</td>
+                <td jhiTranslate="{{'prestartApp.MaintenanceType.' + plant.maintenanceType}}">{{plant.maintenanceType}}</td>
                 <td>
                     <div *ngIf="plant.location">
                         <a [routerLink]="['../location', plant.location?.id, 'view' ]" >{{plant.location?.id}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="plant.lastLog">
-                        <a [routerLink]="['../plant-log', plant.lastLog?.id, 'view' ]" >{{plant.lastLog?.id}}</a>
                     </div>
                 </td>
                 <td>

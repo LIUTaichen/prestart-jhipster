@@ -1,0 +1,145 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="plantAudit">
+            <h2><span jhiTranslate="prestartApp.plantAudit.detail.title">Plant Audit</span> {{plantAudit.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="prestartApp.plantAudit.notes">Notes</span></dt>
+                <dd>
+                    <span>{{plantAudit.notes}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.tyreOrTrackOrRollerFrontLeft">Tyre Or Track Or Roller Front Left</span></dt>
+                <dd>
+                    <span>{{plantAudit.tyreOrTrackOrRollerFrontLeft}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.tyreOrTrackOrRollerFrontRight">Tyre Or Track Or Roller Front Right</span></dt>
+                <dd>
+                    <span>{{plantAudit.tyreOrTrackOrRollerFrontRight}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.controlLeft">Control Left</span></dt>
+                <dd>
+                    <span>{{plantAudit.controlLeft}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.controlRight">Control Right</span></dt>
+                <dd>
+                    <span>{{plantAudit.controlRight}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.tyreOrTrackOrRollerRearLeft">Tyre Or Track Or Roller Rear Left</span></dt>
+                <dd>
+                    <span>{{plantAudit.tyreOrTrackOrRollerRearLeft}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.tyreOrTrackOrRollerRearRight">Tyre Or Track Or Roller Rear Right</span></dt>
+                <dd>
+                    <span>{{plantAudit.tyreOrTrackOrRollerRearRight}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.drive">Drive</span></dt>
+                <dd>
+                    <span>{{plantAudit.drive}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.steeringLeft">Steering Left</span></dt>
+                <dd>
+                    <span>{{plantAudit.steeringLeft}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.steeringRight">Steering Right</span></dt>
+                <dd>
+                    <span>{{plantAudit.steeringRight}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.hoistLeft">Hoist Left</span></dt>
+                <dd>
+                    <span>{{plantAudit.hoistLeft}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.hoistRight">Hoist Right</span></dt>
+                <dd>
+                    <span>{{plantAudit.hoistRight}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.ejector">Ejector</span></dt>
+                <dd>
+                    <span>{{plantAudit.ejector}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.oilLevel">Oil Level</span></dt>
+                <dd>
+                    <span>{{plantAudit.oilLevel}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.coolant">Coolant</span></dt>
+                <dd>
+                    <span>{{plantAudit.coolant}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.hydraulics">Hydraulics</span></dt>
+                <dd>
+                    <span>{{plantAudit.hydraulics}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.cab">Cab</span></dt>
+                <dd>
+                    <span>{{plantAudit.cab}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.bonnet">Bonnet</span></dt>
+                <dd>
+                    <span>{{plantAudit.bonnet}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.body">Body</span></dt>
+                <dd>
+                    <span>{{plantAudit.body}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.binFront">Bin Front</span></dt>
+                <dd>
+                    <span>{{plantAudit.binFront}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.binLeft">Bin Left</span></dt>
+                <dd>
+                    <span>{{plantAudit.binLeft}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.binRight">Bin Right</span></dt>
+                <dd>
+                    <span>{{plantAudit.binRight}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.binInside">Bin Inside</span></dt>
+                <dd>
+                    <span>{{plantAudit.binInside}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.tailGate">Tail Gate</span></dt>
+                <dd>
+                    <span>{{plantAudit.tailGate}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.leftGuard">Left Guard</span></dt>
+                <dd>
+                    <span>{{plantAudit.leftGuard}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.leftStairs">Left Stairs</span></dt>
+                <dd>
+                    <span>{{plantAudit.leftStairs}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.rightGuard">Right Guard</span></dt>
+                <dd>
+                    <span>{{plantAudit.rightGuard}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.rightStairs">Right Stairs</span></dt>
+                <dd>
+                    <span>{{plantAudit.rightStairs}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.incidenType">Inciden Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'prestartApp.IncidentType.' + plantAudit.incidenType}}">{{plantAudit.incidenType}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.plantAudit.plantLog">Plant Log</span></dt>
+                <dd>
+                    <div *ngIf="plantAudit.plantLog">
+                        <a [routerLink]="['/plant-log', plantAudit.plantLog?.id, 'view']">{{plantAudit.plantLog?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/plant-audit', plantAudit.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

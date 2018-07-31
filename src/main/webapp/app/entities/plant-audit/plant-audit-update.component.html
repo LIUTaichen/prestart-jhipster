@@ -1,0 +1,185 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-plant-audit-heading" jhiTranslate="prestartApp.plantAudit.home.createOrEditLabel">Create or edit a Plant Audit</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!plantAudit.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="plantAudit.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.notes" for="field_notes">Notes</label>
+                    <input type="text" class="form-control" name="notes" id="field_notes"
+                        [(ngModel)]="plantAudit.notes" maxlength="1024"/>
+                    <div [hidden]="!(editForm.controls.notes?.dirty && editForm.controls.notes?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.notes?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1024 }">
+                        This field cannot be longer than 1024 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.tyreOrTrackOrRollerFrontLeft" for="field_tyreOrTrackOrRollerFrontLeft">Tyre Or Track Or Roller Front Left</label>
+                    <input type="checkbox" class="form-control" name="tyreOrTrackOrRollerFrontLeft" id="field_tyreOrTrackOrRollerFrontLeft"
+                        [(ngModel)]="plantAudit.tyreOrTrackOrRollerFrontLeft" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.tyreOrTrackOrRollerFrontRight" for="field_tyreOrTrackOrRollerFrontRight">Tyre Or Track Or Roller Front Right</label>
+                    <input type="checkbox" class="form-control" name="tyreOrTrackOrRollerFrontRight" id="field_tyreOrTrackOrRollerFrontRight"
+                        [(ngModel)]="plantAudit.tyreOrTrackOrRollerFrontRight" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.controlLeft" for="field_controlLeft">Control Left</label>
+                    <input type="checkbox" class="form-control" name="controlLeft" id="field_controlLeft"
+                        [(ngModel)]="plantAudit.controlLeft" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.controlRight" for="field_controlRight">Control Right</label>
+                    <input type="checkbox" class="form-control" name="controlRight" id="field_controlRight"
+                        [(ngModel)]="plantAudit.controlRight" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.tyreOrTrackOrRollerRearLeft" for="field_tyreOrTrackOrRollerRearLeft">Tyre Or Track Or Roller Rear Left</label>
+                    <input type="checkbox" class="form-control" name="tyreOrTrackOrRollerRearLeft" id="field_tyreOrTrackOrRollerRearLeft"
+                        [(ngModel)]="plantAudit.tyreOrTrackOrRollerRearLeft" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.tyreOrTrackOrRollerRearRight" for="field_tyreOrTrackOrRollerRearRight">Tyre Or Track Or Roller Rear Right</label>
+                    <input type="checkbox" class="form-control" name="tyreOrTrackOrRollerRearRight" id="field_tyreOrTrackOrRollerRearRight"
+                        [(ngModel)]="plantAudit.tyreOrTrackOrRollerRearRight" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.drive" for="field_drive">Drive</label>
+                    <input type="checkbox" class="form-control" name="drive" id="field_drive"
+                        [(ngModel)]="plantAudit.drive" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.steeringLeft" for="field_steeringLeft">Steering Left</label>
+                    <input type="checkbox" class="form-control" name="steeringLeft" id="field_steeringLeft"
+                        [(ngModel)]="plantAudit.steeringLeft" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.steeringRight" for="field_steeringRight">Steering Right</label>
+                    <input type="checkbox" class="form-control" name="steeringRight" id="field_steeringRight"
+                        [(ngModel)]="plantAudit.steeringRight" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.hoistLeft" for="field_hoistLeft">Hoist Left</label>
+                    <input type="checkbox" class="form-control" name="hoistLeft" id="field_hoistLeft"
+                        [(ngModel)]="plantAudit.hoistLeft" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.hoistRight" for="field_hoistRight">Hoist Right</label>
+                    <input type="checkbox" class="form-control" name="hoistRight" id="field_hoistRight"
+                        [(ngModel)]="plantAudit.hoistRight" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.ejector" for="field_ejector">Ejector</label>
+                    <input type="checkbox" class="form-control" name="ejector" id="field_ejector"
+                        [(ngModel)]="plantAudit.ejector" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.oilLevel" for="field_oilLevel">Oil Level</label>
+                    <input type="checkbox" class="form-control" name="oilLevel" id="field_oilLevel"
+                        [(ngModel)]="plantAudit.oilLevel" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.coolant" for="field_coolant">Coolant</label>
+                    <input type="checkbox" class="form-control" name="coolant" id="field_coolant"
+                        [(ngModel)]="plantAudit.coolant" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.hydraulics" for="field_hydraulics">Hydraulics</label>
+                    <input type="checkbox" class="form-control" name="hydraulics" id="field_hydraulics"
+                        [(ngModel)]="plantAudit.hydraulics" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.cab" for="field_cab">Cab</label>
+                    <input type="checkbox" class="form-control" name="cab" id="field_cab"
+                        [(ngModel)]="plantAudit.cab" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.bonnet" for="field_bonnet">Bonnet</label>
+                    <input type="checkbox" class="form-control" name="bonnet" id="field_bonnet"
+                        [(ngModel)]="plantAudit.bonnet" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.body" for="field_body">Body</label>
+                    <input type="checkbox" class="form-control" name="body" id="field_body"
+                        [(ngModel)]="plantAudit.body" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.binFront" for="field_binFront">Bin Front</label>
+                    <input type="checkbox" class="form-control" name="binFront" id="field_binFront"
+                        [(ngModel)]="plantAudit.binFront" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.binLeft" for="field_binLeft">Bin Left</label>
+                    <input type="checkbox" class="form-control" name="binLeft" id="field_binLeft"
+                        [(ngModel)]="plantAudit.binLeft" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.binRight" for="field_binRight">Bin Right</label>
+                    <input type="checkbox" class="form-control" name="binRight" id="field_binRight"
+                        [(ngModel)]="plantAudit.binRight" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.binInside" for="field_binInside">Bin Inside</label>
+                    <input type="checkbox" class="form-control" name="binInside" id="field_binInside"
+                        [(ngModel)]="plantAudit.binInside" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.tailGate" for="field_tailGate">Tail Gate</label>
+                    <input type="checkbox" class="form-control" name="tailGate" id="field_tailGate"
+                        [(ngModel)]="plantAudit.tailGate" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.leftGuard" for="field_leftGuard">Left Guard</label>
+                    <input type="checkbox" class="form-control" name="leftGuard" id="field_leftGuard"
+                        [(ngModel)]="plantAudit.leftGuard" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.leftStairs" for="field_leftStairs">Left Stairs</label>
+                    <input type="checkbox" class="form-control" name="leftStairs" id="field_leftStairs"
+                        [(ngModel)]="plantAudit.leftStairs" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.rightGuard" for="field_rightGuard">Right Guard</label>
+                    <input type="checkbox" class="form-control" name="rightGuard" id="field_rightGuard"
+                        [(ngModel)]="plantAudit.rightGuard" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.rightStairs" for="field_rightStairs">Right Stairs</label>
+                    <input type="checkbox" class="form-control" name="rightStairs" id="field_rightStairs"
+                        [(ngModel)]="plantAudit.rightStairs" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.incidenType" for="field_incidenType">Inciden Type</label>
+                    <select class="form-control" name="incidenType" [(ngModel)]="plantAudit.incidenType" id="field_incidenType" >
+                        <option value="NONE">{{'prestartApp.IncidentType.NONE' | translate}}</option>
+                        <option value="DAMAGE">{{'prestartApp.IncidentType.DAMAGE' | translate}}</option>
+                        <option value="WEAR_AND_TEAR">{{'prestartApp.IncidentType.WEAR_AND_TEAR' | translate}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantAudit.plantLog" for="field_plantLog">Plant Log</label>
+                    <select class="form-control" id="field_plantLog" name="plantLog" [(ngModel)]="plantAudit.plantLog">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="plantLogOption.id === plantAudit.plantLog?.id ? plantAudit.plantLog : plantLogOption" *ngFor="let plantLogOption of plantlogs; trackBy: trackPlantLogById">{{plantLogOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

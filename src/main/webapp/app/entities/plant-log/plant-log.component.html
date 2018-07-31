@@ -15,15 +15,15 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="prestartApp.plantLog.notes">Notes</span></th>
             <th><span jhiTranslate="prestartApp.plantLog.meterReading">Meter Reading</span></th>
             <th><span jhiTranslate="prestartApp.plantLog.hubboReading">Hubbo Reading</span></th>
-            <th><span jhiTranslate="prestartApp.plantLog.serviceDueAt">Service Due At</span></th>
+            <th><span jhiTranslate="prestartApp.plantLog.maintenanceDueAt">Maintenance Due At</span></th>
             <th><span jhiTranslate="prestartApp.plantLog.rucDueAt">Ruc Due At</span></th>
-            <th><span jhiTranslate="prestartApp.plantLog.wofDueDate">Wof Due Date</span></th>
-            <th><span jhiTranslate="prestartApp.plantLog.cofDueDate">Cof Due Date</span></th>
-            <th><span jhiTranslate="prestartApp.plantLog.serviceDueDate">Service Due Date</span></th>
+            <th><span jhiTranslate="prestartApp.plantLog.certificateDueDate">Certificate Due Date</span></th>
+            <th><span jhiTranslate="prestartApp.plantLog.maintenanceDueDate">Maintenance Due Date</span></th>
+            <th><span jhiTranslate="prestartApp.plantLog.operatorName">Operator Name</span></th>
             <th><span jhiTranslate="prestartApp.plantLog.plant">Plant</span></th>
-            <th><span jhiTranslate="prestartApp.plantLog.operator">Operator</span></th>
             <th><span jhiTranslate="prestartApp.plantLog.site">Site</span></th>
             <th></th>
             </tr>
@@ -31,21 +31,17 @@
             <tbody>
             <tr *ngFor="let plantLog of plantLogs ;trackBy: trackId">
                 <td><a [routerLink]="['/plant-log', plantLog.id, 'view' ]">{{plantLog.id}}</a></td>
+                <td>{{plantLog.notes}}</td>
                 <td>{{plantLog.meterReading}}</td>
                 <td>{{plantLog.hubboReading}}</td>
-                <td>{{plantLog.serviceDueAt}}</td>
+                <td>{{plantLog.maintenanceDueAt}}</td>
                 <td>{{plantLog.rucDueAt}}</td>
-                <td>{{plantLog.wofDueDate | date:'medium'}}</td>
-                <td>{{plantLog.cofDueDate | date:'medium'}}</td>
-                <td>{{plantLog.serviceDueDate | date:'medium'}}</td>
+                <td>{{plantLog.certificateDueDate | date:'medium'}}</td>
+                <td>{{plantLog.maintenanceDueDate | date:'medium'}}</td>
+                <td>{{plantLog.operatorName}}</td>
                 <td>
                     <div *ngIf="plantLog.plant">
                         <a [routerLink]="['../plant', plantLog.plant?.id, 'view' ]" >{{plantLog.plant?.id}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="plantLog.operator">
-                        <a [routerLink]="['../people', plantLog.operator?.id, 'view' ]" >{{plantLog.operator?.id}}</a>
                     </div>
                 </td>
                 <td>

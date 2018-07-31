@@ -60,6 +60,10 @@
                 <dd>
                     <span>{{plant.maintenanceDueAt}}</span>
                 </dd>
+                <dt><span jhiTranslate="prestartApp.plant.maintenanceDueDate">Maintenance Due Date</span></dt>
+                <dd>
+                    <span>{{plant.maintenanceDueDate}}</span>
+                </dd>
                 <dt><span jhiTranslate="prestartApp.plant.meterUnit">Meter Unit</span></dt>
                 <dd>
                     <span jhiTranslate="{{'prestartApp.MeterUnit.' + plant.meterUnit}}">{{plant.meterUnit}}</span>
@@ -96,16 +100,14 @@
                 <dd>
                     <span>{{plant.gpsDeviceSerial}}</span>
                 </dd>
+                <dt><span jhiTranslate="prestartApp.plant.maintenanceType">Maintenance Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'prestartApp.MaintenanceType.' + plant.maintenanceType}}">{{plant.maintenanceType}}</span>
+                </dd>
                 <dt><span jhiTranslate="prestartApp.plant.location">Location</span></dt>
                 <dd>
                     <div *ngIf="plant.location">
                         <a [routerLink]="['/location', plant.location?.id, 'view']">{{plant.location?.id}}</a>
-                    </div>
-                </dd>
-                <dt><span jhiTranslate="prestartApp.plant.lastLog">Last Log</span></dt>
-                <dd>
-                    <div *ngIf="plant.lastLog">
-                        <a [routerLink]="['/plant-log', plant.lastLog?.id, 'view']">{{plant.lastLog?.id}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="prestartApp.plant.category">Category</span></dt>

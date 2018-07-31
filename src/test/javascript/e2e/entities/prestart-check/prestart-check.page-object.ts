@@ -18,11 +18,8 @@ export class PrestartCheckUpdatePage {
     saveButton = element(by.id('save-entity'));
     cancelButton = element(by.id('cancel-save'));
     signatureInput = element(by.id('file_signature'));
+    notesInput = element(by.id('field_notes'));
     plantLogSelect = element(by.id('field_plantLog'));
-    projectSelect = element(by.id('field_project'));
-    plantSelect = element(by.id('field_plant'));
-    locationSelect = element(by.id('field_location'));
-    operatorSelect = element(by.id('field_operator'));
 
     getPageTitle() {
         return this.pageTitle.getAttribute('jhiTranslate');
@@ -34,6 +31,14 @@ export class PrestartCheckUpdatePage {
 
     getSignatureInput() {
         return this.signatureInput.getAttribute('value');
+    }
+
+    setNotesInput(notes): promise.Promise<void> {
+        return this.notesInput.sendKeys(notes);
+    }
+
+    getNotesInput() {
+        return this.notesInput.getAttribute('value');
     }
 
     plantLogSelectLastOption(): promise.Promise<void> {
@@ -53,82 +58,6 @@ export class PrestartCheckUpdatePage {
 
     getPlantLogSelectedOption() {
         return this.plantLogSelect.element(by.css('option:checked')).getText();
-    }
-
-    projectSelectLastOption(): promise.Promise<void> {
-        return this.projectSelect
-            .all(by.tagName('option'))
-            .last()
-            .click();
-    }
-
-    projectSelectOption(option): promise.Promise<void> {
-        return this.projectSelect.sendKeys(option);
-    }
-
-    getProjectSelect(): ElementFinder {
-        return this.projectSelect;
-    }
-
-    getProjectSelectedOption() {
-        return this.projectSelect.element(by.css('option:checked')).getText();
-    }
-
-    plantSelectLastOption(): promise.Promise<void> {
-        return this.plantSelect
-            .all(by.tagName('option'))
-            .last()
-            .click();
-    }
-
-    plantSelectOption(option): promise.Promise<void> {
-        return this.plantSelect.sendKeys(option);
-    }
-
-    getPlantSelect(): ElementFinder {
-        return this.plantSelect;
-    }
-
-    getPlantSelectedOption() {
-        return this.plantSelect.element(by.css('option:checked')).getText();
-    }
-
-    locationSelectLastOption(): promise.Promise<void> {
-        return this.locationSelect
-            .all(by.tagName('option'))
-            .last()
-            .click();
-    }
-
-    locationSelectOption(option): promise.Promise<void> {
-        return this.locationSelect.sendKeys(option);
-    }
-
-    getLocationSelect(): ElementFinder {
-        return this.locationSelect;
-    }
-
-    getLocationSelectedOption() {
-        return this.locationSelect.element(by.css('option:checked')).getText();
-    }
-
-    operatorSelectLastOption(): promise.Promise<void> {
-        return this.operatorSelect
-            .all(by.tagName('option'))
-            .last()
-            .click();
-    }
-
-    operatorSelectOption(option): promise.Promise<void> {
-        return this.operatorSelect.sendKeys(option);
-    }
-
-    getOperatorSelect(): ElementFinder {
-        return this.operatorSelect;
-    }
-
-    getOperatorSelectedOption() {
-        return this.operatorSelect.element(by.css('option:checked')).getText();
     }
 
     save(): promise.Promise<void> {

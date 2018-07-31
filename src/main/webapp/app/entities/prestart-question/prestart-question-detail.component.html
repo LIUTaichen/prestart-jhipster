@@ -13,6 +13,16 @@
                 <dd>
                     <span>{{prestartQuestion.isLockOutRequired}}</span>
                 </dd>
+                <dt><span jhiTranslate="prestartApp.prestartQuestion.order">Order</span></dt>
+                <dd>
+                    <span>{{prestartQuestion.order}}</span>
+                </dd>
+                <dt><span jhiTranslate="prestartApp.prestartQuestion.prestartCheckConfig">Prestart Check Config</span></dt>
+                <dd>
+                    <div *ngIf="prestartQuestion.prestartCheckConfig">
+                        <a [routerLink]="['/prestart-check-config', prestartQuestion.prestartCheckConfig?.id, 'view']">{{prestartQuestion.prestartCheckConfig?.id}}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

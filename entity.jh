@@ -12,6 +12,7 @@ entity Plant {
     tankSize Integer,
     meterReading Integer,
     maintenanceDueAt Integer,
+    maintenanceDueDate Instant,
     meterUnit MeterUnit,
     certificateDueDate Instant,
     rucDueAtKm Integer,
@@ -20,7 +21,13 @@ entity Plant {
     hourlyRate Double,
     registrationDueDate Instant,
     hireStatus HireStatus,
-    gpsDeviceSerial String
+    gpsDeviceSerial String,
+    maintenanceType MaintenanceType
+}
+
+enum MaintenanceType {
+    METER_BASED,
+    TIME_BASED
 }
 
 entity Location {
@@ -135,13 +142,57 @@ enum Status{
 }
 
 entity PlantLog{
+    notes String maxlength(1024),
     meterReading Integer,
     hubboReading Integer,
-    serviceDueAt Integer,
+    maintenanceDueAt Integer,
     rucDueAt Integer,
-    wofDueDate Instant,
-    cofDueDate Instant,
-    serviceDueDate Instant
+    certificateDueDate Instant,
+    maintenanceDueDate Instant,
+    operatorName String
+}
+
+entity PlantAudit {
+    notes String maxlength(1024),
+    tyreOrTrackOrRollerFrontLeft Boolean,
+    tyreOrTrackOrRollerFrontRight Boolean,
+    controlLeft Boolean,
+    controlRight Boolean,
+    tyreOrTrackOrRollerRearLeft Boolean,
+    tyreOrTrackOrRollerRearRight Boolean,
+    drive Boolean,
+    steeringLeft Boolean,
+    steeringRight Boolean,
+    hoistLeft Boolean,
+    hoistRight Boolean,
+    ejector Boolean,
+    oilLevel Boolean,
+    coolant Boolean,
+    hydraulics Boolean,
+    cab Boolean,
+    bonnet Boolean,
+    body Boolean,
+    binFront Boolean,
+    binLeft Boolean,
+    binRight Boolean,
+    binInside Boolean,
+    tailGate Boolean,
+    leftGuard Boolean,
+    leftStairs Boolean,
+    rightGuard Boolean,
+    rightStairs Boolean,
+    incidenType IncidentType
+}
+
+entity Image {
+    description String,
+    image ImageBlob
+}
+
+enum IncidentType {
+    NONE,
+    DAMAGE,
+    WEAR_AND_TEAR
 }
 
 entity PurchaseOrder{
@@ -163,30 +214,29 @@ entity EmailSubscription {
 }
 
 entity PrestartCheck {
-	signature Blob
+	signature ImageBlob,
+    notes String
 }
 
 entity PrestartCheckResponse {
-
+    
 }
 
 entity PrestartCheckConfig {
-    name String
+    name String,
+    notes String
 }
 
 entity PrestartQuestion {
     body String,
-    isLockOutRequired Boolean
+    isLockOutRequired Boolean,
+    order Integer
 }
 
 entity PrestartQuestionOption {
     body String,
     isNormal Boolean,
     isActive Boolean
-}
-
-entity PrestartCheckQuestionListItem {
-	order Integer
 }
 
 enum Event {
@@ -209,31 +259,25 @@ relationship ManyToOne {
     Niggle{ plant} to Plant,
     Niggle{ assignedContractor } to MaintenanceContractor,
     Category{competency} to Competency,
-    PlantLog{operator} to People,
     PlantLog{site} to Project,
     Location {project} to Project,
     Category {prestartCheckConfig } to PrestartCheckConfig,
     PrestartCheckResponse { question } to PrestartQuestion,
-    PrestartCheckResponse { response } to PrestartQuestionOption,
-	PrestartCheckQuestionListItem { question } to PrestartQuestion,
-    PrestartCheck { project } to Project,
-    PrestartCheck { plant } to Plant,
-    PrestartCheck { location } to Location,
-    PrestartCheck { operator } to People
-   
+    PrestartCheckResponse { response } to PrestartQuestionOption
 }
 
 relationship OneToOne {
     Niggle{purchaseOrder} to PurchaseOrder,
     Plant{location} to Location,
     PrestartCheck { plantLog } to PlantLog,
-    Plant{ lastLog } to PlantLog
+    PlantAudit { plantLog } to PlantLog
 }
 
 relationship OneToMany {
-	PrestartCheckConfig { questionlist } to PrestartCheckQuestionListItem,
+	PrestartCheckConfig { questionlist } to PrestartQuestion,
     PrestartCheck { responses } to PrestartCheckResponse,
-    PrestartQuestion { options } to PrestartQuestionOption
+    PrestartQuestion { options } to PrestartQuestionOption,
+    PlantAudit { photos } to Image
 }
 
 enum MaintenanceGroup {
@@ -253,5 +297,4 @@ filter PrestartCheck
 filter PrestartQuestionOption
 filter PrestartCheckResponse
 filter PrestartCheckConfig
-filter PrestartCheckQuestionListItem
 

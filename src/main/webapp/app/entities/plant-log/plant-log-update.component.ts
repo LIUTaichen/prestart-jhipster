@@ -10,8 +10,6 @@ import { IPlantLog } from 'app/shared/model/plant-log.model';
 import { PlantLogService } from './plant-log.service';
 import { IPlant } from 'app/shared/model/plant.model';
 import { PlantService } from 'app/entities/plant';
-import { IPeople } from 'app/shared/model/people.model';
-import { PeopleService } from 'app/entities/people';
 import { IProject } from 'app/shared/model/project.model';
 import { ProjectService } from 'app/entities/project';
 
@@ -25,18 +23,14 @@ export class PlantLogUpdateComponent implements OnInit {
 
     plants: IPlant[];
 
-    people: IPeople[];
-
     projects: IProject[];
-    wofDueDate: string;
-    cofDueDate: string;
-    serviceDueDate: string;
+    certificateDueDate: string;
+    maintenanceDueDate: string;
 
     constructor(
         private jhiAlertService: JhiAlertService,
         private plantLogService: PlantLogService,
         private plantService: PlantService,
-        private peopleService: PeopleService,
         private projectService: ProjectService,
         private activatedRoute: ActivatedRoute
     ) {}
@@ -49,12 +43,6 @@ export class PlantLogUpdateComponent implements OnInit {
         this.plantService.query().subscribe(
             (res: HttpResponse<IPlant[]>) => {
                 this.plants = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
-        this.peopleService.query().subscribe(
-            (res: HttpResponse<IPeople[]>) => {
-                this.people = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -72,9 +60,8 @@ export class PlantLogUpdateComponent implements OnInit {
 
     save() {
         this.isSaving = true;
-        this.plantLog.wofDueDate = moment(this.wofDueDate, DATE_TIME_FORMAT);
-        this.plantLog.cofDueDate = moment(this.cofDueDate, DATE_TIME_FORMAT);
-        this.plantLog.serviceDueDate = moment(this.serviceDueDate, DATE_TIME_FORMAT);
+        this.plantLog.certificateDueDate = moment(this.certificateDueDate, DATE_TIME_FORMAT);
+        this.plantLog.maintenanceDueDate = moment(this.maintenanceDueDate, DATE_TIME_FORMAT);
         if (this.plantLog.id !== undefined) {
             this.subscribeToSaveResponse(this.plantLogService.update(this.plantLog));
         } else {
@@ -103,10 +90,6 @@ export class PlantLogUpdateComponent implements OnInit {
         return item.id;
     }
 
-    trackPeopleById(index: number, item: IPeople) {
-        return item.id;
-    }
-
     trackProjectById(index: number, item: IProject) {
         return item.id;
     }
@@ -116,8 +99,7 @@ export class PlantLogUpdateComponent implements OnInit {
 
     set plantLog(plantLog: IPlantLog) {
         this._plantLog = plantLog;
-        this.wofDueDate = moment(plantLog.wofDueDate).format(DATE_TIME_FORMAT);
-        this.cofDueDate = moment(plantLog.cofDueDate).format(DATE_TIME_FORMAT);
-        this.serviceDueDate = moment(plantLog.serviceDueDate).format(DATE_TIME_FORMAT);
+        this.certificateDueDate = moment(plantLog.certificateDueDate).format(DATE_TIME_FORMAT);
+        this.maintenanceDueDate = moment(plantLog.maintenanceDueDate).format(DATE_TIME_FORMAT);
     }
 }

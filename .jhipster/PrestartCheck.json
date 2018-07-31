@@ -4,7 +4,11 @@
         {
             "fieldName": "signature",
             "fieldType": "byte[]",
-            "fieldTypeBlobContent": "any"
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "notes",
+            "fieldType": "String"
         }
     ],
     "relationships": [
@@ -21,30 +25,6 @@
             "relationshipName": "responses",
             "otherEntityName": "prestartCheckResponse",
             "otherEntityRelationshipName": "prestartCheck"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "project",
-            "otherEntityName": "project",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "plant",
-            "otherEntityName": "plant",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "location",
-            "otherEntityName": "location",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "operator",
-            "otherEntityName": "people",
-            "otherEntityField": "id"
         }
     ],
     "changelogDate": "20180715234438",

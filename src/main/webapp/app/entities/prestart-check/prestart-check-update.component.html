@@ -12,20 +12,24 @@
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="prestartApp.prestartCheck.signature" for="field_signature">Signature</label>
                     <div>
+                        <img [src]="'data:' + prestartCheck.signatureContentType + ';base64,' + prestartCheck.signature" style="max-height: 100px;" *ngIf="prestartCheck.signature" alt="prestartCheck image"/>
                         <div *ngIf="prestartCheck.signature" class="form-text text-danger clearfix">
-                            <a class="pull-left" (click)="openFile(prestartCheck.signatureContentType, prestartCheck.signature)" jhiTranslate="entity.action.open">open</a><br>
                             <span class="pull-left">{{prestartCheck.signatureContentType}}, {{byteSize(prestartCheck.signature)}}</span>
-                            <button type="button" (click)="prestartCheck.signature=null;prestartCheck.signatureContentType=null;"
-                                    class="btn btn-secondary btn-xs pull-right">
+                            <button type="button" (click)="clearInputImage('signature', 'signatureContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
                                 <fa-icon [icon]="'times'"></fa-icon>
                             </button>
                         </div>
-                        <input type="file" id="file_signature" (change)="setFileData($event, prestartCheck, 'signature', false)" jhiTranslate="entity.action.addblob"/>
+                        <input type="file" id="file_signature" (change)="setFileData($event, prestartCheck, 'signature', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
                     </div>
                     <input type="hidden" class="form-control" name="signature" id="field_signature"
                         [(ngModel)]="prestartCheck.signature" />
                     <input type="hidden" class="form-control" name="signatureContentType" id="field_signatureContentType"
                         [(ngModel)]="prestartCheck.signatureContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.prestartCheck.notes" for="field_notes">Notes</label>
+                    <input type="text" class="form-control" name="notes" id="field_notes"
+                        [(ngModel)]="prestartCheck.notes" />
                 </div>
 
                 <div class="form-group">
@@ -33,34 +37,6 @@
                     <select class="form-control" id="field_plantLog" name="plantLog" [(ngModel)]="prestartCheck.plantLog">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="plantLogOption.id === prestartCheck.plantLog?.id ? prestartCheck.plantLog : plantLogOption" *ngFor="let plantLogOption of plantlogs; trackBy: trackPlantLogById">{{plantLogOption.id}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="prestartApp.prestartCheck.project" for="field_project">Project</label>
-                    <select class="form-control" id="field_project" name="project" [(ngModel)]="prestartCheck.project" >
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="projectOption.id === prestartCheck.project?.id ? prestartCheck.project : projectOption" *ngFor="let projectOption of projects; trackBy: trackProjectById">{{projectOption.id}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="prestartApp.prestartCheck.plant" for="field_plant">Plant</label>
-                    <select class="form-control" id="field_plant" name="plant" [(ngModel)]="prestartCheck.plant" >
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="plantOption.id === prestartCheck.plant?.id ? prestartCheck.plant : plantOption" *ngFor="let plantOption of plants; trackBy: trackPlantById">{{plantOption.id}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="prestartApp.prestartCheck.location" for="field_location">Location</label>
-                    <select class="form-control" id="field_location" name="location" [(ngModel)]="prestartCheck.location" >
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="locationOption.id === prestartCheck.location?.id ? prestartCheck.location : locationOption" *ngFor="let locationOption of locations; trackBy: trackLocationById">{{locationOption.id}}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="prestartApp.prestartCheck.operator" for="field_operator">Operator</label>
-                    <select class="form-control" id="field_operator" name="operator" [(ngModel)]="prestartCheck.operator" >
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="peopleOption.id === prestartCheck.operator?.id ? prestartCheck.operator : peopleOption" *ngFor="let peopleOption of people; trackBy: trackPeopleById">{{peopleOption.id}}</option>
                     </select>
                 </div>
             </div>

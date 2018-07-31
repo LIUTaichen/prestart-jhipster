@@ -5,6 +5,10 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="prestartApp.plantLog.notes">Notes</span></dt>
+                <dd>
+                    <span>{{plantLog.notes}}</span>
+                </dd>
                 <dt><span jhiTranslate="prestartApp.plantLog.meterReading">Meter Reading</span></dt>
                 <dd>
                     <span>{{plantLog.meterReading}}</span>
@@ -13,36 +17,30 @@
                 <dd>
                     <span>{{plantLog.hubboReading}}</span>
                 </dd>
-                <dt><span jhiTranslate="prestartApp.plantLog.serviceDueAt">Service Due At</span></dt>
+                <dt><span jhiTranslate="prestartApp.plantLog.maintenanceDueAt">Maintenance Due At</span></dt>
                 <dd>
-                    <span>{{plantLog.serviceDueAt}}</span>
+                    <span>{{plantLog.maintenanceDueAt}}</span>
                 </dd>
                 <dt><span jhiTranslate="prestartApp.plantLog.rucDueAt">Ruc Due At</span></dt>
                 <dd>
                     <span>{{plantLog.rucDueAt}}</span>
                 </dd>
-                <dt><span jhiTranslate="prestartApp.plantLog.wofDueDate">Wof Due Date</span></dt>
+                <dt><span jhiTranslate="prestartApp.plantLog.certificateDueDate">Certificate Due Date</span></dt>
                 <dd>
-                    <span>{{plantLog.wofDueDate}}</span>
+                    <span>{{plantLog.certificateDueDate}}</span>
                 </dd>
-                <dt><span jhiTranslate="prestartApp.plantLog.cofDueDate">Cof Due Date</span></dt>
+                <dt><span jhiTranslate="prestartApp.plantLog.maintenanceDueDate">Maintenance Due Date</span></dt>
                 <dd>
-                    <span>{{plantLog.cofDueDate}}</span>
+                    <span>{{plantLog.maintenanceDueDate}}</span>
                 </dd>
-                <dt><span jhiTranslate="prestartApp.plantLog.serviceDueDate">Service Due Date</span></dt>
+                <dt><span jhiTranslate="prestartApp.plantLog.operatorName">Operator Name</span></dt>
                 <dd>
-                    <span>{{plantLog.serviceDueDate}}</span>
+                    <span>{{plantLog.operatorName}}</span>
                 </dd>
                 <dt><span jhiTranslate="prestartApp.plantLog.plant">Plant</span></dt>
                 <dd>
                     <div *ngIf="plantLog.plant">
                         <a [routerLink]="['/plant', plantLog.plant?.id, 'view']">{{plantLog.plant?.id}}</a>
-                    </div>
-                </dd>
-                <dt><span jhiTranslate="prestartApp.plantLog.operator">Operator</span></dt>
-                <dd>
-                    <div *ngIf="plantLog.operator">
-                        <a [routerLink]="['/people', plantLog.operator?.id, 'view']">{{plantLog.operator?.id}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="prestartApp.plantLog.site">Site</span></dt>

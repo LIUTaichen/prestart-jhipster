@@ -1,0 +1,151 @@
+{
+    "name": "PlantAudit",
+    "fields": [
+        {
+            "fieldName": "notes",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 1024
+        },
+        {
+            "fieldName": "tyreOrTrackOrRollerFrontLeft",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "tyreOrTrackOrRollerFrontRight",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "controlLeft",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "controlRight",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "tyreOrTrackOrRollerRearLeft",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "tyreOrTrackOrRollerRearRight",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "drive",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "steeringLeft",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "steeringRight",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "hoistLeft",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "hoistRight",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "ejector",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "oilLevel",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "coolant",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "hydraulics",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "cab",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "bonnet",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "body",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "binFront",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "binLeft",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "binRight",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "binInside",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "tailGate",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "leftGuard",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "leftStairs",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "rightGuard",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "rightStairs",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "incidenType",
+            "fieldType": "IncidentType",
+            "fieldValues": "NONE,DAMAGE,WEAR_AND_TEAR"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "plantLog",
+            "otherEntityName": "plantLog",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "plantAudit"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "photos",
+            "otherEntityName": "image",
+            "otherEntityRelationshipName": "plantAudit"
+        }
+    ],
+    "changelogDate": "20180731201224",
+    "entityTableName": "plant_audit",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

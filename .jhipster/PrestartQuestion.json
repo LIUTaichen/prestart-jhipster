@@ -8,9 +8,19 @@
         {
             "fieldName": "isLockOutRequired",
             "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "order",
+            "fieldType": "Integer"
         }
     ],
     "relationships": [
+        {
+            "relationshipName": "prestartCheckConfig",
+            "otherEntityName": "prestartCheckConfig",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
         {
             "relationshipType": "one-to-many",
             "relationshipName": "options",

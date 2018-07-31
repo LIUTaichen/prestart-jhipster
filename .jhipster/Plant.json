@@ -55,6 +55,10 @@
             "fieldType": "Integer"
         },
         {
+            "fieldName": "maintenanceDueDate",
+            "fieldType": "Instant"
+        },
+        {
             "fieldName": "meterUnit",
             "fieldType": "MeterUnit",
             "fieldValues": "KM,HOUR"
@@ -91,6 +95,11 @@
         {
             "fieldName": "gpsDeviceSerial",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "maintenanceType",
+            "fieldType": "MaintenanceType",
+            "fieldValues": "METER_BASED,TIME_BASED"
         }
     ],
     "relationships": [
@@ -98,14 +107,6 @@
             "relationshipType": "one-to-one",
             "relationshipName": "location",
             "otherEntityName": "location",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "plant"
-        },
-        {
-            "relationshipType": "one-to-one",
-            "relationshipName": "lastLog",
-            "otherEntityName": "plantLog",
             "otherEntityField": "id",
             "ownerSide": true,
             "otherEntityRelationshipName": "plant"

@@ -2,6 +2,14 @@
     "name": "PlantLog",
     "fields": [
         {
+            "fieldName": "notes",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 1024
+        },
+        {
             "fieldName": "meterReading",
             "fieldType": "Integer"
         },
@@ -10,7 +18,7 @@
             "fieldType": "Integer"
         },
         {
-            "fieldName": "serviceDueAt",
+            "fieldName": "maintenanceDueAt",
             "fieldType": "Integer"
         },
         {
@@ -18,16 +26,16 @@
             "fieldType": "Integer"
         },
         {
-            "fieldName": "wofDueDate",
+            "fieldName": "certificateDueDate",
             "fieldType": "Instant"
         },
         {
-            "fieldName": "cofDueDate",
+            "fieldName": "maintenanceDueDate",
             "fieldType": "Instant"
         },
         {
-            "fieldName": "serviceDueDate",
-            "fieldType": "Instant"
+            "fieldName": "operatorName",
+            "fieldType": "String"
         }
     ],
     "relationships": [
@@ -35,12 +43,6 @@
             "relationshipType": "many-to-one",
             "relationshipName": "plant",
             "otherEntityName": "plant",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "operator",
-            "otherEntityName": "people",
             "otherEntityField": "id"
         },
         {

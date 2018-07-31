@@ -1,0 +1,52 @@
+
+{
+    "prestartApp": {
+        "plantAudit" : {
+            "home": {
+                "title": "Plant Audits",
+                "createLabel": "Create a new Plant Audit",
+                "createOrEditLabel": "Create or edit a Plant Audit"
+            },
+            "created": "A new Plant Audit is created with identifier {{ param }}",
+            "updated": "A Plant Audit is updated with identifier {{ param }}",
+            "deleted": "A Plant Audit is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Plant Audit {{ id }}?"
+            },
+            "detail": {
+                "title": "Plant Audit"
+            },
+            "notes": "Notes",
+            "tyreOrTrackOrRollerFrontLeft": "Tyre Or Track Or Roller Front Left",
+            "tyreOrTrackOrRollerFrontRight": "Tyre Or Track Or Roller Front Right",
+            "controlLeft": "Control Left",
+            "controlRight": "Control Right",
+            "tyreOrTrackOrRollerRearLeft": "Tyre Or Track Or Roller Rear Left",
+            "tyreOrTrackOrRollerRearRight": "Tyre Or Track Or Roller Rear Right",
+            "drive": "Drive",
+            "steeringLeft": "Steering Left",
+            "steeringRight": "Steering Right",
+            "hoistLeft": "Hoist Left",
+            "hoistRight": "Hoist Right",
+            "ejector": "Ejector",
+            "oilLevel": "Oil Level",
+            "coolant": "Coolant",
+            "hydraulics": "Hydraulics",
+            "cab": "Cab",
+            "bonnet": "Bonnet",
+            "body": "Body",
+            "binFront": "Bin Front",
+            "binLeft": "Bin Left",
+            "binRight": "Bin Right",
+            "binInside": "Bin Inside",
+            "tailGate": "Tail Gate",
+            "leftGuard": "Left Guard",
+            "leftStairs": "Left Stairs",
+            "rightGuard": "Right Guard",
+            "rightStairs": "Right Stairs",
+            "incidenType": "Inciden Type",
+            "plantLog": "Plant Log",
+            "photos": "Photos"
+        }
+    }
+}

@@ -18,6 +18,8 @@
             },
             "body": "Body",
             "isLockOutRequired": "Is Lock Out Required",
+            "order": "Order",
+            "prestartCheckConfig": "Prestart Check Config",
             "options": "Options"
         }
     }
