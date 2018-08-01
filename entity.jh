@@ -259,7 +259,6 @@ relationship ManyToOne {
     Niggle{ plant} to Plant,
     Niggle{ assignedContractor } to MaintenanceContractor,
     Category{competency} to Competency,
-    PlantLog{site} to Project,
     Location {project} to Project,
     Category {prestartCheckConfig } to PrestartCheckConfig,
     PrestartCheckResponse { question } to PrestartQuestion,
@@ -270,7 +269,8 @@ relationship OneToOne {
     Niggle{purchaseOrder} to PurchaseOrder,
     Plant{location} to Location,
     PrestartCheck { plantLog } to PlantLog,
-    PlantAudit { plantLog } to PlantLog
+    PlantAudit { plantLog } to PlantLog,
+    PlantLog{ location } to Location
 }
 
 relationship OneToMany {

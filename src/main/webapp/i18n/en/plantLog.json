@@ -24,8 +24,8 @@
             "certificateDueDate": "Certificate Due Date",
             "maintenanceDueDate": "Maintenance Due Date",
             "operatorName": "Operator Name",
-            "plant": "Plant",
-            "site": "Site"
+            "location": "Location",
+            "plant": "Plant"
         }
     }
 }

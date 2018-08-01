@@ -8,10 +8,10 @@ import { JhiAlertService } from 'ng-jhipster';
 
 import { IPlantLog } from 'app/shared/model/plant-log.model';
 import { PlantLogService } from './plant-log.service';
+import { ILocation } from 'app/shared/model/location.model';
+import { LocationService } from 'app/entities/location';
 import { IPlant } from 'app/shared/model/plant.model';
 import { PlantService } from 'app/entities/plant';
-import { IProject } from 'app/shared/model/project.model';
-import { ProjectService } from 'app/entities/project';
 
 @Component({
     selector: 'jhi-plant-log-update',
@@ -21,17 +21,17 @@ export class PlantLogUpdateComponent implements OnInit {
     private _plantLog: IPlantLog;
     isSaving: boolean;
 
-    plants: IPlant[];
+    locations: ILocation[];
 
-    projects: IProject[];
+    plants: IPlant[];
     certificateDueDate: string;
     maintenanceDueDate: string;
 
     constructor(
         private jhiAlertService: JhiAlertService,
         private plantLogService: PlantLogService,
+        private locationService: LocationService,
         private plantService: PlantService,
-        private projectService: ProjectService,
         private activatedRoute: ActivatedRoute
     ) {}
 
@@ -40,15 +40,24 @@ export class PlantLogUpdateComponent implements OnInit {
         this.activatedRoute.data.subscribe(({ plantLog }) => {
             this.plantLog = plantLog;
         });
-        this.plantService.query().subscribe(
-            (res: HttpResponse<IPlant[]>) => {
-                this.plants = res.body;
+        this.locationService.query({ filter: 'plantlog-is-null' }).subscribe(
+            (res: HttpResponse<ILocation[]>) => {
+                if (!this.plantLog.location || !this.plantLog.location.id) {
+                    this.locations = res.body;
+                } else {
+                    this.locationService.find(this.plantLog.location.id).subscribe(
+                        (subRes: HttpResponse<ILocation>) => {
+                            this.locations = [subRes.body].concat(res.body);
+                        },
+                        (subRes: HttpErrorResponse) => this.onError(subRes.message)
+                    );
+                }
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
-        this.projectService.query().subscribe(
-            (res: HttpResponse<IProject[]>) => {
-                this.projects = res.body;
+        this.plantService.query().subscribe(
+            (res: HttpResponse<IPlant[]>) => {
+                this.plants = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -86,11 +95,11 @@ export class PlantLogUpdateComponent implements OnInit {
         this.jhiAlertService.error(errorMessage, null, null);
     }
 
-    trackPlantById(index: number, item: IPlant) {
+    trackLocationById(index: number, item: ILocation) {
         return item.id;
     }
 
-    trackProjectById(index: number, item: IProject) {
+    trackPlantById(index: number, item: IPlant) {
         return item.id;
     }
     get plantLog() {

@@ -40,15 +40,17 @@
     ],
     "relationships": [
         {
-            "relationshipType": "many-to-one",
-            "relationshipName": "plant",
-            "otherEntityName": "plant",
-            "otherEntityField": "id"
+            "relationshipType": "one-to-one",
+            "relationshipName": "location",
+            "otherEntityName": "location",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "plantLog"
         },
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "site",
-            "otherEntityName": "project",
+            "relationshipName": "plant",
+            "otherEntityName": "plant",
             "otherEntityField": "id"
         }
     ],

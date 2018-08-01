@@ -25,8 +25,8 @@ export class PlantLogUpdatePage {
     certificateDueDateInput = element(by.id('field_certificateDueDate'));
     maintenanceDueDateInput = element(by.id('field_maintenanceDueDate'));
     operatorNameInput = element(by.id('field_operatorName'));
+    locationSelect = element(by.id('field_location'));
     plantSelect = element(by.id('field_plant'));
-    siteSelect = element(by.id('field_site'));
 
     getPageTitle() {
         return this.pageTitle.getAttribute('jhiTranslate');
@@ -96,6 +96,25 @@ export class PlantLogUpdatePage {
         return this.operatorNameInput.getAttribute('value');
     }
 
+    locationSelectLastOption(): promise.Promise<void> {
+        return this.locationSelect
+            .all(by.tagName('option'))
+            .last()
+            .click();
+    }
+
+    locationSelectOption(option): promise.Promise<void> {
+        return this.locationSelect.sendKeys(option);
+    }
+
+    getLocationSelect(): ElementFinder {
+        return this.locationSelect;
+    }
+
+    getLocationSelectedOption() {
+        return this.locationSelect.element(by.css('option:checked')).getText();
+    }
+
     plantSelectLastOption(): promise.Promise<void> {
         return this.plantSelect
             .all(by.tagName('option'))
@@ -113,25 +132,6 @@ export class PlantLogUpdatePage {
 
     getPlantSelectedOption() {
         return this.plantSelect.element(by.css('option:checked')).getText();
-    }
-
-    siteSelectLastOption(): promise.Promise<void> {
-        return this.siteSelect
-            .all(by.tagName('option'))
-            .last()
-            .click();
-    }
-
-    siteSelectOption(option): promise.Promise<void> {
-        return this.siteSelect.sendKeys(option);
-    }
-
-    getSiteSelect(): ElementFinder {
-        return this.siteSelect;
-    }
-
-    getSiteSelectedOption() {
-        return this.siteSelect.element(by.css('option:checked')).getText();
     }
 
     save(): promise.Promise<void> {
