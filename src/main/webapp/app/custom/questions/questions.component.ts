@@ -4,9 +4,7 @@ import { PrestartDataService } from '../prestart-data/prestart-data.service';
 import { IPlant } from '../../shared/model/plant.model';
 import { PrestartQuestionService } from 'app/entities/prestart-question';
 import { PrestartCheckConfigService } from 'app/entities/prestart-check-config';
-import { PrestartCheckQuestionListItemService } from 'app/entities/prestart-check-question-list-item';
 import { IPrestartQuestion } from 'app/shared/model/prestart-question.model';
-import { IPrestartCheckQuestionListItem } from 'app/shared/model/prestart-check-question-list-item.model';
 import { PrestartQuestionOptionService } from 'app/entities/prestart-question-option';
 import { PrestartQuestionOption } from 'app/shared/model/prestart-question-option.model';
 import { Router } from '@angular/router';
@@ -19,13 +17,12 @@ import { Router } from '@angular/router';
 export class QuestionsComponent implements OnInit {
     plant: IPlant;
     questionsFormGroup: FormGroup;
-    questionItems: Array<IPrestartCheckQuestionListItem>;
+    questionItems: Array<IPrestartQuestion>;
     isSettingUp = true;
     questions: AbstractControl;
     constructor(
         private prestartDataService: PrestartDataService,
         private questionService: PrestartQuestionService,
-        private prestartQuestionlistService: PrestartCheckQuestionListItemService,
         private prestartCheckConfigService: PrestartCheckConfigService,
         private optionService: PrestartQuestionOptionService,
         private router: Router,
@@ -37,7 +34,8 @@ export class QuestionsComponent implements OnInit {
             questions: this.formBuilder.array([])
         });
         this.plant = this.prestartDataService.data.plant;
-        this.prestartQuestionlistService
+        console.log(this.plant.category.prestartCheckConfig);
+        this.questionService
             .query({
                 'prestartCheckConfigId.equals': this.plant.category.prestartCheckConfig.id
             })
@@ -51,18 +49,12 @@ export class QuestionsComponent implements OnInit {
                 const options: PrestartQuestionOption[] = optionsResponse.body;
                 const questionsFormArray = this.questionsFormGroup.get('questions') as FormArray;
                 this.questionItems.map(item => {
-                    const question = item.question;
+                    const question = item;
                     question.options = options.filter(option => option.prestartQuestion.id === question.id);
                     questionsFormArray.push(new FormControl('', [Validators.required]));
                 });
                 if (this.prestartDataService.data.chosenOptions) {
                     this.questionsFormGroup.get('questions').setValue(this.prestartDataService.data.chosenOptions);
-                    // questionsFormArray.controls.map(control => {
-                    //     if (control.value) {
-                    //         control.markAsTouched();
-                    //         control.markAsDirty();
-                    //     }
-                    // });
                 }
                 this.questions = questionsFormArray;
                 this.questionsFormGroup.valueChanges.subscribe(newVal => {
@@ -73,7 +65,7 @@ export class QuestionsComponent implements OnInit {
             });
     }
 
-    questionItemSort(a: IPrestartCheckQuestionListItem, b: IPrestartCheckQuestionListItem) {
+    questionItemSort(a: IPrestartQuestion, b: IPrestartQuestion) {
         return a.order - b.order;
     }
 

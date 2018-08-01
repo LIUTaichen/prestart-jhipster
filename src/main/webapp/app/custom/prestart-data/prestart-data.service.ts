@@ -54,7 +54,6 @@ export class PrestartDataService implements OnInit {
 
     save() {
         const prestartCheck: PrestartCheck = new PrestartCheck();
-        prestartCheck.plant = this.data.plant;
         // prestartCheck.location = new Location();
         prestartCheck.plantLog = new PlantLog();
         prestartCheck.plantLog.plant = this.data.plant;

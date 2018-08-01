@@ -19,7 +19,6 @@ import { PrestartPrestartCheckResponseModule } from './prestart-check-response/p
 import { PrestartPrestartCheckConfigModule } from './prestart-check-config/prestart-check-config.module';
 import { PrestartPrestartQuestionModule } from './prestart-question/prestart-question.module';
 import { PrestartPrestartQuestionOptionModule } from './prestart-question-option/prestart-question-option.module';
-import { PrestartPrestartCheckQuestionListItemModule } from './prestart-check-question-list-item/prestart-check-question-list-item.module';
 import { PrestartPlantAuditModule } from './plant-audit/plant-audit.module';
 import { PrestartImageModule } from './image/image.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
@@ -46,7 +45,6 @@ import { PrestartImageModule } from './image/image.module';
         PrestartPrestartCheckConfigModule,
         PrestartPrestartQuestionModule,
         PrestartPrestartQuestionOptionModule,
-        PrestartPrestartCheckQuestionListItemModule,
         PrestartPlantAuditModule,
         PrestartImageModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */

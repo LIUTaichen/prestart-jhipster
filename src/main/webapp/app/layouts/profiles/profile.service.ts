@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class ProfileService {
-    private infoUrl = SERVER_API_URL + 'management/info';
+    private infoUrl = SERVER_API_URL + 'api/profile-info';
     private profileInfo: Promise<ProfileInfo>;
 
     constructor(private http: HttpClient) {}

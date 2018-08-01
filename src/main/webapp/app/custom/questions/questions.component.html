@@ -1,21 +1,18 @@
+<div class="loading">
+
+</div>
 <form [formGroup]="questionsFormGroup">
     <mat-vertical-stepper #stepper *ngIf="!isSettingUp" class="stepper" formArrayName="questions">
         <mat-step *ngFor="let item of questionItems; index as i" [stepControl]="questions.get([i])" [completed]="questions.get([i]).valid">
             <ng-template matStepLabel class="label">
-                <div class='header'>{{item.question.body}}</div>
+                <div class='header'>{{item.body}}</div>
             </ng-template>
             <mat-radio-group class="options-radio-group" [formControl]="questions.get([i])" required>
-                <mat-radio-button class="options-radio-button" *ngFor="let option of item.question.options" [value]="option" [checked]="option.id === questions.get([i]).value.id">
+                <mat-radio-button class="options-radio-button" *ngFor="let option of item.options" [value]="option" [checked]="option.id === questions.get([i]).value.id">
                     {{option.body}}
                 </mat-radio-button>
             </mat-radio-group>
             <div class="selected-value" *ngIf="questions.get([i])?.value">Your response is: {{questions.get([i]).value?.body}}</div>
-            <!-- <div>
-                <button mat-button matStepperPrevious *ngIf="i != 0" >Back</button>
-                <button mat-button *ngIf="i == 0" routerLink="/plant-confirmation">Back</button>
-                <button mat-button matStepperNext *ngIf="selectedOptions[i] && i < questionItems.length - 1">Next</button>
-                <button mat-button *ngIf="selectedOptions[i] && i == questionItems.length - 1" (click)="onSubmit()">Next</button>
-            </div> -->
         </mat-step>
     </mat-vertical-stepper>
     <div *ngIf="!questionsFormGroup.valid">Complete the check list to move on to the next step.</div>
