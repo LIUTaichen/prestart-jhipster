@@ -23,8 +23,8 @@
             <th><span jhiTranslate="prestartApp.plantLog.certificateDueDate">Certificate Due Date</span></th>
             <th><span jhiTranslate="prestartApp.plantLog.maintenanceDueDate">Maintenance Due Date</span></th>
             <th><span jhiTranslate="prestartApp.plantLog.operatorName">Operator Name</span></th>
+            <th><span jhiTranslate="prestartApp.plantLog.location">Location</span></th>
             <th><span jhiTranslate="prestartApp.plantLog.plant">Plant</span></th>
-            <th><span jhiTranslate="prestartApp.plantLog.site">Site</span></th>
             <th></th>
             </tr>
             </thead>
@@ -40,13 +40,13 @@
                 <td>{{plantLog.maintenanceDueDate | date:'medium'}}</td>
                 <td>{{plantLog.operatorName}}</td>
                 <td>
-                    <div *ngIf="plantLog.plant">
-                        <a [routerLink]="['../plant', plantLog.plant?.id, 'view' ]" >{{plantLog.plant?.id}}</a>
+                    <div *ngIf="plantLog.location">
+                        <a [routerLink]="['../location', plantLog.location?.id, 'view' ]" >{{plantLog.location?.id}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="plantLog.site">
-                        <a [routerLink]="['../project', plantLog.site?.id, 'view' ]" >{{plantLog.site?.id}}</a>
+                    <div *ngIf="plantLog.plant">
+                        <a [routerLink]="['../plant', plantLog.plant?.id, 'view' ]" >{{plantLog.plant?.id}}</a>
                     </div>
                 </td>
                 <td class="text-right">

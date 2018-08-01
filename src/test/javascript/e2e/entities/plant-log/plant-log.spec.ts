@@ -46,8 +46,8 @@ describe('PlantLog e2e test', () => {
         expect(plantLogUpdatePage.getMaintenanceDueDateInput()).toContain('2001-01-01T02:30');
         plantLogUpdatePage.setOperatorNameInput('operatorName');
         expect(plantLogUpdatePage.getOperatorNameInput()).toMatch('operatorName');
+        plantLogUpdatePage.locationSelectLastOption();
         plantLogUpdatePage.plantSelectLastOption();
-        plantLogUpdatePage.siteSelectLastOption();
         plantLogUpdatePage.save();
         expect(plantLogUpdatePage.getSaveButton().isPresent()).toBeFalsy();
     });

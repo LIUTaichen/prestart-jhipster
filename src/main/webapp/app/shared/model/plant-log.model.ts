@@ -1,6 +1,6 @@
 import { Moment } from 'moment';
+import { ILocation } from 'app/shared/model//location.model';
 import { IPlant } from 'app/shared/model//plant.model';
-import { IProject } from 'app/shared/model//project.model';
 
 export interface IPlantLog {
     id?: number;
@@ -12,8 +12,8 @@ export interface IPlantLog {
     certificateDueDate?: Moment;
     maintenanceDueDate?: Moment;
     operatorName?: string;
+    location?: ILocation;
     plant?: IPlant;
-    site?: IProject;
 }
 
 export class PlantLog implements IPlantLog {
@@ -27,7 +27,7 @@ export class PlantLog implements IPlantLog {
         public certificateDueDate?: Moment,
         public maintenanceDueDate?: Moment,
         public operatorName?: string,
-        public plant?: IPlant,
-        public site?: IProject
+        public location?: ILocation,
+        public plant?: IPlant
     ) {}
 }
