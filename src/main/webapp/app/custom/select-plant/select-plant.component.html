@@ -1,10 +1,14 @@
-<div class="loading" *ngIf="!plants">
+<div class="loading" *ngIf="obtainingLocation">
+  <p>Obtaining your position...</p>
+  <mat-progress-spinner mode="indeterminate" class="progress-spinner" diameter="50"></mat-progress-spinner>
+</div>
+<div class="loading" *ngIf="fetchingPlants">
   <p>Finding plants within 50 meters</p>
   <mat-progress-spinner mode="indeterminate" class="progress-spinner" diameter="50"></mat-progress-spinner>
 </div>
-<mat-nav-list *ngIf="plants">
-  <mat-list-item *ngFor="let plant of plants" (click)="onPlantClicked(plant)" 
-    >
+<div *ngIf="!fetchingPlants && !obtainingLocation">
+  <mat-nav-list >
+    <mat-list-item *ngFor="let plant of plants" (click)="onPlantClicked(plant)">
       <h4 matLine class="mat-subheading-1">
         <span matLine> {{ plant.fleetId }}</span>
       </h4>
@@ -14,5 +18,10 @@
       <p matLine>
         <span class="mat-caption"> {{plant.description}}</span>
       </p>
-  </mat-list-item>
-</mat-nav-list>
+    </mat-list-item>
+    <div *ngIf="!plants">
+      <p>There are no plants within 50m of you.</p>
+      
+    </div>
+  </mat-nav-list>
+</div>

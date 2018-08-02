@@ -16,6 +16,8 @@ import { MomentDateAdapter } from '@angular/material-moment-adapter';
     styleUrls: ['./select-plant.component.css']
 })
 export class SelectPlantComponent implements OnInit, OnDestroy {
+    obtainingLocation = true;
+    fetchingPlants = false;
     plants: Array<IPlant>;
     watchID: number;
     constructor(
@@ -45,6 +47,8 @@ export class SelectPlantComponent implements OnInit, OnDestroy {
             .pipe(distinctUntilChanged())
             .flatMap(position => {
                 console.log('emitting position', position);
+                this.obtainingLocation = false;
+                this.fetchingPlants = true;
                 const location: Location = new Location();
                 location.latitude = position.coords.latitude;
                 location.longitude = position.coords.longitude;
@@ -63,7 +67,7 @@ export class SelectPlantComponent implements OnInit, OnDestroy {
                 });
             })
             .subscribe(plants => {
-                console.log(plants.body);
+                this.fetchingPlants = false;
                 this.plants = plants.body;
             });
     }

@@ -36,3 +36,15 @@
     word-wrap: break-word;
     white-space: pre-wrap;
 }
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    padding-top: 20px;
+    flex-grow: 1;
+}
+
+.progress-spinner {
+    margin: auto;
+}

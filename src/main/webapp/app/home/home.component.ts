@@ -13,6 +13,8 @@ import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 export class HomeComponent implements OnInit {
     account: Account;
     modalRef: NgbModalRef;
+    adSignedIn = false;
+    accountObtained = false;
     readonly config: adal.Config = {
         tenant: 'dempseywood.co.nz',
         clientId: '719e1fc1-7271-483e-ad43-3e376e7083c5'
@@ -32,6 +34,7 @@ export class HomeComponent implements OnInit {
         this.registerAuthenticationSuccess();
         if (this.adalService.userInfo.authenticated) {
             console.log('authenticated');
+            this.adSignedIn = true;
             this.eventManager.broadcast({
                 name: 'authenticationSuccess',
                 content: 'Sending Authentication Success'
@@ -45,6 +48,7 @@ export class HomeComponent implements OnInit {
         this.eventManager.subscribe('authenticationSuccess', message => {
             this.principal.identity().then(account => {
                 this.account = account;
+                this.accountObtained = true;
             });
         });
     }
