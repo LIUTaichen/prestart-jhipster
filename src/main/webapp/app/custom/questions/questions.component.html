@@ -1,5 +1,6 @@
-<div class="loading">
-
+<div class="loading" *ngIf= "isSettingUp">
+    <p>Fetching prestart questions from server...</p>
+    <mat-progress-spinner mode="indeterminate" class="progress-spinner" diameter="50"></mat-progress-spinner>
 </div>
 <form [formGroup]="questionsFormGroup">
     <mat-vertical-stepper #stepper *ngIf="!isSettingUp" class="stepper" formArrayName="questions">
@@ -16,5 +17,8 @@
         </mat-step>
     </mat-vertical-stepper>
     <div *ngIf="!questionsFormGroup.valid">Complete the check list to move on to the next step.</div>
-    <button class="float-right" mat-raised-button color="primary" [disabled]="!questionsFormGroup.valid" (click)="onSubmit()">Next</button>
+    <button class="float-right" mat-raised-button color="primary" [disabled]="!questionsFormGroup.valid" (click)="onSubmit()" *ngIf="!isSettingUp">Next</button>
 </form>
+<div *ngIf= "error">
+    <p>{{error}}</p>
+</div>

@@ -6,12 +6,14 @@
     <div>
         <mat-checkbox [(ngModel)]="checked">
         </mat-checkbox>
-        <span class="declaration-text">I declare that all information in this prestart check is truthfully reported.</span>
+        <span class="declaration-tex mat-caption">Completing and signing this form confirms that I understand my health and safety obligations as employee of Dempsey Wood and haave completed all servicing and inspection requirements for the above named vehicle. 
+            I have reported all faults or damage to my foreman, Manager or Fleet Manager. 
+            Failure to Complete this form and submitting it to the Fleet Manager may result in not being paid.</span>
 
     </div>
     <div class="button-container">
         <button mat-button class="button-back" routerLink="/review">Back</button>
-        <button mat-raised-button color="primary" type="submit" [disabled]="!checked || !signed"
+        <button mat-raised-button color="primary" type="submit" [disabled]="!checked || !signed || submitting"
         (click)="onSubmit()">Submit</button>
     </div>
 </div>

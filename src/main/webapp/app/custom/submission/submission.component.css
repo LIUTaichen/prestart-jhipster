@@ -19,8 +19,8 @@
     /* justify-content: space-between; */
     /* height: 100%; */
     flex-grow: 1;
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     overflow: scroll;
 }
 
@@ -30,8 +30,8 @@
     /* justify-content: space-between; */
     /* height: 100%; */
     flex-grow: 1;
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     overflow: scroll;
 }
 
@@ -39,7 +39,7 @@
     border: 1px;
     border-style: solid;
     width: 280px;
-    height: 280px;
+    height: 200px;
     margin-bottom: 16px;
 }
 

@@ -6,8 +6,9 @@ import { PrestartQuestionService } from 'app/entities/prestart-question';
 import { PrestartCheckConfigService } from 'app/entities/prestart-check-config';
 import { IPrestartQuestion } from 'app/shared/model/prestart-question.model';
 import { PrestartQuestionOptionService } from 'app/entities/prestart-question-option';
-import { PrestartQuestionOption } from 'app/shared/model/prestart-question-option.model';
+import { PrestartQuestionOption, IPrestartQuestionOption } from 'app/shared/model/prestart-question-option.model';
 import { Router } from '@angular/router';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 @Component({
     selector: 'jhi-questions',
@@ -19,6 +20,7 @@ export class QuestionsComponent implements OnInit {
     questionsFormGroup: FormGroup;
     questionItems: Array<IPrestartQuestion>;
     isSettingUp = true;
+    error: string;
     questions: AbstractControl;
     constructor(
         private prestartDataService: PrestartDataService,
@@ -45,7 +47,7 @@ export class QuestionsComponent implements OnInit {
                     'prestartQuestionId.in': this.questionItems.map(questionItem => questionItem.id)
                 });
             })
-            .subscribe(optionsResponse => {
+            .subscribe((optionsResponse: HttpResponse<IPrestartQuestionOption[]>) => {
                 const options: PrestartQuestionOption[] = optionsResponse.body;
                 const questionsFormArray = this.questionsFormGroup.get('questions') as FormArray;
                 this.questionItems.map(item => {
@@ -62,7 +64,7 @@ export class QuestionsComponent implements OnInit {
                     this.saveResponse();
                 });
                 this.isSettingUp = false;
-            });
+            }, (res: HttpErrorResponse) => (this.error = res.message));
     }
 
     questionItemSort(a: IPrestartQuestion, b: IPrestartQuestion) {

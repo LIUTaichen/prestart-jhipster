@@ -1,13 +1,15 @@
 import { Injectable, OnInit, HostListener } from '@angular/core';
 import { IPlant } from '../../shared/model/plant.model';
 import { PrestartQuestionOption } from 'app/shared/model/prestart-question-option.model';
-import { PrestartCheck } from 'app/shared/model/prestart-check.model';
+import { PrestartCheck, IPrestartCheck } from 'app/shared/model/prestart-check.model';
 import { ILocation, Location } from 'app/shared/model//location.model';
 import { PlantLog, IPlantLog } from 'app/shared/model/plant-log.model';
 import { PrestartCheckResponse } from 'app/shared/model/prestart-check-response.model';
 import { PrestartCheckService } from 'app/entities/prestart-check';
 import { Principal, Account } from 'app/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
@@ -60,7 +62,7 @@ export class PrestartDataService implements OnInit {
         return value;
     }
 
-    save() {
+    save(): Observable<HttpResponse<IPrestartCheck>> {
         const prestartCheck: PrestartCheck = this.data.prestartCheck;
         const plantLog = this.data.plantLog;
         plantLog.plant = this.data.plant;
@@ -76,16 +78,7 @@ export class PrestartDataService implements OnInit {
             prestartCheck.responses.push(responseItem);
         });
         console.log(prestartCheck);
-        this.prestartCheckService.create(prestartCheck).subscribe(
-            response => {
-                console.log(response);
-                this.initialize();
-                this.router.navigate(['/result']);
-            },
-            error => {
-                console.log(error);
-            }
-        );
+        return this.prestartCheckService.create(prestartCheck);
     }
 
     setLocation(location: ILocation) {
