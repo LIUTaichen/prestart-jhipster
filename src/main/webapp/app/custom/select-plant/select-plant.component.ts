@@ -1,10 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PlantService } from '../../entities/plant';
+import { LocationService } from '../../entities/location';
 import { Observable } from 'rxjs';
 import { IPlant } from '../../shared/model/plant.model';
 import { PrestartDataService } from '../prestart-data/prestart-data.service';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { ILocation, Location } from 'app/shared/model//location.model';
+import * as moment from 'moment';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
 
 @Component({
     selector: 'jhi-select-plant',
@@ -14,7 +18,12 @@ import { Router } from '@angular/router';
 export class SelectPlantComponent implements OnInit, OnDestroy {
     plants: Array<IPlant>;
     watchID: number;
-    constructor(private plantService: PlantService, private prestartDataService: PrestartDataService, private router: Router) {}
+    constructor(
+        private plantService: PlantService,
+        private prestartDataService: PrestartDataService,
+        private router: Router,
+        private locationService: LocationService
+    ) {}
 
     ngOnInit() {
         console.log('creating observable for position updates');
@@ -36,11 +45,21 @@ export class SelectPlantComponent implements OnInit, OnDestroy {
             .pipe(distinctUntilChanged())
             .flatMap(position => {
                 console.log('emitting position', position);
+                const location: Location = new Location();
+                location.latitude = position.coords.latitude;
+                location.longitude = position.coords.longitude;
+                location.direction = position.coords.heading + ' ';
+                location.speed = position.coords.speed;
+                location.provider = 'Mobile Device';
+                location.timestamp = moment(position.timestamp);
+                console.log(location);
+                this.prestartDataService.initialize();
+                this.prestartDataService.setLocation(location);
                 return this.plantService.query({
                     byLocation: true,
                     latitude: position.coords.latitude,
                     longitude: position.coords.longitude,
-                    maxDistance: 100
+                    maxDistance: 50
                 });
             })
             .subscribe(plants => {
@@ -52,6 +71,7 @@ export class SelectPlantComponent implements OnInit, OnDestroy {
     onPlantClicked(plant: IPlant) {
         const data = this.prestartDataService.data;
         data.plant = plant;
+        data.chosenOptions = null;
         this.prestartDataService.setData(data);
         this.router.navigate(['/plant-confirmation']);
     }

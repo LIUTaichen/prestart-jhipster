@@ -14,7 +14,7 @@
                 <div layout="column" class="pt-4">
                     <button mat-raised-button color="primary" class="prestartButton" routerLink="select-plant">New Prestart</button>
                 </div>
-                <div class="pt-4">
+                <div class="pt-4" *ngIf="account">
                     <a class="link" (click)="logout()">Not {{account.firstName}}? Click here to Sign out</a>
                 </div>
             </div>

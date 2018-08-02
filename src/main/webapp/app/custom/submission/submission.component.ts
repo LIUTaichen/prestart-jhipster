@@ -42,13 +42,11 @@ export class SubmissionComponent implements OnInit, AfterViewInit {
     }
 
     onSubmit() {
+        const dataurl = this.signaturePad.toDataURL('image/png');
+        console.log(dataurl);
+        const data = dataurl.substr(dataurl.indexOf('base64,') + 'base64,'.length);
+        console.log(data);
+        this.prestartDataService.setSignature('image/png', data);
         this.prestartDataService.save();
-        // this.prestartDataService.setData({
-        //     plant: null,
-        //     chosenOptions: null,
-        //     meterReading: null,
-        //     hubboReading: null
-        // });
-        // this.router.navigate(['']);
     }
 }

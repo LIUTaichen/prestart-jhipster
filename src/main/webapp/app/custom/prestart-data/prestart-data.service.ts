@@ -3,17 +3,21 @@ import { IPlant } from '../../shared/model/plant.model';
 import { PrestartQuestionOption } from 'app/shared/model/prestart-question-option.model';
 import { PrestartCheck } from 'app/shared/model/prestart-check.model';
 import { ILocation, Location } from 'app/shared/model//location.model';
-import { PlantLog } from 'app/shared/model/plant-log.model';
+import { PlantLog, IPlantLog } from 'app/shared/model/plant-log.model';
 import { PrestartCheckResponse } from 'app/shared/model/prestart-check-response.model';
 import { PrestartCheckService } from 'app/entities/prestart-check';
+import { Principal, Account } from 'app/core';
+import { Router } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
 })
 export class PrestartDataService implements OnInit {
     data: Data;
+    account: Account;
+    // prestart: PrestartCheck;
     readonly dataLocalStorageKey = 'PrestartDataService.data';
-    constructor(private prestartCheckService: PrestartCheckService) {
+    constructor(private prestartCheckService: PrestartCheckService, private router: Router, private principal: Principal) {
         this.ngOnInit();
     }
 
@@ -21,13 +25,12 @@ export class PrestartDataService implements OnInit {
         console.log('PrestartDataService on init');
         this.data = JSON.parse(localStorage.getItem(this.dataLocalStorageKey), this.dateReviver);
         if (!this.data) {
-            this.data = {
-                plant: null,
-                chosenOptions: null,
-                meterReading: null,
-                hubboReading: null
-            };
+            this.initialize();
         }
+        this.principal.identity().then(identity => {
+            console.log('identity obtained');
+            this.account = identity;
+        });
     }
     @HostListener('window:beforeunload', ['$event'])
     beforeunloadHandler(event) {
@@ -39,6 +42,11 @@ export class PrestartDataService implements OnInit {
         this.data = data;
         console.log(this.data);
         localStorage.setItem(this.dataLocalStorageKey, JSON.stringify(this.data));
+    }
+
+    setSignature(imageType: string, image: string) {
+        this.data.prestartCheck.signatureContentType = imageType;
+        this.data.prestartCheck.signature = image;
     }
 
     dateReviver(key, value) {
@@ -53,33 +61,55 @@ export class PrestartDataService implements OnInit {
     }
 
     save() {
-        const prestartCheck: PrestartCheck = new PrestartCheck();
-        // prestartCheck.location = new Location();
-        prestartCheck.plantLog = new PlantLog();
-        prestartCheck.plantLog.plant = this.data.plant;
-        prestartCheck.plantLog.meterReading = this.data.meterReading;
-        prestartCheck.plantLog.hubboReading = this.data.hubboReading;
+        const prestartCheck: PrestartCheck = this.data.prestartCheck;
+        const plantLog = this.data.plantLog;
+        plantLog.plant = this.data.plant;
+        plantLog.meterReading = this.data.meterReading;
+        plantLog.hubboReading = this.data.hubboReading;
+        plantLog.operatorName = this.account.firstName + ' ' + this.account.lastName;
+        prestartCheck.plantLog = plantLog;
         prestartCheck.responses = new Array<PrestartCheckResponse>();
         this.data.chosenOptions.map(option => {
             const responseItem = new PrestartCheckResponse();
             responseItem.question = option.prestartQuestion;
-            responseItem.question.options = null;
             responseItem.response = option;
-            responseItem.response.prestartQuestion = null;
-            // responseItem.prestartCheck = prestartCheck;
-            // responseItem.prestartCheck.id = prestartCheck.id;
             prestartCheck.responses.push(responseItem);
         });
         console.log(prestartCheck);
-        this.prestartCheckService.create(prestartCheck).subscribe(response => {
-            console.log(response);
+        this.prestartCheckService.create(prestartCheck).subscribe(
+            response => {
+                console.log(response);
+                this.initialize();
+                this.router.navigate(['/result']);
+            },
+            error => {
+                console.log(error);
+            }
+        );
+    }
+
+    setLocation(location: ILocation) {
+        this.data.plantLog.location = location;
+        localStorage.setItem(this.dataLocalStorageKey, JSON.stringify(this.data));
+    }
+
+    initialize() {
+        this.setData({
+            prestartCheck: new PrestartCheck(),
+            plant: null,
+            chosenOptions: null,
+            meterReading: null,
+            hubboReading: null,
+            plantLog: new PlantLog()
         });
     }
 }
 
 export interface Data {
+    prestartCheck: PrestartCheck;
     plant: IPlant;
     chosenOptions: Array<PrestartQuestionOption>;
     meterReading: number;
     hubboReading: number;
+    plantLog: IPlantLog;
 }

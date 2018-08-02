@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiEventManager } from 'ng-jhipster';
 import { AdalService } from 'adal-angular4';
-import { LoginModalService, Principal, Account } from 'app/core';
+import { Principal, Account } from 'app/core';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 
 @Component({
@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
 
     constructor(
         private principal: Principal,
-        private loginModalService: LoginModalService,
         private eventManager: JhiEventManager,
         private adalService: AdalService,
         private localStorage: LocalStorageService,
@@ -37,6 +36,8 @@ export class HomeComponent implements OnInit {
                 name: 'authenticationSuccess',
                 content: 'Sending Authentication Success'
             });
+        } else {
+            this.adalService.login();
         }
     }
 
@@ -54,7 +55,6 @@ export class HomeComponent implements OnInit {
 
     login() {
         this.adalService.login();
-        // this.modalRef = this.loginModalService.open();
     }
 
     logout() {
