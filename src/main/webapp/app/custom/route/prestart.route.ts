@@ -9,6 +9,7 @@ import { SubmissionComponent } from '../submission/submission.component';
 import { ResultComponent } from '../result/result.component';
 import { AzureCallbackComponent } from '../azure-callback/azure-callback.component';
 import { AzureCallbackGuard } from '../azure-callback/azure-callback.guard';
+import { NotesComponent } from 'app/custom/notes/notes.component';
 
 export const prestartRoute: Routes = [
     {
@@ -74,6 +75,15 @@ export const prestartRoute: Routes = [
         data: {
             authorities: ['ROLE_DW', 'ROLE_DW_READ_ONLY', 'ROLE_REPORTER'],
             pageTitle: 'prestartApp.prestartCheck.result.title'
+        },
+        canActivate: [UserRouteAccessService]
+    },
+    {
+        path: 'notes',
+        component: NotesComponent,
+        data: {
+            authorities: ['ROLE_DW', 'ROLE_DW_READ_ONLY', 'ROLE_REPORTER'],
+            pageTitle: 'prestartApp.prestartCheck.notes.title'
         },
         canActivate: [UserRouteAccessService]
     },

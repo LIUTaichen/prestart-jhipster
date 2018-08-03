@@ -39,7 +39,7 @@ export class MeterReadingComponent implements OnInit {
             data.hubboReading = this.meterForm.value.hubboReading;
         }
         this.prestartDataService.setData(data);
-        this.router.navigate(['/review']);
+        this.router.navigate(['/notes']);
     }
 
     isValid(value: string): Boolean {

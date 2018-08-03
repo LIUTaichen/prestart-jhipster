@@ -1,0 +1,19 @@
+.notes {
+    min-width: 280px;
+    min-height: 280px;
+    flex-grow: 1;
+}
+
+.notes-area {
+    min-height: 250px;
+}
+
+.button-container {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: row;
+}
+
+.button-back {
+    margin-left: auto;
+}

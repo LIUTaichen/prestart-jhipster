@@ -36,6 +36,9 @@
             "meter-reading": {
                 "title": "Read Meters"
             },
+            "notes": {
+                "title": "Notes"
+            },
             "review": {
                 "title": "Review"
             },

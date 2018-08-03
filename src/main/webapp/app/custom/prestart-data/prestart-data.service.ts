@@ -96,6 +96,11 @@ export class PrestartDataService implements OnInit {
             plantLog: new PlantLog()
         });
     }
+
+    setNotes(notes: string) {
+        this.data.plantLog.notes = notes;
+        localStorage.setItem(this.dataLocalStorageKey, JSON.stringify(this.data));
+    }
 }
 
 export interface Data {

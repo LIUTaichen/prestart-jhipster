@@ -44,8 +44,11 @@
     <div *ngIf="data.hubboReading"> Delta of {{(data.hubboReading - data.plant.hubboReading)}}</div>
   </div>
   <mat-divider class="divider"></mat-divider>
+  <div class="mat-subheading-1">Notes</div>
+  <div><p class="mat-body-1"></p>{{data.plantLog.notes}}</div>
+  <mat-divider class="divider"></mat-divider>
   <div class='button-container'>
-    <button mat-button routerLink="/meter-reading" class='button-back'>Back</button>
+    <button mat-button routerLink="/notes" class='button-back'>Back</button>
     <button mat-raised-button color="primary" routerLink="/submission">Confirm</button>
   </div>
 </div>

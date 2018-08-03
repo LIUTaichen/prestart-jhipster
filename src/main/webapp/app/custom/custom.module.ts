@@ -14,6 +14,7 @@ import { SubmissionComponent } from './submission/submission.component';
 import { ResultComponent } from './result/result.component';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { AzureCallbackComponent } from './azure-callback/azure-callback.component';
+import { NotesComponent } from './notes/notes.component';
 
 @NgModule({
     imports: [
@@ -33,7 +34,8 @@ import { AzureCallbackComponent } from './azure-callback/azure-callback.componen
         ReviewComponent,
         SubmissionComponent,
         ResultComponent,
-        AzureCallbackComponent
+        AzureCallbackComponent,
+        NotesComponent
     ]
 })
 export class CustomModule {}

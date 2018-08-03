@@ -1,0 +1,12 @@
+<p>Document any minor faults that require servicing: Major faults should be repoted immediately to your Manager or Fleet Manager</p>
+<form [formGroup]="notesForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="notes">
+    <textarea matInput placeholder="Notes" maxlength="1024" formControlName="notes" class="notes-area"></textarea>
+    <mat-hint align="end">{{notesForm.get('notes').value?.length}} / 1024</mat-hint>
+  </mat-form-field>
+
+  <div class='button-container'>
+    <button mat-button class="button-back" routerLink="/meter-reading" type="button">Back</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!notesForm.valid">Next</button>
+  </div>
+</form>
