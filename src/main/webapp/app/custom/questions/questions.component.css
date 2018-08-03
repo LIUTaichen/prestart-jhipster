@@ -48,3 +48,12 @@
 .progress-spinner {
     margin: auto;
 }
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.button-back {
+    margin-left: auto;
+}

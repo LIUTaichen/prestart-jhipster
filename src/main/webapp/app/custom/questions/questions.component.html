@@ -17,8 +17,13 @@
         </mat-step>
     </mat-vertical-stepper>
     <div *ngIf="!questionsFormGroup.valid">Complete the check list to move on to the next step.</div>
-    <button class="float-right" mat-raised-button color="primary" [disabled]="!questionsFormGroup.valid" (click)="onSubmit()" *ngIf="!isSettingUp">Next</button>
+    <div class='button-container'>
+        <button mat-button class="button-back" routerLink="/plant-confirmation" type="button">Back</button>
+        <button class="float-right" mat-raised-button color="primary" [disabled]="!questionsFormGroup.valid" (click)="onSubmit()"
+            *ngIf="!isSettingUp">Next</button>
+    </div>
+
 </form>
-<div *ngIf= "error">
+<div *ngIf="error">
     <p>{{error}}</p>
 </div>
