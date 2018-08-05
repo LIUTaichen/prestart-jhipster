@@ -48,8 +48,8 @@ describe('PlantLog e2e test', () => {
         expect(plantLogUpdatePage.getRegistrationDueDateInput()).toContain('2001-01-01T02:30');
         plantLogUpdatePage.setLastMaintenanceDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
         expect(plantLogUpdatePage.getLastMaintenanceDateInput()).toContain('2001-01-01T02:30');
-        plantLogUpdatePage.setLastMaintenanceAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
-        expect(plantLogUpdatePage.getLastMaintenanceAtInput()).toContain('2001-01-01T02:30');
+        plantLogUpdatePage.setLastMaintenanceAtInput('5');
+        expect(plantLogUpdatePage.getLastMaintenanceAtInput()).toMatch('5');
         plantLogUpdatePage.setOperatorNameInput('operatorName');
         expect(plantLogUpdatePage.getOperatorNameInput()).toMatch('operatorName');
         plantLogUpdatePage.locationSelectLastOption();

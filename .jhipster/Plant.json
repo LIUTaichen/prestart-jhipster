@@ -64,7 +64,7 @@
         },
         {
             "fieldName": "lastMaintenanceAt",
-            "fieldType": "Instant"
+            "fieldType": "Integer"
         },
         {
             "fieldName": "meterUnit",

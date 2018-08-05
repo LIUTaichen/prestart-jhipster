@@ -55,8 +55,23 @@ export class MeterReadingComponent implements OnInit {
     onSubmit() {
         const data = this.prestartDataService.data;
         data.meterReading = this.meterForm.value.meterReading;
+
+        if (this.plant.maintenanceType === MaintenanceType.METER_BASED) {
+            data.meterReading = this.meterForm.value.meterReading;
+            data.plantLog.maintenanceDueAt = this.meterForm.value.serviceDueAt;
+        }
+
+        if (this.plant.maintenanceType === MaintenanceType.TIME_BASED) {
+            data.plantLog.maintenanceDueDate = this.meterForm.value.serviceDueDate;
+        }
         if (this.plant.hubboReading) {
             data.hubboReading = this.meterForm.value.hubboReading;
+        }
+        if (this.plant.registrationDueDate) {
+            data.plantLog = this.meterForm.value.serviceDueAt;
+        }
+        if (this.plant.certificateDueDate) {
+            this.meterForm.addControl('certDueDate', new FormControl(this.plant.certificateDueDate, [Validators.required]));
         }
         this.prestartDataService.setData(data);
         this.router.navigate(['/notes']);

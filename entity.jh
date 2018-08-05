@@ -14,7 +14,7 @@ entity Plant {
     maintenanceDueAt Integer,
     maintenanceDueDate Instant,
     lastMaintenanceDate Instant,
-    lastMaintenanceAt Instant,
+    lastMaintenanceAt Integer,
     meterUnit MeterUnit,
     certificateDueDate Instant,
     rucDueAtKm Integer,
@@ -153,7 +153,7 @@ entity PlantLog{
     maintenanceDueDate Instant,
     registrationDueDate Instant,
     lastMaintenanceDate Instant,
-    lastMaintenanceAt Instant,
+    lastMaintenanceAt Integer,
     operatorName String
 }
 

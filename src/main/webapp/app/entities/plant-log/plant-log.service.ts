@@ -62,9 +62,7 @@ export class PlantLogService {
             lastMaintenanceDate:
                 plantLog.lastMaintenanceDate != null && plantLog.lastMaintenanceDate.isValid()
                     ? plantLog.lastMaintenanceDate.toJSON()
-                    : null,
-            lastMaintenanceAt:
-                plantLog.lastMaintenanceAt != null && plantLog.lastMaintenanceAt.isValid() ? plantLog.lastMaintenanceAt.toJSON() : null
+                    : null
         });
         return copy;
     }
@@ -74,7 +72,6 @@ export class PlantLogService {
         res.body.maintenanceDueDate = res.body.maintenanceDueDate != null ? moment(res.body.maintenanceDueDate) : null;
         res.body.registrationDueDate = res.body.registrationDueDate != null ? moment(res.body.registrationDueDate) : null;
         res.body.lastMaintenanceDate = res.body.lastMaintenanceDate != null ? moment(res.body.lastMaintenanceDate) : null;
-        res.body.lastMaintenanceAt = res.body.lastMaintenanceAt != null ? moment(res.body.lastMaintenanceAt) : null;
         return res;
     }
 
@@ -84,7 +81,6 @@ export class PlantLogService {
             plantLog.maintenanceDueDate = plantLog.maintenanceDueDate != null ? moment(plantLog.maintenanceDueDate) : null;
             plantLog.registrationDueDate = plantLog.registrationDueDate != null ? moment(plantLog.registrationDueDate) : null;
             plantLog.lastMaintenanceDate = plantLog.lastMaintenanceDate != null ? moment(plantLog.lastMaintenanceDate) : null;
-            plantLog.lastMaintenanceAt = plantLog.lastMaintenanceAt != null ? moment(plantLog.lastMaintenanceAt) : null;
         });
         return res;
     }

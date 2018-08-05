@@ -13,7 +13,7 @@ export interface IPlantLog {
     maintenanceDueDate?: Moment;
     registrationDueDate?: Moment;
     lastMaintenanceDate?: Moment;
-    lastMaintenanceAt?: Moment;
+    lastMaintenanceAt?: number;
     operatorName?: string;
     location?: ILocation;
     plant?: IPlant;
@@ -31,7 +31,7 @@ export class PlantLog implements IPlantLog {
         public maintenanceDueDate?: Moment,
         public registrationDueDate?: Moment,
         public lastMaintenanceDate?: Moment,
-        public lastMaintenanceAt?: Moment,
+        public lastMaintenanceAt?: number,
         public operatorName?: string,
         public location?: ILocation,
         public plant?: IPlant
