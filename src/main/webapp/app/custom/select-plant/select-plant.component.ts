@@ -63,7 +63,7 @@ export class SelectPlantComponent implements OnInit, OnDestroy {
                     byLocation: true,
                     latitude: position.coords.latitude,
                     longitude: position.coords.longitude,
-                    maxDistance: 50
+                    maxDistance: 50000
                 });
             })
             .subscribe(plants => {

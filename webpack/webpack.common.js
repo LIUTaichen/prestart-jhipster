@@ -56,8 +56,8 @@ module.exports = (options) => ({
                 // If this URL is left empty (""), then it will be relative to the current context.
                 // If you use an API server, in `prod` mode, you will need to enable CORS
                 // (see the `jhipster.cors` common JHipster property in the `application-*.yml` configurations)
-                // SERVER_API_URL: `'https://plant-uat.dempseywood.nz/'`
-                SERVER_API_URL: options.env === 'development' ? `''` : `'https://plant-uat.dempseywood.nz/'`
+                 SERVER_API_URL: `'https://plant-uat.dempseywood.nz/'`
+                // SERVER_API_URL: options.env === 'development' ? `''` : `'https://plant-uat.dempseywood.nz/'`
             }
         }),
         new CopyWebpackPlugin([

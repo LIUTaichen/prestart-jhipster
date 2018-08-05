@@ -10,3 +10,14 @@
 .button-back {
     margin-left: auto;
 }
+
+:host {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    /* height: 100%; */
+    flex-grow: 1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    overflow: scroll;
+}

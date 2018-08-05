@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PrestartDataService } from 'app/custom/prestart-data/prestart-data.service';
-import { IPlant } from 'app/shared/model/plant.model';
+import { IPlant, MaintenanceType } from 'app/shared/model/plant.model';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -21,14 +21,34 @@ export class MeterReadingComponent implements OnInit {
 
     createForm() {
         this.meterForm = this.fb.group({
-            meterReading: [this.prestartDataService.data.meterReading, [Validators.required, Validators.min(this.plant.meterReading)]]
+            // meterReading: [this.prestartDataService.data.meterReading, [Validators.required, Validators.min(this.plant.meterReading)]],
             // hubboReading: ['', Validators.required]
         });
+        if (this.plant.maintenanceType === MaintenanceType.METER_BASED) {
+            this.meterForm.addControl(
+                'meterReading',
+                new FormControl(this.prestartDataService.data.meterReading, [Validators.required, Validators.min(this.plant.meterReading)])
+            );
+            this.meterForm.addControl(
+                'serviceDueAt',
+                new FormControl(this.plant.maintenanceDueAt, [Validators.required, Validators.min(this.plant.maintenanceDueAt)])
+            );
+        }
+
+        if (this.plant.maintenanceType === MaintenanceType.TIME_BASED) {
+            this.meterForm.addControl('serviceDueDate', new FormControl(this.plant.maintenanceDueDate, [Validators.required]));
+        }
         if (this.plant.hubboReading) {
             this.meterForm.addControl(
                 'hubboReading',
                 new FormControl(this.prestartDataService.data.hubboReading, [Validators.required, Validators.min(this.plant.hubboReading)])
             );
+        }
+        if (this.plant.registrationDueDate) {
+            this.meterForm.addControl('regoDueDate', new FormControl(this.plant.registrationDueDate, [Validators.required]));
+        }
+        if (this.plant.certificateDueDate) {
+            this.meterForm.addControl('certDueDate', new FormControl(this.plant.certificateDueDate, [Validators.required]));
         }
     }
 
