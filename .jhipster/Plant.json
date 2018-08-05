@@ -59,6 +59,14 @@
             "fieldType": "Instant"
         },
         {
+            "fieldName": "lastMaintenanceDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "lastMaintenanceAt",
+            "fieldType": "Instant"
+        },
+        {
             "fieldName": "meterUnit",
             "fieldType": "MeterUnit",
             "fieldValues": "KM,HOUR"

@@ -30,6 +30,8 @@
             "meterReading": "Meter Reading",
             "maintenanceDueAt": "Maintenance Due At",
             "maintenanceDueDate": "Maintenance Due Date",
+            "lastMaintenanceDate": "Last Maintenance Date",
+            "lastMaintenanceAt": "Last Maintenance At",
             "meterUnit": "Meter Unit",
             "certificateDueDate": "Certificate Due Date",
             "rucDueAtKm": "Ruc Due At Km",

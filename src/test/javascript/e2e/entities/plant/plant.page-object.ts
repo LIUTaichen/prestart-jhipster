@@ -31,6 +31,8 @@ export class PlantUpdatePage {
     meterReadingInput = element(by.id('field_meterReading'));
     maintenanceDueAtInput = element(by.id('field_maintenanceDueAt'));
     maintenanceDueDateInput = element(by.id('field_maintenanceDueDate'));
+    lastMaintenanceDateInput = element(by.id('field_lastMaintenanceDate'));
+    lastMaintenanceAtInput = element(by.id('field_lastMaintenanceAt'));
     meterUnitSelect = element(by.id('field_meterUnit'));
     certificateDueDateInput = element(by.id('field_certificateDueDate'));
     rucDueAtKmInput = element(by.id('field_rucDueAtKm'));
@@ -156,6 +158,22 @@ export class PlantUpdatePage {
 
     getMaintenanceDueDateInput() {
         return this.maintenanceDueDateInput.getAttribute('value');
+    }
+
+    setLastMaintenanceDateInput(lastMaintenanceDate): promise.Promise<void> {
+        return this.lastMaintenanceDateInput.sendKeys(lastMaintenanceDate);
+    }
+
+    getLastMaintenanceDateInput() {
+        return this.lastMaintenanceDateInput.getAttribute('value');
+    }
+
+    setLastMaintenanceAtInput(lastMaintenanceAt): promise.Promise<void> {
+        return this.lastMaintenanceAtInput.sendKeys(lastMaintenanceAt);
+    }
+
+    getLastMaintenanceAtInput() {
+        return this.lastMaintenanceAtInput.getAttribute('value');
     }
 
     setMeterUnitSelect(meterUnit): promise.Promise<void> {

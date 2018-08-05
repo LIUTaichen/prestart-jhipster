@@ -39,6 +39,8 @@ export class PlantUpdateComponent implements OnInit {
     purchaseDate: string;
     dateOfManufacture: string;
     maintenanceDueDate: string;
+    lastMaintenanceDate: string;
+    lastMaintenanceAt: string;
     certificateDueDate: string;
     registrationDueDate: string;
 
@@ -121,6 +123,8 @@ export class PlantUpdateComponent implements OnInit {
         this.plant.purchaseDate = moment(this.purchaseDate, DATE_TIME_FORMAT);
         this.plant.dateOfManufacture = moment(this.dateOfManufacture, DATE_TIME_FORMAT);
         this.plant.maintenanceDueDate = moment(this.maintenanceDueDate, DATE_TIME_FORMAT);
+        this.plant.lastMaintenanceDate = moment(this.lastMaintenanceDate, DATE_TIME_FORMAT);
+        this.plant.lastMaintenanceAt = moment(this.lastMaintenanceAt, DATE_TIME_FORMAT);
         this.plant.certificateDueDate = moment(this.certificateDueDate, DATE_TIME_FORMAT);
         this.plant.registrationDueDate = moment(this.registrationDueDate, DATE_TIME_FORMAT);
         if (this.plant.id !== undefined) {
@@ -175,6 +179,8 @@ export class PlantUpdateComponent implements OnInit {
         this.purchaseDate = moment(plant.purchaseDate).format(DATE_TIME_FORMAT);
         this.dateOfManufacture = moment(plant.dateOfManufacture).format(DATE_TIME_FORMAT);
         this.maintenanceDueDate = moment(plant.maintenanceDueDate).format(DATE_TIME_FORMAT);
+        this.lastMaintenanceDate = moment(plant.lastMaintenanceDate).format(DATE_TIME_FORMAT);
+        this.lastMaintenanceAt = moment(plant.lastMaintenanceAt).format(DATE_TIME_FORMAT);
         this.certificateDueDate = moment(plant.certificateDueDate).format(DATE_TIME_FORMAT);
         this.registrationDueDate = moment(plant.registrationDueDate).format(DATE_TIME_FORMAT);
     }

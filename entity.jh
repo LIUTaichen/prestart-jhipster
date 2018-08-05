@@ -13,6 +13,8 @@ entity Plant {
     meterReading Integer,
     maintenanceDueAt Integer,
     maintenanceDueDate Instant,
+    lastMaintenanceDate Instant,
+    lastMaintenanceAt Instant,
     meterUnit MeterUnit,
     certificateDueDate Instant,
     rucDueAtKm Integer,
@@ -149,6 +151,9 @@ entity PlantLog{
     rucDueAt Integer,
     certificateDueDate Instant,
     maintenanceDueDate Instant,
+    registrationDueDate Instant,
+    lastMaintenanceDate Instant,
+    lastMaintenanceAt Instant,
     operatorName String
 }
 

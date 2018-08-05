@@ -26,6 +26,9 @@ export class PlantLogUpdateComponent implements OnInit {
     plants: IPlant[];
     certificateDueDate: string;
     maintenanceDueDate: string;
+    registrationDueDate: string;
+    lastMaintenanceDate: string;
+    lastMaintenanceAt: string;
 
     constructor(
         private jhiAlertService: JhiAlertService,
@@ -71,6 +74,9 @@ export class PlantLogUpdateComponent implements OnInit {
         this.isSaving = true;
         this.plantLog.certificateDueDate = moment(this.certificateDueDate, DATE_TIME_FORMAT);
         this.plantLog.maintenanceDueDate = moment(this.maintenanceDueDate, DATE_TIME_FORMAT);
+        this.plantLog.registrationDueDate = moment(this.registrationDueDate, DATE_TIME_FORMAT);
+        this.plantLog.lastMaintenanceDate = moment(this.lastMaintenanceDate, DATE_TIME_FORMAT);
+        this.plantLog.lastMaintenanceAt = moment(this.lastMaintenanceAt, DATE_TIME_FORMAT);
         if (this.plantLog.id !== undefined) {
             this.subscribeToSaveResponse(this.plantLogService.update(this.plantLog));
         } else {
@@ -110,5 +116,8 @@ export class PlantLogUpdateComponent implements OnInit {
         this._plantLog = plantLog;
         this.certificateDueDate = moment(plantLog.certificateDueDate).format(DATE_TIME_FORMAT);
         this.maintenanceDueDate = moment(plantLog.maintenanceDueDate).format(DATE_TIME_FORMAT);
+        this.registrationDueDate = moment(plantLog.registrationDueDate).format(DATE_TIME_FORMAT);
+        this.lastMaintenanceDate = moment(plantLog.lastMaintenanceDate).format(DATE_TIME_FORMAT);
+        this.lastMaintenanceAt = moment(plantLog.lastMaintenanceAt).format(DATE_TIME_FORMAT);
     }
 }

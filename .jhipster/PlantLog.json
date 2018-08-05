@@ -34,6 +34,18 @@
             "fieldType": "Instant"
         },
         {
+            "fieldName": "registrationDueDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "lastMaintenanceDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "lastMaintenanceAt",
+            "fieldType": "Instant"
+        },
+        {
             "fieldName": "operatorName",
             "fieldType": "String"
         }

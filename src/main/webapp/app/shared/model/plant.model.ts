@@ -39,6 +39,8 @@ export interface IPlant {
     meterReading?: number;
     maintenanceDueAt?: number;
     maintenanceDueDate?: Moment;
+    lastMaintenanceDate?: Moment;
+    lastMaintenanceAt?: Moment;
     meterUnit?: MeterUnit;
     certificateDueDate?: Moment;
     rucDueAtKm?: number;
@@ -74,6 +76,8 @@ export class Plant implements IPlant {
         public meterReading?: number,
         public maintenanceDueAt?: number,
         public maintenanceDueDate?: Moment,
+        public lastMaintenanceDate?: Moment,
+        public lastMaintenanceAt?: Moment,
         public meterUnit?: MeterUnit,
         public certificateDueDate?: Moment,
         public rucDueAtKm?: number,

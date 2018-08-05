@@ -55,6 +55,27 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantLog.registrationDueDate" for="field_registrationDueDate">Registration Due Date</label>
+                    <div class="d-flex">
+                        <input id="field_registrationDueDate" type="datetime-local" class="form-control" name="registrationDueDate" [(ngModel)]="registrationDueDate"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantLog.lastMaintenanceDate" for="field_lastMaintenanceDate">Last Maintenance Date</label>
+                    <div class="d-flex">
+                        <input id="field_lastMaintenanceDate" type="datetime-local" class="form-control" name="lastMaintenanceDate" [(ngModel)]="lastMaintenanceDate"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plantLog.lastMaintenanceAt" for="field_lastMaintenanceAt">Last Maintenance At</label>
+                    <div class="d-flex">
+                        <input id="field_lastMaintenanceAt" type="datetime-local" class="form-control" name="lastMaintenanceAt" [(ngModel)]="lastMaintenanceAt"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="prestartApp.plantLog.operatorName" for="field_operatorName">Operator Name</label>
                     <input type="text" class="form-control" name="operatorName" id="field_operatorName"
                         [(ngModel)]="plantLog.operatorName" />
