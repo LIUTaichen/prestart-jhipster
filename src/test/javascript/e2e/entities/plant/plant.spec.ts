@@ -70,6 +70,10 @@ describe('Plant e2e test', () => {
         expect(plantUpdatePage.getMaintenanceDueAtInput()).toMatch('5');
         plantUpdatePage.setMaintenanceDueDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
         expect(plantUpdatePage.getMaintenanceDueDateInput()).toContain('2001-01-01T02:30');
+        plantUpdatePage.setLastMaintenanceDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
+        expect(plantUpdatePage.getLastMaintenanceDateInput()).toContain('2001-01-01T02:30');
+        plantUpdatePage.setLastMaintenanceAtInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
+        expect(plantUpdatePage.getLastMaintenanceAtInput()).toContain('2001-01-01T02:30');
         plantUpdatePage.meterUnitSelectLastOption();
         plantUpdatePage.setCertificateDueDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM');
         expect(plantUpdatePage.getCertificateDueDateInput()).toContain('2001-01-01T02:30');

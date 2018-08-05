@@ -22,6 +22,9 @@
             <th><span jhiTranslate="prestartApp.plantLog.rucDueAt">Ruc Due At</span></th>
             <th><span jhiTranslate="prestartApp.plantLog.certificateDueDate">Certificate Due Date</span></th>
             <th><span jhiTranslate="prestartApp.plantLog.maintenanceDueDate">Maintenance Due Date</span></th>
+            <th><span jhiTranslate="prestartApp.plantLog.registrationDueDate">Registration Due Date</span></th>
+            <th><span jhiTranslate="prestartApp.plantLog.lastMaintenanceDate">Last Maintenance Date</span></th>
+            <th><span jhiTranslate="prestartApp.plantLog.lastMaintenanceAt">Last Maintenance At</span></th>
             <th><span jhiTranslate="prestartApp.plantLog.operatorName">Operator Name</span></th>
             <th><span jhiTranslate="prestartApp.plantLog.location">Location</span></th>
             <th><span jhiTranslate="prestartApp.plantLog.plant">Plant</span></th>
@@ -38,6 +41,9 @@
                 <td>{{plantLog.rucDueAt}}</td>
                 <td>{{plantLog.certificateDueDate | date:'medium'}}</td>
                 <td>{{plantLog.maintenanceDueDate | date:'medium'}}</td>
+                <td>{{plantLog.registrationDueDate | date:'medium'}}</td>
+                <td>{{plantLog.lastMaintenanceDate | date:'medium'}}</td>
+                <td>{{plantLog.lastMaintenanceAt | date:'medium'}}</td>
                 <td>{{plantLog.operatorName}}</td>
                 <td>
                     <div *ngIf="plantLog.location">

@@ -24,6 +24,9 @@ export class PlantLogUpdatePage {
     rucDueAtInput = element(by.id('field_rucDueAt'));
     certificateDueDateInput = element(by.id('field_certificateDueDate'));
     maintenanceDueDateInput = element(by.id('field_maintenanceDueDate'));
+    registrationDueDateInput = element(by.id('field_registrationDueDate'));
+    lastMaintenanceDateInput = element(by.id('field_lastMaintenanceDate'));
+    lastMaintenanceAtInput = element(by.id('field_lastMaintenanceAt'));
     operatorNameInput = element(by.id('field_operatorName'));
     locationSelect = element(by.id('field_location'));
     plantSelect = element(by.id('field_plant'));
@@ -86,6 +89,30 @@ export class PlantLogUpdatePage {
 
     getMaintenanceDueDateInput() {
         return this.maintenanceDueDateInput.getAttribute('value');
+    }
+
+    setRegistrationDueDateInput(registrationDueDate): promise.Promise<void> {
+        return this.registrationDueDateInput.sendKeys(registrationDueDate);
+    }
+
+    getRegistrationDueDateInput() {
+        return this.registrationDueDateInput.getAttribute('value');
+    }
+
+    setLastMaintenanceDateInput(lastMaintenanceDate): promise.Promise<void> {
+        return this.lastMaintenanceDateInput.sendKeys(lastMaintenanceDate);
+    }
+
+    getLastMaintenanceDateInput() {
+        return this.lastMaintenanceDateInput.getAttribute('value');
+    }
+
+    setLastMaintenanceAtInput(lastMaintenanceAt): promise.Promise<void> {
+        return this.lastMaintenanceAtInput.sendKeys(lastMaintenanceAt);
+    }
+
+    getLastMaintenanceAtInput() {
+        return this.lastMaintenanceAtInput.getAttribute('value');
     }
 
     setOperatorNameInput(operatorName): promise.Promise<void> {

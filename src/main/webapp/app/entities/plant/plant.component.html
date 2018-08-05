@@ -29,6 +29,8 @@
             <th><span jhiTranslate="prestartApp.plant.meterReading">Meter Reading</span></th>
             <th><span jhiTranslate="prestartApp.plant.maintenanceDueAt">Maintenance Due At</span></th>
             <th><span jhiTranslate="prestartApp.plant.maintenanceDueDate">Maintenance Due Date</span></th>
+            <th><span jhiTranslate="prestartApp.plant.lastMaintenanceDate">Last Maintenance Date</span></th>
+            <th><span jhiTranslate="prestartApp.plant.lastMaintenanceAt">Last Maintenance At</span></th>
             <th><span jhiTranslate="prestartApp.plant.meterUnit">Meter Unit</span></th>
             <th><span jhiTranslate="prestartApp.plant.certificateDueDate">Certificate Due Date</span></th>
             <th><span jhiTranslate="prestartApp.plant.rucDueAtKm">Ruc Due At Km</span></th>
@@ -67,6 +69,8 @@
                 <td>{{plant.meterReading}}</td>
                 <td>{{plant.maintenanceDueAt}}</td>
                 <td>{{plant.maintenanceDueDate | date:'medium'}}</td>
+                <td>{{plant.lastMaintenanceDate | date:'medium'}}</td>
+                <td>{{plant.lastMaintenanceAt | date:'medium'}}</td>
                 <td jhiTranslate="{{'prestartApp.MeterUnit.' + plant.meterUnit}}">{{plant.meterUnit}}</td>
                 <td>{{plant.certificateDueDate | date:'medium'}}</td>
                 <td>{{plant.rucDueAtKm}}</td>

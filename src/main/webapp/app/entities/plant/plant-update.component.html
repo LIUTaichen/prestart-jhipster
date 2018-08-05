@@ -99,6 +99,20 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plant.lastMaintenanceDate" for="field_lastMaintenanceDate">Last Maintenance Date</label>
+                    <div class="d-flex">
+                        <input id="field_lastMaintenanceDate" type="datetime-local" class="form-control" name="lastMaintenanceDate" [(ngModel)]="lastMaintenanceDate"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="prestartApp.plant.lastMaintenanceAt" for="field_lastMaintenanceAt">Last Maintenance At</label>
+                    <div class="d-flex">
+                        <input id="field_lastMaintenanceAt" type="datetime-local" class="form-control" name="lastMaintenanceAt" [(ngModel)]="lastMaintenanceAt"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="prestartApp.plant.meterUnit" for="field_meterUnit">Meter Unit</label>
                     <select class="form-control" name="meterUnit" [(ngModel)]="plant.meterUnit" id="field_meterUnit" >
                         <option value="KM">{{'prestartApp.MeterUnit.KM' | translate}}</option>

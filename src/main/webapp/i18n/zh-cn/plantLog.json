@@ -23,6 +23,9 @@
             "rucDueAt": "Ruc Due At",
             "certificateDueDate": "Certificate Due Date",
             "maintenanceDueDate": "Maintenance Due Date",
+            "registrationDueDate": "Registration Due Date",
+            "lastMaintenanceDate": "Last Maintenance Date",
+            "lastMaintenanceAt": "Last Maintenance At",
             "operatorName": "Operator Name",
             "location": "Location",
             "plant": "Plant"
