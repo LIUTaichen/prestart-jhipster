@@ -19,3 +19,7 @@
     overflow: scroll;
     margin-bottom: 20px;
 }
+
+.tab-header {
+    max-width: 30%;
+}

@@ -15,7 +15,7 @@ export class MeterReadingComponent implements OnInit {
     constructor(private fb: FormBuilder, private prestartDataService: PrestartDataService, private router: Router) {}
 
     ngOnInit() {
-        this.plant = this.prestartDataService.data.plant;
+        this.plant = this.prestartDataService.data.plantLog.plant;
         this.createForm();
     }
 

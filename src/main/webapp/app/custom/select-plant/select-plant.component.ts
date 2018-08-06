@@ -74,23 +74,8 @@ export class SelectPlantComponent implements OnInit, OnDestroy {
     }
 
     onPlantClicked(plant: IPlant) {
-        const data = this.prestartDataService.data;
-        data.plant = plant;
-        const plantLog = this.prestartDataService.data.plantLog;
-        plantLog.plant = plant;
-        plantLog.certificateDueDate = plant.certificateDueDate;
-        // plantLog.hubboReading = plant.hubboReading;
-        plantLog.lastMaintenanceAt = plant.lastMaintenanceAt;
-        plantLog.lastMaintenanceDate = plant.lastMaintenanceDate;
-        plantLog.maintenanceDueAt = plant.maintenanceDueAt;
-        plantLog.maintenanceDueDate = plant.maintenanceDueDate;
-        // plantLog.meterReading = plant.meterReading;
-        plantLog.registrationDueDate = plant.registrationDueDate;
-        plantLog.rucDueAt = plant.rucDueAtKm;
-
-        data.chosenOptions = null;
-        this.prestartDataService.setData(data);
-        this.router.navigate(['/plant-confirmation'], { skipLocationChange: true });
+        this.prestartDataService.setPlantId(plant.id);
+        this.router.navigate(['/plant-confirmation', { plantId: plant.id }], { skipLocationChange: true });
     }
 
     ngOnDestroy() {

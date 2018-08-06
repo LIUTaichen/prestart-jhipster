@@ -275,3 +275,12 @@ html {
 jhi-questions mat-vertical-stepper .mat-step .mat-vertical-stepper-header {
     max-height: 200px !important;
 }
+
+mat-form-field .mat-form-field {
+    &-underline {
+        position: static;
+    }
+    &-subscript-wrapper {
+        position: static;
+    }
+}

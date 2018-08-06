@@ -10,6 +10,8 @@ import { Principal, Account } from 'app/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpResponse } from '@angular/common/http';
+import { PlantService } from 'app/entities/plant';
+import { RecentPlantsService } from 'app/custom/select-plant/recent-plants/recent-plants.service';
 
 @Injectable({
     providedIn: 'root'
@@ -19,7 +21,13 @@ export class PrestartDataService implements OnInit {
     account: Account;
     // prestart: PrestartCheck;
     readonly dataLocalStorageKey = 'PrestartDataService.data';
-    constructor(private prestartCheckService: PrestartCheckService, private router: Router, private principal: Principal) {
+    constructor(
+        private prestartCheckService: PrestartCheckService,
+        private router: Router,
+        private principal: Principal,
+        private plantService: PlantService,
+        private recentPlantsService: RecentPlantsService
+    ) {
         this.ngOnInit();
     }
 
@@ -65,7 +73,6 @@ export class PrestartDataService implements OnInit {
     save(): Observable<HttpResponse<IPrestartCheck>> {
         const prestartCheck: PrestartCheck = this.data.prestartCheck;
         const plantLog = this.data.plantLog;
-        plantLog.plant = this.data.plant;
         plantLog.operatorName = this.account.firstName + ' ' + this.account.lastName;
         prestartCheck.plantLog = plantLog;
         prestartCheck.responses = new Array<PrestartCheckResponse>();
@@ -76,6 +83,7 @@ export class PrestartDataService implements OnInit {
             prestartCheck.responses.push(responseItem);
         });
         console.log(prestartCheck);
+        this.recentPlantsService.addRecentPlant(plantLog.plant);
         return this.prestartCheckService.create(prestartCheck);
     }
 
@@ -87,10 +95,31 @@ export class PrestartDataService implements OnInit {
     initialize() {
         this.setData({
             prestartCheck: new PrestartCheck(),
-            plant: null,
+            plantIdToConfirm: null,
             chosenOptions: null,
             plantLog: new PlantLog()
         });
+    }
+
+    setPlantId(id: number) {
+        this.data.plantIdToConfirm = id;
+    }
+
+    setPlant(plant: IPlant) {
+        const data = this.data;
+        const plantLog = data.plantLog;
+        plantLog.plant = plant;
+        plantLog.certificateDueDate = plant.certificateDueDate;
+        // plantLog.hubboReading = plant.hubboReading;
+        plantLog.lastMaintenanceAt = plant.lastMaintenanceAt;
+        plantLog.lastMaintenanceDate = plant.lastMaintenanceDate;
+        plantLog.maintenanceDueAt = plant.maintenanceDueAt;
+        plantLog.maintenanceDueDate = plant.maintenanceDueDate;
+        // plantLog.meterReading = plant.meterReading;
+        plantLog.registrationDueDate = plant.registrationDueDate;
+        plantLog.rucDueAt = plant.rucDueAtKm;
+        data.chosenOptions = null;
+        this.setData(data);
     }
 
     setNotes(notes: string) {
@@ -101,7 +130,7 @@ export class PrestartDataService implements OnInit {
 
 export interface Data {
     prestartCheck: PrestartCheck;
-    plant: IPlant;
+    plantIdToConfirm: number;
     chosenOptions: Array<PrestartQuestionOption>;
     plantLog: IPlantLog;
 }

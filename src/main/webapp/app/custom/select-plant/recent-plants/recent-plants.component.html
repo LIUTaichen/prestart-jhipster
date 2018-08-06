@@ -1,0 +1,16 @@
+<mat-nav-list>
+  <mat-list-item *ngFor="let plant of plants" (click)="onPlantClicked(plant)">
+    <h4 matLine class="mat-subheading-1">
+      <span matLine> {{ plant.fleetId }}</span>
+    </h4>
+    <p matLine>
+      <span class="mat-caption"> {{plant.category.category}} </span>
+    </p>
+    <p matLine>
+      <span class="mat-caption"> {{plant.description}}</span>
+    </p>
+  </mat-list-item>
+</mat-nav-list>
+<div *ngIf="!plants">
+  <p>There are no recently used plants</p>
+</div>

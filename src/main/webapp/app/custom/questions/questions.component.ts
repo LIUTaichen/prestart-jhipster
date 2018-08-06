@@ -35,7 +35,7 @@ export class QuestionsComponent implements OnInit {
         this.questionsFormGroup = this.formBuilder.group({
             questions: this.formBuilder.array([])
         });
-        this.plant = this.prestartDataService.data.plant;
+        this.plant = this.prestartDataService.data.plantLog.plant;
         console.log(this.plant.category.prestartCheckConfig);
         this.questionService
             .query({
