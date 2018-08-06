@@ -44,10 +44,10 @@
   <div class="section padded" *ngIf="data.plantLog.plant.maintenanceType === 'TIME_BASED'">
     <div class="mat-subheading-2">Service</div>
     <mat-form-field>
-      <input matInput [matDatepicker]="serviceDueDatepicker" placeholder="ServiceDueDate" value="data.plantLog.maintenanceDueDate"
-        min="plant.maintenanceDueDate" readonly>
-      <mat-datepicker-toggle matSuffix [for]="serviceDueDatepicker"></mat-datepicker-toggle>
-      <mat-datepicker #serviceDueDatepicker></mat-datepicker>
+      <input matInput [matDatepicker]="serviceDueDatepicker" placeholder="Service Due Date" [value]="data.plantLog.maintenanceDueDate"
+        readonly>
+      <mat-datepicker-toggle matSuffix [for]="serviceDueDatepicker" disabled></mat-datepicker-toggle>
+      <mat-datepicker #serviceDueDatepicker disabled></mat-datepicker>
     </mat-form-field>
   </div>
 

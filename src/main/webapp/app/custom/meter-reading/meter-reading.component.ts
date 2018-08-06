@@ -42,7 +42,10 @@ export class MeterReadingComponent implements OnInit {
         }
 
         if (this.plant.maintenanceType === MaintenanceType.TIME_BASED) {
-            this.meterForm.addControl('serviceDueDate', new FormControl(this.plant.maintenanceDueDate, [Validators.required]));
+            this.meterForm.addControl(
+                'serviceDueDate',
+                new FormControl(this.prestartDataService.data.plantLog.maintenanceDueDate, [Validators.required])
+            );
         }
         if (this.plant.hubboReading) {
             this.meterForm.addControl(

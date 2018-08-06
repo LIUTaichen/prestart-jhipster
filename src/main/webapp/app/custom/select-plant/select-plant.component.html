@@ -14,7 +14,7 @@
       <div class="mat-caption">Look up</div>
     </ng-template>
     <ng-template matTabContent>
-      <jhi-lookup-plants></jhi-lookup-plants>
+      <jhi-lookup-plants  (selected)="onPlantClicked($event)"></jhi-lookup-plants>
     </ng-template>
   </mat-tab>
   <mat-tab>
