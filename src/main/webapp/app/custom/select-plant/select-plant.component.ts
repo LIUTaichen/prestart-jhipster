@@ -3,6 +3,7 @@ import { PlantService } from '../../entities/plant';
 import { LocationService } from '../../entities/location';
 import { Observable } from 'rxjs';
 import { IPlant } from '../../shared/model/plant.model';
+import { IPlantLog, PlantLog } from '../../shared/model/plant-log.model';
 import { PrestartDataService } from '../prestart-data/prestart-data.service';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -63,7 +64,7 @@ export class SelectPlantComponent implements OnInit, OnDestroy {
                     byLocation: true,
                     latitude: position.coords.latitude,
                     longitude: position.coords.longitude,
-                    maxDistance: 50000
+                    maxDistance: 50
                 });
             })
             .subscribe(plants => {
@@ -75,9 +76,21 @@ export class SelectPlantComponent implements OnInit, OnDestroy {
     onPlantClicked(plant: IPlant) {
         const data = this.prestartDataService.data;
         data.plant = plant;
+        const plantLog = this.prestartDataService.data.plantLog;
+        plantLog.plant = plant;
+        plantLog.certificateDueDate = plant.certificateDueDate;
+        // plantLog.hubboReading = plant.hubboReading;
+        plantLog.lastMaintenanceAt = plant.lastMaintenanceAt;
+        plantLog.lastMaintenanceDate = plant.lastMaintenanceDate;
+        plantLog.maintenanceDueAt = plant.maintenanceDueAt;
+        plantLog.maintenanceDueDate = plant.maintenanceDueDate;
+        // plantLog.meterReading = plant.meterReading;
+        plantLog.registrationDueDate = plant.registrationDueDate;
+        plantLog.rucDueAt = plant.rucDueAtKm;
+
         data.chosenOptions = null;
         this.prestartDataService.setData(data);
-        this.router.navigate(['/plant-confirmation']);
+        this.router.navigate(['/plant-confirmation'], { skipLocationChange: true });
     }
 
     ngOnDestroy() {

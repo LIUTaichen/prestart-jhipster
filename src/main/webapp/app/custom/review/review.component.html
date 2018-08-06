@@ -29,26 +29,69 @@
       </div>
     </div>
   </div>
-  <div class="mat-subheading-1">Readings</div>
-  <div class="readings">
-    <mat-form-field>
-      <input matInput placeholder="Meter reading" value="{{data.meterReading}}" readonly>
-      <span matSuffix> {{data.plant.meterUnit}}</span>
 
+  <div class="section padded" *ngIf="data.plant.maintenanceType === 'METER_BASED'">
+    <div class="mat-subheading-2">Meter and Service</div>
+    <mat-form-field>
+      <input matInput type="number" placeholder="New reading" value="{{data.plantLog.meterReading}}" readonly>
+      <span matSuffix> {{data.plant.meterUnit}}</span>
     </mat-form-field>
-    <div> Delta of {{(data.meterReading - data.plant.meterReading)}}</div>
-    <mat-form-field *ngIf="data.hubboReading" class="hubbo">
-      <input matInput placeholder="Hubbo reading" value="{{data.hubboReading}}" readonly>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Service due at" value="{{data.plantLog.maintenanceDueAt}}" readonly>
+      <span matSuffix> {{data.plant.meterUnit}}</span>
+    </mat-form-field>
+  </div>
+  <div class="section padded" *ngIf="data.plant.maintenanceType === 'TIME_BASED'">
+    <div class="mat-subheading-2">Service</div>
+    <mat-form-field>
+      <input matInput [matDatepicker]="serviceDueDatepicker" placeholder="ServiceDueDate" value="data.plantLog.maintenanceDueDate"
+        min="plant.maintenanceDueDate" readonly>
+      <mat-datepicker-toggle matSuffix [for]="serviceDueDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #serviceDueDatepicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+
+  <mat-divider *ngIf="data.plant.hubboReading"></mat-divider>
+  <div class="section" *ngIf="data.plant.hubboReading">
+    <div class="mat-subheading-2">Hubbo and Ruc</div>
+    <mat-form-field>
+      <input matInput type="number" placeholder="New reading" value="{{data.plantLog.hubboReading}}" readonly>
       <span matSuffix> KM</span>
     </mat-form-field>
-    <div *ngIf="data.hubboReading"> Delta of {{(data.hubboReading - data.plant.hubboReading)}}</div>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Ruc due at" value="{{data.plantLog.rucDueAt}}" readonly>
+      <span matSuffix> KM</span>
+    </mat-form-field>
+  </div>
+  <mat-divider *ngIf="data.plant.certificateDueDate || data.plant.registrationDueDate"></mat-divider>
+  <div class="section padded" *ngIf="data.plant.certificateDueDate || data.plant.registrationDueDate">
+
+    <div class="mat-subheading-2">Compliance</div>
+    <mat-form-field *ngIf="data.plant.registrationDueDate">
+      <input matInput [matDatepicker]="regoDueDatepicker" placeholder="Rego due date" [value]="data.plantLog.registrationDueDate"
+        readonly>
+      <mat-datepicker-toggle matSuffix [for]="regoDueDatepicker" disabled></mat-datepicker-toggle>
+      <mat-datepicker #regoDueDatepicker disabled></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field *ngIf="data.plant.certificateDueDate">
+      <input matInput [matDatepicker]="certDueDatepicker" placeholder="Wof/ Cof due date" [value]="data.plantLog.certificateDueDate"
+        readonly>
+      <mat-datepicker-toggle matSuffix [for]="certDueDatepicker" disabled></mat-datepicker-toggle>
+      <mat-datepicker #certDueDatepicker disabled></mat-datepicker>
+    </mat-form-field>
+
   </div>
   <mat-divider class="divider"></mat-divider>
-  <div class="mat-subheading-1">Notes</div>
-  <div><p class="mat-body-1"></p>{{data.plantLog.notes}}</div>
-  <mat-divider class="divider"></mat-divider>
+  <div class="section">
+    <div class=" mat-subheading-1 ">Notes</div>
+    <div>
+      <p class="mat-body-1 ">{{data.plantLog.notes}}</p>
+    </div>
+  </div>
+  <mat-divider class="divider "></mat-divider>
   <div class='button-container'>
-    <button mat-button routerLink="/notes" class='button-back'>Back</button>
-    <button mat-raised-button color="primary" routerLink="/submission">Confirm</button>
+    <button mat-button routerLink="/notes " class='button-back' skipLocationChange>Back</button>
+    <button mat-raised-button color="primary" routerLink="/submission" skipLocationChange>Confirm</button>
   </div>
 </div>

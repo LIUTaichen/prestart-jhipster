@@ -27,11 +27,17 @@ export class MeterReadingComponent implements OnInit {
         if (this.plant.maintenanceType === MaintenanceType.METER_BASED) {
             this.meterForm.addControl(
                 'meterReading',
-                new FormControl(this.prestartDataService.data.meterReading, [Validators.required, Validators.min(this.plant.meterReading)])
+                new FormControl(this.prestartDataService.data.plantLog.meterReading, [
+                    Validators.required,
+                    Validators.min(this.plant.meterReading)
+                ])
             );
             this.meterForm.addControl(
                 'serviceDueAt',
-                new FormControl(this.plant.maintenanceDueAt, [Validators.required, Validators.min(this.plant.maintenanceDueAt)])
+                new FormControl(this.prestartDataService.data.plantLog.maintenanceDueAt, [
+                    Validators.required,
+                    Validators.min(this.plant.maintenanceDueAt)
+                ])
             );
         }
 
@@ -41,23 +47,40 @@ export class MeterReadingComponent implements OnInit {
         if (this.plant.hubboReading) {
             this.meterForm.addControl(
                 'hubboReading',
-                new FormControl(this.prestartDataService.data.hubboReading, [Validators.required, Validators.min(this.plant.hubboReading)])
+                new FormControl(this.prestartDataService.data.plantLog.hubboReading, [
+                    Validators.required,
+                    Validators.min(this.plant.hubboReading)
+                ])
+            );
+        }
+        if (this.plant.rucDueAtKm) {
+            this.meterForm.addControl(
+                'rucDueAt',
+                new FormControl(this.prestartDataService.data.plantLog.rucDueAt, [
+                    Validators.required,
+                    Validators.min(this.plant.rucDueAtKm)
+                ])
             );
         }
         if (this.plant.registrationDueDate) {
-            this.meterForm.addControl('regoDueDate', new FormControl(this.plant.registrationDueDate, [Validators.required]));
+            this.meterForm.addControl(
+                'regoDueDate',
+                new FormControl(this.prestartDataService.data.plantLog.registrationDueDate, [Validators.required])
+            );
         }
         if (this.plant.certificateDueDate) {
-            this.meterForm.addControl('certDueDate', new FormControl(this.plant.certificateDueDate, [Validators.required]));
+            this.meterForm.addControl(
+                'certDueDate',
+                new FormControl(this.prestartDataService.data.plantLog.certificateDueDate, [Validators.required])
+            );
         }
     }
 
     onSubmit() {
         const data = this.prestartDataService.data;
-        data.meterReading = this.meterForm.value.meterReading;
 
         if (this.plant.maintenanceType === MaintenanceType.METER_BASED) {
-            data.meterReading = this.meterForm.value.meterReading;
+            data.plantLog.meterReading = this.meterForm.value.meterReading;
             data.plantLog.maintenanceDueAt = this.meterForm.value.serviceDueAt;
         }
 
@@ -65,16 +88,17 @@ export class MeterReadingComponent implements OnInit {
             data.plantLog.maintenanceDueDate = this.meterForm.value.serviceDueDate;
         }
         if (this.plant.hubboReading) {
-            data.hubboReading = this.meterForm.value.hubboReading;
+            data.plantLog.hubboReading = this.meterForm.value.hubboReading;
+            data.plantLog.rucDueAt = this.meterForm.value.rucDueAt;
         }
         if (this.plant.registrationDueDate) {
-            data.plantLog = this.meterForm.value.serviceDueAt;
+            data.plantLog.registrationDueDate = this.meterForm.value.regoDueDate;
         }
         if (this.plant.certificateDueDate) {
-            this.meterForm.addControl('certDueDate', new FormControl(this.plant.certificateDueDate, [Validators.required]));
+            data.plantLog.certificateDueDate = this.meterForm.value.certDueDate;
         }
         this.prestartDataService.setData(data);
-        this.router.navigate(['/notes']);
+        this.router.navigate(['/notes'], { skipLocationChange: true });
     }
 
     isValid(value: string): Boolean {

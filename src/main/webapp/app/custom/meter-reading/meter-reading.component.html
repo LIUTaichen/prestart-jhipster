@@ -1,6 +1,6 @@
 <form [formGroup]="meterForm" (ngSubmit)="onSubmit()">
   <div class="section" *ngIf="plant.maintenanceType === 'METER_BASED'">
-    <div class="mat-subheading-2">Service</div>
+    <div class="mat-subheading-2">Meter and Service</div>
     <mat-form-field>
       <input matInput placeholder="Last reading" value="{{plant.meterReading}}" readonly disabled>
       <span matSuffix> {{plant.meterUnit}}</span>
@@ -16,29 +16,30 @@
       </mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="number"  placeholder="Service due at" formControlName="serviceDueAt" required>
+      <input matInput type="number" placeholder="Service due at" formControlName="serviceDueAt" required>
       <span matSuffix> {{plant.meterUnit}}</span>
     </mat-form-field>
   </div>
   <div class="section" *ngIf="plant.maintenanceType === 'TIME_BASED'">
     <div class="mat-subheading-2">Service</div>
     <mat-form-field>
-        <input matInput [matDatepicker]="serviceDueDatepicker" placeholder="ServiceDueDate" formControlName="serviceDueDate" min="plant.maintenanceDueDate"  required>
-        <mat-datepicker-toggle matSuffix [for]="serviceDueDatepicker"></mat-datepicker-toggle>
-        <mat-datepicker #serviceDueDatepicker></mat-datepicker>
+      <input matInput [matDatepicker]="serviceDueDatepicker" placeholder="ServiceDueDate" formControlName="serviceDueDate" min="plant.maintenanceDueDate"
+        required>
+      <mat-datepicker-toggle matSuffix [for]="serviceDueDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #serviceDueDatepicker></mat-datepicker>
     </mat-form-field>
   </div>
 
 
-  <mat-divider *ngIf="plant.hubboReading"></mat-divider>
+  <mat-divider *ngIf="plant.hubboReading || plant.rucDueAtKm"></mat-divider>
   <div class="section" *ngIf="plant.hubboReading">
 
-    <div class="mat-subheading-2">Hubbo Reading</div>
-    <mat-form-field>
+    <div class="mat-subheading-2">Hubbo and Ruc</div>
+    <mat-form-field *ngIf="plant.hubboReading">
       <input matInput placeholder="Last reading" value="{{plant.hubboReading}}" readonly disabled>
       <span matSuffix> KM</span>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field *ngIf="plant.hubboReading">
       <input matInput type="number" placeholder="New reading" formControlName="hubboReading" required (keyup)="onKeyup($event)">
       <span matSuffix> KM</span>
       <mat-error *ngIf="meterForm.get('hubboReading').getError('required')">
@@ -48,27 +49,39 @@
         New reading must not be lower than the last reading.
       </mat-error>
     </mat-form-field>
+    <mat-form-field *ngIf="plant.rucDueAtKm">
+        <input matInput placeholder="Ruc due at"  formControlName="rucDueAt" required>
+        <span matSuffix> KM</span>
+        <mat-error *ngIf="meterForm.get('hubboReading').getError('required')">
+          Ruc due at is required.
+        </mat-error>
+        <mat-error *ngIf="meterForm.get('hubboReading').getError('min')">
+          New Ruc due at must not be lower than the previous value.
+        </mat-error>
+      </mat-form-field>
   </div>
 
   <mat-divider *ngIf="plant.certificateDueDate || plant.registrationDueDate"></mat-divider>
   <div class="section" *ngIf="plant.certificateDueDate || plant.registrationDueDate">
 
     <div class="mat-subheading-2">Compliance</div>
-    <mat-form-field *ngIf="plant.registrationDueDate"  >
-        <input matInput [matDatepicker]="regoDueDatepicker" placeholder="Rego due date" formControlName="regoDueDate" min="plant.registrationDueDate"  required>
-        <mat-datepicker-toggle matSuffix [for]="regoDueDatepicker"></mat-datepicker-toggle>
-        <mat-datepicker #regoDueDatepicker></mat-datepicker>
+    <mat-form-field *ngIf="plant.registrationDueDate">
+      <input matInput [matDatepicker]="regoDueDatepicker" placeholder="Rego due date" formControlName="regoDueDate" min="plant.registrationDueDate"
+        required>
+      <mat-datepicker-toggle matSuffix [for]="regoDueDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #regoDueDatepicker></mat-datepicker>
     </mat-form-field>
-    <mat-form-field *ngIf="plant.certificateDueDate"  >
-        <input matInput [matDatepicker]="certDueDatepicker" placeholder="Wof/ Cof due date" formControlName="certDueDate" min="plant.certificateDueDate"  required>
-        <mat-datepicker-toggle matSuffix [for]="certDueDatepicker"></mat-datepicker-toggle>
-        <mat-datepicker #certDueDatepicker></mat-datepicker>
+    <mat-form-field *ngIf="plant.certificateDueDate">
+      <input matInput [matDatepicker]="certDueDatepicker" placeholder="Wof/ Cof due date" formControlName="certDueDate" min="plant.certificateDueDate"
+        required>
+      <mat-datepicker-toggle matSuffix [for]="certDueDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #certDueDatepicker></mat-datepicker>
     </mat-form-field>
-  
+
   </div>
 
   <div class='button-container'>
-    <button mat-button class="button-back" routerLink="/questions" type="button">Back</button>
+    <button mat-button class="button-back" routerLink="/questions" skipLocationChange type="button">Back</button>
     <button mat-raised-button color="primary" type="submit" [disabled]="!meterForm.valid">Next</button>
   </div>
 </form>

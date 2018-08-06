@@ -80,6 +80,6 @@ export class QuestionsComponent implements OnInit {
     }
 
     onSubmit() {
-        this.router.navigate(['/meter-reading']);
+        this.router.navigate(['/meter-reading'], { skipLocationChange: true });
     }
 }

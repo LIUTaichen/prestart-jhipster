@@ -31,8 +31,9 @@
     margin-top: 16px;
     margin-bottom: 16px;
 }
-.readings {
-    padding: 0 64px;
+.readings,
+.padded {
+    margin: auto;
 }
 
 .red {
@@ -57,4 +58,8 @@
 .large-icon {
     font-size: 40px;
     margin-right: 16px;
+}
+
+.section {
+    padding: 20px;
 }

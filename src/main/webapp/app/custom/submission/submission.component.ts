@@ -55,7 +55,7 @@ export class SubmissionComponent implements OnInit, AfterViewInit {
                 this.submitting = false;
                 console.log(response);
                 this.prestartDataService.initialize();
-                this.router.navigate(['/result']);
+                this.router.navigate(['/result'], { skipLocationChange: true });
             },
             error => {
                 this.submitting = false;

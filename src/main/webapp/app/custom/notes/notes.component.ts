@@ -22,6 +22,6 @@ export class NotesComponent implements OnInit {
 
     onSubmit() {
         this.prestartDataService.setNotes(this.notesForm.value.notes);
-        this.router.navigate(['/review']);
+        this.router.navigate(['/review'], { skipLocationChange: true });
     }
 }

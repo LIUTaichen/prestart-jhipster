@@ -12,6 +12,6 @@
   <span class="mat-caption"> {{plant.description}}</span>
 </p>
 <div class='buttons'>
-  <button mat-button routerLink="/select-plant">Choose another plant</button>
-  <button mat-raised-button color="primary" routerLink="/questions">Proceed</button>
+  <button mat-button routerLink="/select-plant" skipLocationChange>Choose another plant</button>
+  <button mat-raised-button color="primary" routerLink="/questions" skipLocationChange>Proceed</button>
 </div>

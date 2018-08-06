@@ -66,8 +66,6 @@ export class PrestartDataService implements OnInit {
         const prestartCheck: PrestartCheck = this.data.prestartCheck;
         const plantLog = this.data.plantLog;
         plantLog.plant = this.data.plant;
-        plantLog.meterReading = this.data.meterReading;
-        plantLog.hubboReading = this.data.hubboReading;
         plantLog.operatorName = this.account.firstName + ' ' + this.account.lastName;
         prestartCheck.plantLog = plantLog;
         prestartCheck.responses = new Array<PrestartCheckResponse>();
@@ -91,8 +89,6 @@ export class PrestartDataService implements OnInit {
             prestartCheck: new PrestartCheck(),
             plant: null,
             chosenOptions: null,
-            meterReading: null,
-            hubboReading: null,
             plantLog: new PlantLog()
         });
     }
@@ -107,7 +103,5 @@ export interface Data {
     prestartCheck: PrestartCheck;
     plant: IPlant;
     chosenOptions: Array<PrestartQuestionOption>;
-    meterReading: number;
-    hubboReading: number;
     plantLog: IPlantLog;
 }
