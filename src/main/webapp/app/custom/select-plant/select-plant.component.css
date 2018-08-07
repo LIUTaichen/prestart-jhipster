@@ -23,3 +23,32 @@
 .tab-header {
     max-width: 30%;
 }
+
+mat-tab-group {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    /* height: 100%; */
+    flex-grow: 1;
+    overflow: scroll;
+}
+
+.lookup,
+.gps,
+.recent {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    height: 100%;
+    flex-grow: 1;
+    overflow: scroll;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    height: 100%;
+    flex-grow: 1;
+    overflow: scroll;
+}

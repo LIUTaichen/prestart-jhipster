@@ -1,5 +1,5 @@
 <mat-tab-group>
-  <mat-tab>
+  <mat-tab class="recent">
     <ng-template mat-tab-label>
       <!-- <mat-icon class="example-tab-icon">history</mat-icon> -->
       <div class="mat-caption">Recent</div>
@@ -8,7 +8,7 @@
       <jhi-recent-plants (selected)="onPlantClicked($event)"></jhi-recent-plants>
     </ng-template>
   </mat-tab>
-  <mat-tab>
+  <mat-tab class="lookup">
     <ng-template mat-tab-label>
       <!-- <mat-icon class="example-tab-icon">search</mat-icon> -->
       <div class="mat-caption">Look up</div>
@@ -17,32 +17,32 @@
       <jhi-lookup-plants  (selected)="onPlantClicked($event)"></jhi-lookup-plants>
     </ng-template>
   </mat-tab>
-  <mat-tab>
+  <mat-tab class="gps">
     <ng-template mat-tab-label>
       <!-- <mat-icon class="example-tab-icon">near_me</mat-icon> -->
       <div class="mat-caption">Near By</div>
     </ng-template>
     <ng-template matTabContent>
-      <div class="loading" *ngIf="obtainingLocation">
+      <div class="loading" class="list" *ngIf="obtainingLocation">
         <p>Obtaining your position...</p>
         <mat-progress-spinner mode="indeterminate" class="progress-spinner" diameter="50"></mat-progress-spinner>
       </div>
-      <div class="loading" *ngIf="fetchingPlants">
+      <div class="loading" class="list" *ngIf="fetchingPlants">
         <p>Finding plants within 50 meters</p>
         <mat-progress-spinner mode="indeterminate" class="progress-spinner" diameter="50"></mat-progress-spinner>
       </div>
-      <div *ngIf="!fetchingPlants && !obtainingLocation">
-        <mat-nav-list>
+      <div *ngIf="!fetchingPlants && !obtainingLocation" class="list">
+        <mat-nav-list class="list">
           <mat-list-item *ngFor="let plant of plants" (click)="onPlantClicked(plant)">
-            <h4 matLine class="mat-subheading-1">
-              <span matLine> {{ plant.fleetId }}</span>
-            </h4>
-            <p matLine>
-              <span class="mat-caption"> {{plant.category.category}} </span>
-            </p>
-            <p matLine>
-              <span class="mat-caption"> {{plant.description}}</span>
-            </p>
+              <h4 matLine class="mat-subheading-1">
+                  <span matLine> {{ plant.fleetId }}</span>
+                </h4>
+                <p matLine>
+                  <span class="mat-caption"> {{plant?.category?.category}} </span>
+                </p>
+                <p matLine>
+                  <span class="mat-caption"> {{plant.description}}</span>
+                </p>
           </mat-list-item>
         </mat-nav-list>
         <div *ngIf="!plants">

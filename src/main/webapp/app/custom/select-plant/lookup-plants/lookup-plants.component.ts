@@ -18,7 +18,7 @@ export class LookupPlantsComponent implements OnInit {
 
     ngOnInit() {
         this.queryControl.valueChanges
-            .filter(newVal => newVal)
+            .filter(newVal => newVal && newVal.length > 1)
             .debounceTime(400)
             .flatMap(newValue => {
                 console.log(newValue);

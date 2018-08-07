@@ -17,6 +17,7 @@ import { AzureCallbackComponent } from './azure-callback/azure-callback.componen
 import { NotesComponent } from './notes/notes.component';
 import { RecentPlantsComponent } from './select-plant/recent-plants/recent-plants.component';
 import { LookupPlantsComponent } from './select-plant/lookup-plants/lookup-plants.component';
+import { PlantListItemComponent } from './select-plant/plant-list-item/plant-list-item.component';
 
 @NgModule({
     imports: [
@@ -39,7 +40,8 @@ import { LookupPlantsComponent } from './select-plant/lookup-plants/lookup-plant
         AzureCallbackComponent,
         NotesComponent,
         RecentPlantsComponent,
-        LookupPlantsComponent
+        LookupPlantsComponent,
+        PlantListItemComponent
     ]
 })
 export class CustomModule {}

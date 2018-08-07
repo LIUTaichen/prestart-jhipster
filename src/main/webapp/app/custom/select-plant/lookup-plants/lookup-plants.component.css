@@ -3,3 +3,21 @@
     width: 100%;
     max-width: 400px;
 }
+
+:host {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    height: 100%;
+    flex-grow: 1;
+    overflow: scroll;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    /* height: 100%; */
+    flex-grow: 1;
+    overflow: scroll;
+}
