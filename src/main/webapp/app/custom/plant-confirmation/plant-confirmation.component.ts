@@ -26,7 +26,9 @@ export class PlantConfirmationComponent implements OnInit {
             );
         } else {
             console.error('plant Id to confirm is not found');
-            this.router.navigate(['/select-plant'], { skipLocationChange: false });
+            console.log('data empty, ', this.prestartDataService.data);
+            console.log('navigating back to home ');
+            this.router.navigate(['/'], { skipLocationChange: false });
         }
     }
 

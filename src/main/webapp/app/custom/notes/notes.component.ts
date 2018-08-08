@@ -15,9 +15,15 @@ export class NotesComponent implements OnInit {
     constructor(private fb: FormBuilder, private prestartDataService: PrestartDataService, private router: Router) {}
 
     ngOnInit() {
-        this.notesForm = this.fb.group({
-            notes: [this.prestartDataService.data.plantLog.notes]
-        });
+        if (this.prestartDataService.data && this.prestartDataService.data.plantLog && this.prestartDataService.data.plantLog.plant) {
+            this.notesForm = this.fb.group({
+                notes: [this.prestartDataService.data.plantLog.notes]
+            });
+        } else {
+            console.log('data empty, ', this.prestartDataService.data);
+            console.log('navigating back to home ');
+            this.router.navigate(['/'], { skipLocationChange: false });
+        }
     }
 
     onSubmit() {

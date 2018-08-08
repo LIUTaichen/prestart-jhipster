@@ -106,6 +106,9 @@ export class PrestartDataService implements OnInit {
     }
 
     setPlant(plant: IPlant) {
+        if (this.data.plantLog && this.data.plantLog.plant === plant) {
+            return;
+        }
         const data = this.data;
         const plantLog = data.plantLog;
         plantLog.plant = plant;

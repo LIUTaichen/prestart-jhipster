@@ -15,8 +15,14 @@ export class MeterReadingComponent implements OnInit {
     constructor(private fb: FormBuilder, private prestartDataService: PrestartDataService, private router: Router) {}
 
     ngOnInit() {
-        this.plant = this.prestartDataService.data.plantLog.plant;
-        this.createForm();
+        if (this.prestartDataService.data && this.prestartDataService.data.plantLog && this.prestartDataService.data.plantLog.plant) {
+            this.plant = this.prestartDataService.data.plantLog.plant;
+            this.createForm();
+        } else {
+            console.log('data empty, ', this.prestartDataService.data);
+            console.log('navigating back to home ');
+            this.router.navigate(['/'], { skipLocationChange: false });
+        }
     }
 
     createForm() {
@@ -39,9 +45,7 @@ export class MeterReadingComponent implements OnInit {
                     Validators.min(this.plant.maintenanceDueAt)
                 ])
             );
-        }
-
-        if (this.plant.maintenanceType === MaintenanceType.TIME_BASED) {
+        } else {
             this.meterForm.addControl(
                 'serviceDueDate',
                 new FormControl(this.prestartDataService.data.plantLog.maintenanceDueDate, [Validators.required])

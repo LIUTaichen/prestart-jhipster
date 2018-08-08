@@ -1,19 +1,33 @@
 .notes {
-    min-width: 280px;
-    min-height: 280px;
     flex-grow: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* display: flex; */
 }
 
 .notes-area {
-    min-height: 250px;
+    width: 100%;
+    min-height: 150px;
+    flex-grow: 1;
 }
 
 .button-container {
-    margin-top: 24px;
     display: flex;
     flex-direction: row;
 }
 
 .button-back {
     margin-left: auto;
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    /* height: 100%; */
+    flex-grow: 1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    overflow: scroll;
 }

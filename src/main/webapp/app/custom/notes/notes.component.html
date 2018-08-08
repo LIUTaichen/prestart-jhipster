@@ -1,7 +1,7 @@
 <p>Document any minor faults that require servicing: Major faults should be repoted immediately to your Manager or Fleet Manager</p>
-<form [formGroup]="notesForm" (ngSubmit)="onSubmit()">
-  <mat-form-field class="notes">
-    <textarea matInput placeholder="Notes" maxlength="1024" formControlName="notes" class="notes-area"></textarea>
+<form [formGroup]="notesForm" (ngSubmit)="onSubmit()" class="notes">
+  <mat-form-field class="notes-area" >
+    <textarea matInput placeholder="Notes" maxlength="1024" formControlName="notes" ></textarea>
     <mat-hint align="end">{{notesForm.get('notes').value?.length}} / 1024</mat-hint>
   </mat-form-field>
 

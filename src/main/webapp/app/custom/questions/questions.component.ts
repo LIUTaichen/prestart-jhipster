@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, FormArray, AbstractControl } from '@angular/forms';
 import { PrestartDataService } from '../prestart-data/prestart-data.service';
 import { IPlant } from '../../shared/model/plant.model';
@@ -9,19 +9,21 @@ import { PrestartQuestionOptionService } from 'app/entities/prestart-question-op
 import { PrestartQuestionOption, IPrestartQuestionOption } from 'app/shared/model/prestart-question-option.model';
 import { Router } from '@angular/router';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { ISubscription } from 'rxjs/Subscription';
 
 @Component({
     selector: 'jhi-questions',
     templateUrl: './questions.component.html',
     styleUrls: ['./questions.component.css']
 })
-export class QuestionsComponent implements OnInit {
+export class QuestionsComponent implements OnInit, OnDestroy {
     plant: IPlant;
     questionsFormGroup: FormGroup;
     questionItems: Array<IPrestartQuestion>;
     isSettingUp = true;
     error: string;
     questions: AbstractControl;
+    subscription: ISubscription;
     constructor(
         private prestartDataService: PrestartDataService,
         private questionService: PrestartQuestionService,
@@ -32,12 +34,17 @@ export class QuestionsComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+        if (!this.prestartDataService.data || !this.prestartDataService.data.plantLog || !this.prestartDataService.data.plantLog.plant) {
+            console.log('data empty, ', this.prestartDataService.data);
+            console.log('navigating back to home ');
+            this.router.navigate(['/'], { skipLocationChange: false });
+        }
         this.questionsFormGroup = this.formBuilder.group({
             questions: this.formBuilder.array([])
         });
         this.plant = this.prestartDataService.data.plantLog.plant;
         console.log(this.plant.category.prestartCheckConfig);
-        this.questionService
+        this.subscription = this.questionService
             .query({
                 'prestartCheckConfigId.equals': this.plant.category.prestartCheckConfig.id
             })
@@ -60,7 +67,6 @@ export class QuestionsComponent implements OnInit {
                 }
                 this.questions = questionsFormArray;
                 this.questionsFormGroup.valueChanges.subscribe(newVal => {
-                    console.log(newVal);
                     this.saveResponse();
                 });
                 this.isSettingUp = false;
@@ -73,13 +79,15 @@ export class QuestionsComponent implements OnInit {
 
     saveResponse() {
         const data = this.prestartDataService.data;
-        console.log('before save', data);
         data.chosenOptions = this.questionsFormGroup.get('questions').value;
         this.prestartDataService.setData(data);
-        console.log('after save', data);
     }
 
     onSubmit() {
         this.router.navigate(['/meter-reading'], { skipLocationChange: false });
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }

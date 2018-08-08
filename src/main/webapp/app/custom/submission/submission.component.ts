@@ -25,6 +25,11 @@ export class SubmissionComponent implements OnInit, AfterViewInit {
     constructor(private prestartDataService: PrestartDataService, private router: Router, public snackBar: MatSnackBar) {}
 
     ngOnInit() {
+        if (!this.prestartDataService.data || !this.prestartDataService.data.plantLog || !this.prestartDataService.data.plantLog.plant) {
+            console.log('data empty, ', this.prestartDataService.data);
+            console.log('navigating back to home ');
+            this.router.navigate(['/'], { skipLocationChange: false });
+        }
         // this.signaturePad.resizeCanvas();
         //  this.signaturePad.ngAfterContentInit
     }

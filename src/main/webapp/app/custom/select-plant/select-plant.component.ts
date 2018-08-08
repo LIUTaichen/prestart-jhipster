@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { ILocation, Location } from 'app/shared/model//location.model';
 import * as moment from 'moment';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
+import { ISubscription } from 'rxjs/Subscription';
 
 @Component({
     selector: 'jhi-select-plant',
@@ -21,7 +22,8 @@ export class SelectPlantComponent implements OnInit, OnDestroy {
     obtainingLocation = true;
     fetchingPlants = false;
     plants: Array<IPlant>;
-    watchID: number;
+    watchID: number[] = new Array<number>();
+    positionUpdatesSubscription: ISubscription;
     constructor(
         private plantService: PlantService,
         private prestartDataService: PrestartDataService,
@@ -32,20 +34,22 @@ export class SelectPlantComponent implements OnInit, OnDestroy {
     ngOnInit() {
         console.log('creating observable for position updates');
         const positionUpdates: Observable<Position> = Observable.create(observer => {
-            this.watchID = navigator.geolocation.watchPosition(
-                position => {
-                    observer.next(position);
-                },
-                error => {
-                    observer.error(error);
-                },
-                {
-                    enableHighAccuracy: false
-                }
+            this.watchID.push(
+                navigator.geolocation.watchPosition(
+                    position => {
+                        observer.next(position);
+                    },
+                    error => {
+                        observer.error(error);
+                    },
+                    {
+                        enableHighAccuracy: false
+                    }
+                )
             );
             console.log('obtained watchID', this.watchID);
         });
-        positionUpdates
+        this.positionUpdatesSubscription = positionUpdates
             .pipe(throttleTime(30000), merge(positionUpdates.debounceTime(30000)), distinctUntilChanged())
             .flatMap(position => {
                 console.log('emitting position', position);
@@ -75,12 +79,18 @@ export class SelectPlantComponent implements OnInit, OnDestroy {
     }
 
     onPlantClicked(plant: IPlant) {
+        this.positionUpdatesSubscription.unsubscribe();
         this.prestartDataService.setPlantId(plant.id);
         this.router.navigate(['/plant-confirmation'], { skipLocationChange: false });
     }
 
     ngOnDestroy() {
         console.log('stop watching for position updates');
-        navigator.geolocation.clearWatch(this.watchID);
+        if (!this.positionUpdatesSubscription.closed) {
+            this.positionUpdatesSubscription.unsubscribe();
+        }
+        this.watchID.map(id => {
+            navigator.geolocation.clearWatch(id);
+        });
     }
 }
