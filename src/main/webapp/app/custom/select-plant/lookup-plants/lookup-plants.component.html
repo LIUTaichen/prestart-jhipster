@@ -1,23 +1,29 @@
 <form>
-    <mat-form-field class="query" floatLabel="never">
-        <input matInput placeholder="Search With Fleet Id" [formControl]="queryControl">
-        <mat-hint align="start">Key in two or more characters to search.</mat-hint>
-      </mat-form-field>
+  <mat-form-field class="query" floatLabel="never">
+    <input matInput placeholder="Search With Fleet Id" [formControl]="queryControl" (keydown.enter)="onEnter()" #query>
+    <mat-hint align="start">Key in two or more characters to search.</mat-hint>
+  </mat-form-field>
 </form>
-
-<mat-nav-list class="list">
+<div class="searching loading" *ngIf="isSearching">
+  <p>Searching...</p>
+  <mat-progress-spinner mode="indeterminate" class="progress-spinner" diameter="50"></mat-progress-spinner>
+</div>
+<div class="result" *ngIf="plants && !isSearching">
+  <!-- <div class="result"  *ngIf="false"> -->
+  <mat-nav-list class="list">
     <mat-list-item *ngFor="let plant of plants" (click)="onPlantClicked(plant)">
-        <h4 matLine class="mat-subheading-1">
-            <span matLine> {{ plant.fleetId }}</span>
-          </h4>
-          <p matLine>
-            <span class="mat-caption"> {{plant?.category?.category}} </span>
-          </p>
-          <p matLine>
-            <span class="mat-caption"> {{plant.description}}</span>
-          </p>
+      <h4 matLine class="mat-subheading-1">
+        <span matLine> {{ plant.fleetId }}</span>
+      </h4>
+      <p matLine>
+        <span class="mat-caption"> {{plant?.category?.category}} </span>
+      </p>
+      <p matLine>
+        <span class="mat-caption"> {{plant.description}}</span>
+      </p>
     </mat-list-item>
   </mat-nav-list>
-  <div *ngIf="!plants || plants.length === 0">
+  <div *ngIf="plants && plants.length === 0">
     <p>No plants found.</p>
   </div>
+</div>

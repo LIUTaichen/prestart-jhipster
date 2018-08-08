@@ -26,12 +26,14 @@ export class PlantConfirmationComponent implements OnInit {
             );
         } else {
             console.error('plant Id to confirm is not found');
-            this.router.navigate(['/select-plant'], { skipLocationChange: true });
+            this.router.navigate(['/select-plant'], { skipLocationChange: false });
         }
     }
 
     onSubmit() {
+        console.log('plant to set', this.plant);
         this.prestartDataService.setPlant(this.plant);
-        this.router.navigate(['/questions'], { skipLocationChange: true });
+        console.log('after confirm', this.prestartDataService.data);
+        this.router.navigate(['/questions'], { skipLocationChange: false });
     }
 }

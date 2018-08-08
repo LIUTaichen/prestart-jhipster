@@ -101,7 +101,7 @@ export class MeterReadingComponent implements OnInit {
             data.plantLog.certificateDueDate = this.meterForm.value.certDueDate;
         }
         this.prestartDataService.setData(data);
-        this.router.navigate(['/notes'], { skipLocationChange: true });
+        this.router.navigate(['/notes'], { skipLocationChange: false });
     }
 
     isValid(value: string): Boolean {

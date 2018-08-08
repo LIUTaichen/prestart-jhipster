@@ -14,6 +14,6 @@
   </p>
 </div>
 <div class='buttons'>
-  <button mat-button routerLink="/select-plant" skipLocationChange>Choose another plant</button>
-  <button mat-raised-button color="primary" (click)="onSubmit()">Proceed</button>
+  <button mat-button routerLink="/select-plant" skipLocationChange = "false">Choose another plant</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled] = "!plant">Proceed</button>
 </div>

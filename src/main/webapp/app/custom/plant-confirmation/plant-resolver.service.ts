@@ -19,7 +19,7 @@ export class PlantResolverService implements Resolve<IPlant> {
                     return response.body;
                 } else {
                     // id not found
-                    this.router.navigate(['/select-plant'], { skipLocationChange: true });
+                    this.router.navigate(['/select-plant'], { skipLocationChange: false });
                     return null;
                 }
             })

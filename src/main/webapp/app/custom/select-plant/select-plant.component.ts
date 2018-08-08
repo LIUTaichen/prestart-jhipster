@@ -6,6 +6,7 @@ import { IPlant } from '../../shared/model/plant.model';
 import { IPlantLog, PlantLog } from '../../shared/model/plant-log.model';
 import { PrestartDataService } from '../prestart-data/prestart-data.service';
 import { distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, throttleTime, merge } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { ILocation, Location } from 'app/shared/model//location.model';
 import * as moment from 'moment';
@@ -45,7 +46,7 @@ export class SelectPlantComponent implements OnInit, OnDestroy {
             console.log('obtained watchID', this.watchID);
         });
         positionUpdates
-            .pipe(distinctUntilChanged())
+            .pipe(throttleTime(30000), merge(positionUpdates.debounceTime(30000)), distinctUntilChanged())
             .flatMap(position => {
                 console.log('emitting position', position);
                 this.obtainingLocation = false;
@@ -75,7 +76,7 @@ export class SelectPlantComponent implements OnInit, OnDestroy {
 
     onPlantClicked(plant: IPlant) {
         this.prestartDataService.setPlantId(plant.id);
-        this.router.navigate(['/plant-confirmation', { plantId: plant.id }], { skipLocationChange: true });
+        this.router.navigate(['/plant-confirmation'], { skipLocationChange: false });
     }
 
     ngOnDestroy() {

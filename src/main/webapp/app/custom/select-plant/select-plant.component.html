@@ -23,11 +23,11 @@
       <div class="mat-caption">Near By</div>
     </ng-template>
     <ng-template matTabContent>
-      <div class="loading" class="list" *ngIf="obtainingLocation">
+      <div class="loading list"*ngIf="obtainingLocation">
         <p>Obtaining your position...</p>
         <mat-progress-spinner mode="indeterminate" class="progress-spinner" diameter="50"></mat-progress-spinner>
       </div>
-      <div class="loading" class="list" *ngIf="fetchingPlants">
+      <div class="loading list"  *ngIf="fetchingPlants">
         <p>Finding plants within 50 meters</p>
         <mat-progress-spinner mode="indeterminate" class="progress-spinner" diameter="50"></mat-progress-spinner>
       </div>

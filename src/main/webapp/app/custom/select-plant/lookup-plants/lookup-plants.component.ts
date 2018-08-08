@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { IPlant } from 'app/shared/model/plant.model';
 import 'rxjs/add/operator/debounceTime';
@@ -10,28 +10,36 @@ import { PlantService } from 'app/entities/plant';
     templateUrl: './lookup-plants.component.html',
     styleUrls: ['./lookup-plants.component.css']
 })
-export class LookupPlantsComponent implements OnInit {
+export class LookupPlantsComponent implements OnInit, AfterViewInit {
     queryControl: FormControl = new FormControl('');
+    isSearching = false;
     plants: IPlant[];
+    @ViewChild('query') queryInput: ElementRef;
     @Output() selected = new EventEmitter<IPlant>();
     constructor(private plantService: PlantService) {}
 
-    ngOnInit() {
-        this.queryControl.valueChanges
-            .filter(newVal => newVal && newVal.length > 1)
-            .debounceTime(400)
-            .flatMap(newValue => {
-                console.log(newValue);
-                return this.plantService.query({
-                    'fleetId.contains': newValue
-                });
-            })
-            .subscribe(response => {
-                this.plants = response.body;
-            });
-    }
+    ngOnInit() {}
 
     onPlantClicked(plant: IPlant) {
         this.selected.emit(plant);
+    }
+
+    ngAfterViewInit() {}
+
+    onEnter() {
+        const newValue = this.queryControl.value;
+        if (!newValue || newValue.length < 2) {
+            return;
+        }
+        this.queryInput.nativeElement.blur();
+        this.isSearching = true;
+        this.plantService
+            .query({
+                'fleetId.contains': this.queryControl.value
+            })
+            .subscribe(response => {
+                this.plants = response.body;
+                this.isSearching = false;
+            });
     }
 }
