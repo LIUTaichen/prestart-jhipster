@@ -49,6 +49,7 @@
     display: inline-flex;
     vertical-align: middle;
     align-items: center;
+    width: 100%;
 }
 
 .warning span {
@@ -62,4 +63,8 @@
 
 .section {
     padding: 20px;
+}
+
+.check-item {
+    width: 100%;
 }

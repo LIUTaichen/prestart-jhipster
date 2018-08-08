@@ -6,11 +6,11 @@
       <div *ngFor="let option of data.chosenOptions" class="valign">
         <div>
           <mat-icon *ngIf="option.isNormal" class="text-success large-icon">check_circle</mat-icon>
-          <mat-icon *ngIf="!option.isNormal && option.prestartQuestion.isLockOutRequired " class="text-danger large-icon">error</mat-icon>
+          <mat-icon *ngIf="!option.isNormal && option.prestartQuestion.isLockOutRequired" class="text-danger large-icon">error</mat-icon>
           <mat-icon *ngIf="!option.isNormal && !option.prestartQuestion.isLockOutRequired" class="text-warning large-icon">warning</mat-icon>
         </div>
-        <div class="ml-4">
-          <div class="label">
+        <div class="ml-4 check-item">
+          <div class=" label">
             <span class="mat-body-2">{{option.prestartQuestion.body}} </span>
           </div>
           <div class="label">
@@ -30,7 +30,7 @@
     </div>
   </div>
 
-  <div class="section padded" *ngIf="data.plantLog.plant.maintenanceType === 'METER_BASED'">
+  <div class="section padded" *ngIf="data.plantLog.plant.maintenanceType==='METER_BASED'">
     <div class="mat-subheading-2">Meter and Service</div>
     <mat-form-field>
       <input matInput type="number" placeholder="New reading" value="{{data.plantLog.meterReading}}" readonly>
@@ -41,7 +41,7 @@
       <span matSuffix> {{data.plantLog.plant.meterUnit}}</span>
     </mat-form-field>
   </div>
-  <div class="section padded" *ngIf="data.plantLog.plant.maintenanceType === 'TIME_BASED'">
+  <div class="section padded" *ngIf="data.plantLog.plant.maintenanceType==='TIME_BASED'">
     <div class="mat-subheading-2">Service</div>
     <mat-form-field>
       <input matInput [matDatepicker]="serviceDueDatepicker" placeholder="Service Due Date" [value]="data.plantLog.maintenanceDueDate"
@@ -82,16 +82,19 @@
     </mat-form-field>
 
   </div>
-  <mat-divider class="divider"></mat-divider>
-  <div class="section">
-    <div class=" mat-subheading-1 ">Notes</div>
-    <div>
-      <p class="mat-body-1 ">{{data.plantLog.notes}}</p>
+  <div *ngIf="data.plantLog.notes">
+    <mat-divider class="divider"></mat-divider>
+    <div class="section">
+      <div class=" mat-subheading-1">Notes</div>
+      <div>
+        <p class="mat-body-1">{{data.plantLog.notes}}</p>
+      </div>
     </div>
+    <mat-divider class="divider"></mat-divider>
   </div>
-  <mat-divider class="divider "></mat-divider>
+
   <div class='button-container'>
-    <button mat-button routerLink="/notes" class='button-back' skipLocationChange = "false">Back</button>
-    <button mat-raised-button color="primary" routerLink="/submission" skipLocationChange = "false">Confirm</button>
+    <button mat-button routerLink="/notes" class='button-back' skipLocationChange="false">Back</button>
+    <button mat-raised-button color="primary" routerLink="/submission" skipLocationChange="false">Confirm</button>
   </div>
 </div>
