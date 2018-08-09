@@ -17,4 +17,25 @@ Main page styles
 
 .prestartButton {
     width: 100%;
+    height: 100%;
+}
+
+.sign-out {
+    margin-top: auto;
+}
+
+.row {
+    flex-grow: 1;
+}
+
+:host,
+.home-container {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    /* height: 100%; */
+    flex-grow: 1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    overflow: scroll;
 }

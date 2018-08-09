@@ -1,6 +1,6 @@
 {
     "home": {
-        "title": "Welcome to Dempsey Wood Prestart App!",
+        "title": "Welcome to Dempsey Wood Fleet App!",
         "subtitle": "This is your homepage",
         "logged": {
             "message": "Hello {{username}}."

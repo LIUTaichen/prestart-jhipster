@@ -63,7 +63,6 @@ export class SelectPlantComponent implements OnInit, OnDestroy {
                 location.provider = 'Mobile Device';
                 location.timestamp = moment(position.timestamp);
                 console.log(location);
-                this.prestartDataService.initialize();
                 this.prestartDataService.setLocation(location);
                 return this.plantService.query({
                     byLocation: true,

@@ -45,13 +45,13 @@ export class PrestartDataService implements OnInit {
     @HostListener('window:beforeunload', ['$event'])
     beforeunloadHandler(event) {
         console.log('unload');
-        localStorage.setItem(this.dataLocalStorageKey, JSON.stringify(this.data));
+        this.saveToLocalStorage();
     }
 
     setData(data: Data) {
         this.data = data;
         console.log(this.data);
-        localStorage.setItem(this.dataLocalStorageKey, JSON.stringify(this.data));
+        this.saveToLocalStorage();
     }
 
     setSignature(imageType: string, image: string) {
@@ -88,7 +88,14 @@ export class PrestartDataService implements OnInit {
     }
 
     setLocation(location: ILocation) {
+        if (!this.data.plantLog) {
+            this.initialize();
+        }
         this.data.plantLog.location = location;
+        this.saveToLocalStorage();
+    }
+
+    saveToLocalStorage() {
         localStorage.setItem(this.dataLocalStorageKey, JSON.stringify(this.data));
     }
 
@@ -127,7 +134,7 @@ export class PrestartDataService implements OnInit {
 
     setNotes(notes: string) {
         this.data.plantLog.notes = notes;
-        localStorage.setItem(this.dataLocalStorageKey, JSON.stringify(this.data));
+        this.saveToLocalStorage();
     }
 }
 

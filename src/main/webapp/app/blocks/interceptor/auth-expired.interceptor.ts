@@ -3,9 +3,10 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { LoginService } from 'app/core/login/login.service';
+import { AdalService } from 'adal-angular4';
 
 export class AuthExpiredInterceptor implements HttpInterceptor {
-    constructor(private injector: Injector) {}
+    constructor(private injector: Injector, private adalService: AdalService) {}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request).pipe(
@@ -14,8 +15,8 @@ export class AuthExpiredInterceptor implements HttpInterceptor {
                 (err: any) => {
                     if (err instanceof HttpErrorResponse) {
                         if (err.status === 401) {
-                            const loginService: LoginService = this.injector.get(LoginService);
-                            loginService.logout();
+                            // const loginService: LoginService = this.injector.get(LoginService);
+                            this.adalService.login();
                         }
                     }
                 }

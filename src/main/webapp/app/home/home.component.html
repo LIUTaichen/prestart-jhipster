@@ -1,9 +1,6 @@
-<div class="row">
-    <div class="col-md-3">
-        <span class="hipster img-fluid rounded"></span>
-    </div>
-    <div class="col-md-9">
-        <h4 jhiTranslate="home.title">Welcome to Dempsey Wood Prestart App</h4>
+<div class="home-container">
+    <div>
+        <h4 jhiTranslate="home.title">Welcome to Dempsey Wood Fleet App</h4>
         <div *ngIf="adSignedIn && !accountObtained">
             Signing you in...
         </div>
@@ -13,17 +10,26 @@
                     <span *ngIf="account" jhiTranslate="home.logged.message" translateValues="{username: '{{account.firstName}}'}"> Hello "{{account.firstName}}". </span>
 
                 </div>
-                <div layout="column" class="pt-4">
-                    <button mat-raised-button color="primary" class="prestartButton" routerLink="select-plant">New Prestart</button>
-                </div>
-                <div class="pt-4" *ngIf="account">
-                    <a class="link" (click)="logout()">Not {{account.firstName}}? Click here to Sign out</a>
-                </div>
+                <mat-grid-list cols="2" rowHeight="2:1" class="mt-4 mb-4" gutterSize="4">
+                    <mat-grid-tile>
+                        <button mat-raised-button color="primary" class="prestartButton" routerLink="select-plant">Prestart</button>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <button mat-raised-button color="accent" class="prestartButton" routerLink="select-plant">Audit</button>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
             </div>
         </div>
         <div class="pt-4" *ngIf="!adSignedIn">
-                <span jhiTranslate="global.messages.info.authenticated.prefix">If you want to </span>
-                <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">sign in</a>
-            </div>
+            <span jhiTranslate="global.messages.info.authenticated.prefix">If you want to </span>
+            <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">sign in</a>
+        </div>
+    </div>
+
+    <div class="pt-4 sign-out" *ngIf="account">
+        <a class="link" (click)="logout()">
+            <u>Not {{account.firstName}}? Click here to Sign out</u>
+        </a>
     </div>
 </div>
